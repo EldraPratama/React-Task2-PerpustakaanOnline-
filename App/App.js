@@ -30,8 +30,7 @@ class App extends React.Component {
             useNavbar = false;
         }
         return (
-            <>
-                { useNavbar &&
+            <> 
                 <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
                     <div class="container-fluid">
                         <a class="navbar-brand " href="#">Perpustakaan Online</a>
@@ -42,22 +41,31 @@ class App extends React.Component {
                         <ul class="navbar-nav">
                         
                             <Router history={history}>
-                            <li class="nav-item">
-                                <Link to="/login" class="nav-link">Data Buku</Link>
-                            </li>
-                            <li class="nav-item">
-                                <Link to="/login" class="nav-link">Transaksi</Link>
-                            </li>
-                            <li class="nav-item">
-                                <Link to="/login" class="nav-link">Logout</Link>
-                            </li>
+                            { useNavbar 
+                                ?
+                                    <>
+                                    <li class="nav-item">
+                                        <Link to="/databuku" class="nav-link">Data Buku</Link>
+                                    </li>
+                                    <li class="nav-item">
+                                        <Link to="/" class="nav-link">Transaksi</Link>
+                                    </li>
+                                    <li class="nav-item">
+                                        <Link to="/login" class="nav-link">Logout</Link>
+                                    </li>
+                                    </>
+                                :
+                                    <li class="nav-item">
+                                        <Link to="/login" class="nav-link">Login</Link>
+                                    </li>
+                            }
+                            
                             </Router>
                         </ul>
                         </div>
                     </div>
                 </nav>
-                }
-
+                
                 <div className="jumbotron">
                     <div className="container">
                         <div className="col-sm-8 col-sm-offset-2">
@@ -67,6 +75,7 @@ class App extends React.Component {
                             <Router history={history}>
                                 <Switch>
                                     <PrivateRoute exact path="/" component={HomePage} />
+                                    <Route path="/databuku" component={DataBukuPage} />
                                     <Route path="/login" component={LoginPage} />
                                     <Route path="/register" component={RegisterPage} />
                                     <Redirect from="*" to="/" />
@@ -75,6 +84,7 @@ class App extends React.Component {
                         </div>
                     </div>
                 </div>
+       
             </>
         );
     }
