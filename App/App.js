@@ -7,6 +7,8 @@ import { history } from '../_helpers';
 import { alertActions } from '../_actions';
 import { PrivateRoute } from '../_components';
 import { HomePage } from '../HomePage';
+import { DataBukuPage } from '../DataBukuPage';
+import { TransaksiPage } from '../TransaksiPage';
 import { LoginPage } from '../LoginPage';
 import { RegisterPage } from '../RegisterPage';
 
@@ -48,7 +50,7 @@ class App extends React.Component {
                                         <Link to="/databuku" class="nav-link">Data Buku</Link>
                                     </li>
                                     <li class="nav-item">
-                                        <Link to="/" class="nav-link">Transaksi</Link>
+                                        <Link to="/transaksi" class="nav-link">Transaksi</Link>
                                     </li>
                                     <li class="nav-item">
                                         <Link to="/login" class="nav-link">Logout</Link>
@@ -66,7 +68,7 @@ class App extends React.Component {
                     </div>
                 </nav>
                 
-                <div className="jumbotron">
+                {/* <div className="jumbotron"> */}
                     <div className="container">
                         <div className="col-sm-8 col-sm-offset-2">
                             {alert.message &&
@@ -76,6 +78,7 @@ class App extends React.Component {
                                 <Switch>
                                     <PrivateRoute exact path="/" component={HomePage} />
                                     <Route path="/databuku" component={DataBukuPage} />
+                                    <Route path="/transaksi" component={TransaksiPage} />
                                     <Route path="/login" component={LoginPage} />
                                     <Route path="/register" component={RegisterPage} />
                                     <Redirect from="*" to="/" />
@@ -83,7 +86,7 @@ class App extends React.Component {
                             </Router>
                         </div>
                     </div>
-                </div>
+                {/* </div> */}
        
             </>
         );
