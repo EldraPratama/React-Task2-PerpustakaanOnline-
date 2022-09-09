@@ -28,7 +28,7 @@ class TransaksiPage extends React.Component {
           </div>
           <div className="col-md-5"></div>
           <div className="col-md-2">
-              <Link to="/transaksi/add" className="btn btn-primary">Pinjam Buku</Link>
+              <Link to="/transaksi/add" className="btn btn-primary float-end">Pinjam Buku</Link>
           </div>
         </div>
         <table class="table table-bordered ">
