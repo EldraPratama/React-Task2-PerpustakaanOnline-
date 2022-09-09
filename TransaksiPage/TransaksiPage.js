@@ -5,56 +5,72 @@ import { connect } from 'react-redux';
 import { userActions } from '../_actions';
 
 class TransaksiPage extends React.Component {
-    componentDidMount() {
-        this.props.getUsers();
-    }
+  componentDidMount() {
+    this.props.getUsers();
+  }
 
-    handleDeleteUser(id) {
-        return (e) => this.props.deleteUser(id);
-    }
+  handleDeleteUser(id) {
+    return (e) => this.props.deleteUser(id);
+  }
 
-    render() {
-        const { user, users } = this.props;
-        return (
-            <div className="col-md-6 col-md-offset-3">
-                <h1>Hi {user.firstName}!</h1>
-                <h1>Transaksi</h1>
-                <p>You're logged in with React!!</p>
-                <h3>All registered users:</h3>
-                {users.loading && <em>Loading users...</em>}
-                {users.error && <span className="text-danger">ERROR: {users.error}</span>}
-                {users.items &&
-                    <ul>
-                        {users.items.map((user, index) =>
-                            <li key={user.id}>
-                                {user.firstName + ' ' + user.lastName}
-                                {
-                                    user.deleting ? <em> - Deleting...</em>
-                                    : user.deleteError ? <span className="text-danger"> - ERROR: {user.deleteError}</span>
-                                    : <span> - <a onClick={this.handleDeleteUser(user.id)}>Delete</a></span>
-                                }
-                            </li>
-                        )}
-                    </ul>
-                }
-                <p>
-                    <Link to="/login">Logout</Link>
-                </p>
-            </div>
-        );
-    }
+  render() {
+    const { user, users } = this.props;
+    return (
+      <div className="col-lg">
+        <h2>Transaksi Peminjaman dan Pengembalian</h2>
+        <div className="row mb-3">
+          <div className="col-md-5">
+            <form name="form">
+                <div className={'form-group'}>
+                    <input type="text" className="form-control" name="search" placeholder="Search"/>
+                </div>
+            </form>
+          </div>
+          <div className="col-md-5"></div>
+          <div className="col-md-2">
+              <Link to="/transaksi/add" className="btn btn-primary">Pinjam Buku</Link>
+          </div>
+        </div>
+        <table class="table table-bordered ">
+          <thead class="table-primary">
+            <tr>
+              <th scope="col">Judul Buku</th>
+              <th scope="col">Nama Peminjam</th>
+              <th scope="col">Tanggal Pinjam</th>
+              <th scope="col">Estimasi Pengembalian</th>
+              <th scope="col">Tanggal Kembali</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>@mdo</td>
+              <td>@mdo</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          <Link to="/login">Logout</Link>
+        </p>
+      </div>
+    );
+  }
 }
 
 function mapState(state) {
-    const { users, authentication } = state;
-    const { user } = authentication;
-    return { user, users };
+  const { users, authentication } = state;
+  const { user } = authentication;
+  return { user, users };
 }
 
 const actionCreators = {
-    getUsers: userActions.getAll,
-    deleteUser: userActions.delete
-}
+  getUsers: userActions.getAll,
+  deleteUser: userActions.delete,
+};
 
 const connectedTransaksiPage = connect(mapState, actionCreators)(TransaksiPage);
 export { connectedTransaksiPage as TransaksiPage };
