@@ -22,7 +22,7 @@ class DataBukuPage extends React.Component {
           <div className="col-md-5">
             <form name="form">
                 <div className={'form-group'}>
-                    <input type="text" className="form-control" name="search"  />
+                    <input type="text" className="form-control" name="search" placeholder="Search"/>
                 </div>
             </form>
           </div>
