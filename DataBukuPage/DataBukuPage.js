@@ -18,36 +18,36 @@ class DataBukuPage extends React.Component {
     return (
       <div className="col-lg">
         <h1>Data Buku</h1>
-        <div className="row">
-          <div className="col">ea</div>
-          <div className="col">ea</div>
+        <div className="row mb-3">
+          <div className="col-md-5">
+            <form name="form">
+                <div className={'form-group'}>
+                    <input type="text" className="form-control" name="search"  />
+                </div>
+            </form>
+          </div>
+          <div className="col-md-5"></div>
+          <div className="col-md-2">
+              <Link to="/databuku/add" className="btn btn-primary">Input Buku</Link>
+          </div>
         </div>
-        <table class="table table-bordered">
-          <thead>
+        <table class="table table-bordered ">
+          <thead class="table-primary">
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
+              <th scope="col">Judul Buku</th>
+              <th scope="col">Penulis</th>
+              <th scope="col">Jenis Buku</th>
+              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row">1</th>
               <td>Mark</td>
               <td>Otto</td>
               <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
+              <td>@mdo</td>
+              <td>@mdo</td>
             </tr>
           </tbody>
         </table>
