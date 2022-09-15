@@ -7,7 +7,7 @@ import { bookActions } from '../_actions';
 
 class BukuPage extends React.Component {
   componentDidMount() {
-    this.props.getUsers();
+    this.props.getBooks();
   }
 
   handleDeleteUser(id) {
@@ -62,7 +62,7 @@ class BukuPage extends React.Component {
               <th scope="col">Status</th>
               <th scope="col">Actions</th>
             </tr> */}
-                {books.items &&
+                {/* {books.items &&
                     <ul>
                         {books.items.map((book, index) =>
                             <li key={book.id}>
@@ -76,7 +76,7 @@ class BukuPage extends React.Component {
                             </li>
                         )}
                     </ul>
-                }
+                } */}
           </thead>
         </table>
 
@@ -89,9 +89,8 @@ class BukuPage extends React.Component {
 }
 
 function mapState(state) {
-  const { users, authentication, books } = state;
-  const { user } = authentication;
-  return { user, users, books };
+  const { books } = state;
+  return {  books };
 }
 
 const actionCreators = {

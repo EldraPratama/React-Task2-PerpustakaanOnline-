@@ -39,13 +39,13 @@ function getAll() {
 
         bookService.getAll()
             .then(
-                users => dispatch(success(users)),
+                books => dispatch(success(books)),
                 error => dispatch(failure(error))
             );
     };
 
     function request() { return { type: bookConstants.GETALL_REQUEST } }
-    function success(users) { return { type: bookConstants.GETALL_SUCCESS, users } }
+    function success(books) { return { type: bookConstants.GETALL_SUCCESS, books } }
     function failure(error) { return { type: bookConstants.GETALL_FAILURE, error } }
 }
 

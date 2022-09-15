@@ -121,19 +121,6 @@ export function configureFakeBackend() {
                     return;
                 }
 
-                // get books
-                if (url.endsWith('/buku') && opts.method === 'GET') {
-                    // check for fake auth token in header and return users if valid, this security is implemented server side in a real application
-                    if (opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
-                        resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(books))});
-                    } else {
-                        // return 401 not authorised if token is null or invalid
-                        reject('Unauthorised');
-                    }
-
-                    return;
-                }   
-
                 // Add book
                 if (url.endsWith('/buku/add') && opts.method === 'POST') {
                     // get new user object from post body
@@ -156,6 +143,21 @@ export function configureFakeBackend() {
 
                     return;
                 }
+                                
+                // get books
+                if (url.endsWith('/buku') && opts.method === 'GET') {
+                    // check for fake auth token in header and return users if valid, this security is implemented server side in a real application
+                    if (opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
+                        resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(books))});
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        reject('Unauthorised');
+                    }
+
+                    return;
+                }   
+
+
 
                 // pass through any requests not handled above
                 realFetch(url, opts).then(response => resolve(response));

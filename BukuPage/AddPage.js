@@ -43,11 +43,14 @@ class AddPage extends React.Component {
 
         this.setState({ submitted: true });
         const { user } = this.state;
-        // if (user.firstName && user.lastName && user.username && user.password) {
+        console.log(user)
+        // if (user.judulBuku !== null && user.tahunTerbit && user.penulisBuku && user.penerbit) {
         //     this.props.add(user);
         // }
-        console.log(user)
-        this.props.add(user);
+        // validate all input not empty 
+        if (user.judulBuku !== '' && user.penulisBuku !== '' && user.tahunTerbit !== '' && user.penerbit !== '' && user.jenisBuku !== '' && user.tanggalInput !== '' && user.sumberBuku !== '' && user.bukuLama !== '' && user.rakBuku !== ''  ) {
+            this.props.add(user);
+        } 
     }
 
     render() {
