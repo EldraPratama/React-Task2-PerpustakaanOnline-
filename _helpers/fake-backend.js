@@ -127,13 +127,13 @@ export function configureFakeBackend() {
                     let newBook = JSON.parse(opts.body);
 
                     // validation
-                    // let duplicateUser = users.filter(user => { return user.username === newUser.username; }).length;
-                    // if (duplicateUser) {
-                    //     reject('Username "' + newUser.username + '" is already taken');
+                    // let duplicateBook = books.filter(book => { return book.judulBuku === newBook.judulBuku; }).length;
+                    // if (duplicateBook) {
+                    //     reject('Judul Buku "' + newBook.judulBuku + '" is already taken');
                     //     return;
                     // }
 
-                    // save new user
+                    // save new book
                     newBook.id = books.length ? Math.max(...books.map(book => book.id)) + 1 : 1;
                     books.push(newBook);
                     localStorage.setItem('books', JSON.stringify(books));
