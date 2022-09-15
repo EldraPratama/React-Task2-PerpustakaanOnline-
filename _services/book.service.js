@@ -27,14 +27,14 @@ function getById(id) {
     return fetch(`/users/${id}`, requestOptions).then(handleResponse);
 }
 
-function add(databuku) {
+function add(buku) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(databuku)
+        body: JSON.stringify(buku)
     };
 
-    return fetch(`/databuku/add`, requestOptions).then(handleResponse);
+    return fetch(`/buku/add`, requestOptions).then(handleResponse);
 }
 
 function update(user) {

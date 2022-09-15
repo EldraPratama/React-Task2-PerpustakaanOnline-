@@ -1,5 +1,6 @@
 // array in local storage for registered users
 let users = JSON.parse(localStorage.getItem('users')) || [];
+let books = JSON.parse(localStorage.getItem('books')) || [];
     
 export function configureFakeBackend() {
     let realFetch = window.fetch;
@@ -116,6 +117,29 @@ export function configureFakeBackend() {
                         // return 401 not authorised if token is null or invalid
                         reject('Unauthorised');
                     }
+
+                    return;
+                }
+
+                // Add book
+                if (url.endsWith('/buku/add') && opts.method === 'POST') {
+                    // get new user object from post body
+                    let newBook = JSON.parse(opts.body);
+
+                    // validation
+                    // let duplicateUser = users.filter(user => { return user.username === newUser.username; }).length;
+                    // if (duplicateUser) {
+                    //     reject('Username "' + newUser.username + '" is already taken');
+                    //     return;
+                    // }
+
+                    // save new user
+                    newBook.id = books.length ? Math.max(...books.map(book => book.id)) + 1 : 1;
+                    books.push(newUser);
+                    localStorage.setItem('books', JSON.stringify(books));
+
+                    // respond 200 OK
+                    resolve({ ok: true, text: () => Promise.resolve() });
 
                     return;
                 }
