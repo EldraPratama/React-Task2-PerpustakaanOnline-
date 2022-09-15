@@ -1,6 +1,6 @@
 import { authHeader } from '../_helpers';
 
-export const userService = {
+export const bookService = {
     add,
     getAll,
     getById,
