@@ -7,7 +7,7 @@ import { history } from '../_helpers';
 import { alertActions } from '../_actions';
 import { PrivateRoute } from '../_components';
 import { HomePage } from '../HomePage';
-import { DataBukuPage } from '../DataBukuPage';
+import { BukuPage } from '../DataBukuPage';
 import { AddPage } from '../DataBukuPage';
 import { TransaksiPage } from '../TransaksiPage';
 import { LoginPage } from '../LoginPage';

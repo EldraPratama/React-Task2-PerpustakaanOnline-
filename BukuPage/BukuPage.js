@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { userActions } from '../_actions';
 
-class DataBukuPage extends React.Component {
+class BukuPage extends React.Component {
   componentDidMount() {
     this.props.getUsers();
   }
@@ -71,5 +71,5 @@ const actionCreators = {
   deleteUser: userActions.delete,
 };
 
-const connectedDataBukuPage = connect(mapState, actionCreators)(DataBukuPage);
-export { connectedDataBukuPage as DataBukuPage };
+const connectedBukuPage = connect(mapState, actionCreators)(BukuPage);
+export { connectedBukuPage as BukuPage };
