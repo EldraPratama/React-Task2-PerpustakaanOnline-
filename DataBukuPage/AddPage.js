@@ -9,15 +9,16 @@ class AddPage extends React.Component {
         super(props);
 
         this.state = {
-            user: {
-                firstName: '',
-                lastName: '',
-                username: '',
-                password: '',
+            user: {              
                 judulBuku:'',
                 penulisBuku:'',
                 tahunTerbit:'',
-                penerbit:''
+                penerbit:'',
+                jenisBuku:'',
+                tanggalInput:'',
+                sumberBuku:'',
+                bukuLama:'',
+                rakBuku:''
             },
             submitted: false
         };
@@ -103,6 +104,39 @@ class AddPage extends React.Component {
                             <input type="text" className="form-control" name="penerbit" placeholder="Masukkan Nama Penerbit" value={user.penerbit} onChange={this.handleChange} />
                             {submitted && !user.penerbit &&
                             <div className="help-block">Penerbit is required</div>
+                            }
+                        </div>  
+                    </div>
+
+                    <div className={"row form-group" + (submitted && !user.jenisBuku ? ' has-error' : '')}>
+                        <div className="col-md-2"> 
+                            <label htmlFor="">Jenis Buku</label> 
+                        </div>
+                        <div className="col-md-1 "> <b>:</b>  </div>
+                        <div className="col-md-4">
+                            {/* <input type="select" className="form-control" name="jenisBuku" placeholder="Pilih Jenis Buku" value={user.jenisBuku} onChange={this.handleChange} /> */}
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="jenisBuku" onChange={this.handleChange}>
+                                <option selected>Pilih Jenis buku</option>
+                                <option value="Novel">Novel</option>
+                                <option value="Sejarah">Sejarah</option>
+                                <option value="Ensiklopedia">Ensiklopedia</option>
+                            </select>
+
+                            {submitted && !user.jenisBuku &&
+                            <div className="help-block">Jenis buku is required</div>
+                            }
+                        </div>  
+                    </div>
+
+                    <div className={"row form-group" + (submitted && !user.tanggalInput ? ' has-error' : '')}>
+                        <div className="col-md-2"> 
+                            <label htmlFor="">Tanggal Input Buku</label> 
+                        </div>
+                        <div className="col-md-1 "> <b>:</b>  </div>
+                        <div className="col-md-4">
+                            <input type="date" className="form-control" name="tanggalInput" value={user.tanggalInput ? user.tanggalInput : ''} onChange={this.handleChange} />
+                            {submitted && !user.tanggalInput &&
+                            <div className="help-block">Tanggal Input is required</div>
                             }
                         </div>  
                     </div>
