@@ -15,7 +15,7 @@ function getAll() {
         headers: authHeader()
     };
 
-    return fetch(`/users`, requestOptions).then(handleResponse);
+    return fetch(`/buku`, requestOptions).then(handleResponse);
 }
 
 function getById(id) {

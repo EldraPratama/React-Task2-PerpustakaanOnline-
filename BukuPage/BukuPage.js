@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { userActions } from '../_actions';
+import { bookActions } from '../_actions';
 
 class BukuPage extends React.Component {
   componentDidMount() {
@@ -14,7 +15,7 @@ class BukuPage extends React.Component {
   }
 
   render() {
-    const { user, users } = this.props;
+    const { user, users, books } = this.props;
     return (
       <div className="col-lg">
         <h1>Data Buku</h1>
@@ -52,6 +53,40 @@ class BukuPage extends React.Component {
           </tbody>
         </table>
 
+        <table class="table table-bordered ">
+          <thead class="table-primary">
+            {/* <tr>
+              <th scope="col">Judul Buku</th>
+              <th scope="col">Penulis</th>
+              <th scope="col">Jenis Buku</th>
+              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
+            </tr> */}
+                   penulisBuku:'',
+                tahunTerbit:'',
+                penerbit:'',
+                jenisBuku:'',
+                tanggalInput:'',
+                sumberBuku:'',
+                bukuLama:'',
+                rakBuku:''
+                {books.items &&
+                    <ul>
+                        {books.items.map((book, index) =>
+                            <li key={book.id}>
+                                {book.judulBuku + ' ' + book.penulisBuku + ' ' + book.tahunTerbit + ' ' + book.penerbit + ' ' + book.jenisBuku}
+                                {
+                                    book.deleting ? <em> - Deleting...</em>
+                                    : book.deleteError ? <span className="text-danger"> - ERROR: {book.deleteError}</span>
+                                    : <span> - <a onClick={this.handleDeleteBook(book.id)}>Delete</a></span>
+                                }
+                            </li>
+                        )}
+                    </ul>
+                }
+          </thead>
+        </table>
+
         <p>
           <Link to="/login">Logout</Link>
         </p>
@@ -62,13 +97,15 @@ class BukuPage extends React.Component {
 
 function mapState(state) {
   const { users, authentication } = state;
+  const { books } = state;
   const { user } = authentication;
-  return { user, users };
+  return { user, users, books };
 }
 
 const actionCreators = {
   getUsers: userActions.getAll,
   deleteUser: userActions.delete,
+  getBooks: bookActions.getAll,
 };
 
 const connectedBukuPage = connect(mapState, actionCreators)(BukuPage);
