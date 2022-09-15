@@ -62,19 +62,12 @@ class BukuPage extends React.Component {
               <th scope="col">Status</th>
               <th scope="col">Actions</th>
             </tr> */}
-                   penulisBuku:'',
-                tahunTerbit:'',
-                penerbit:'',
-                jenisBuku:'',
-                tanggalInput:'',
-                sumberBuku:'',
-                bukuLama:'',
-                rakBuku:''
                 {books.items &&
                     <ul>
                         {books.items.map((book, index) =>
                             <li key={book.id}>
-                                {book.judulBuku + ' ' + book.penulisBuku + ' ' + book.tahunTerbit + ' ' + book.penerbit + ' ' + book.jenisBuku}
+                                {book.judulBuku + ' ' + book.penulisBuku + ' ' + book.tahunTerbit + ' ' + book.penerbit + ' ' + book.jenisBuku
+                                + ' ' + book.tanggalInput + ' ' + book.sumberBuku+ ' ' + book.bukuLama+ ' ' + book.rakBuku}
                                 {
                                     book.deleting ? <em> - Deleting...</em>
                                     : book.deleteError ? <span className="text-danger"> - ERROR: {book.deleteError}</span>
@@ -96,8 +89,7 @@ class BukuPage extends React.Component {
 }
 
 function mapState(state) {
-  const { users, authentication } = state;
-  const { books } = state;
+  const { users, authentication, books } = state;
   const { user } = authentication;
   return { user, users, books };
 }
