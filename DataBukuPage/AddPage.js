@@ -55,24 +55,66 @@ class AddPage extends React.Component {
                 <h2>Input Buku</h2>
                 <form name="form" onSubmit={this.handleSubmit}>
 
-                    <div className="row form-group">
-                        <div className="col-md-3"> 
+                    <div className={"row form-group" + (submitted && !user.judulBuku ? ' has-error' : '')}>
+                        <div className="col-md-2"> 
                             <label htmlFor="">Judul Buku</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
-                        <div className="col-md-5">
+                        <div className="col-md-4">
                             <input type="text" className="form-control" name="judulBuku" placeholder="Masukkan judul buku" value={user.judulBuku} onChange={this.handleChange} />
+                            {submitted && !user.judulBuku &&
+                            <div className="help-block">Judul Buku is required</div>
+                            }
                         </div>  
                     </div>
 
-                    <div className={'form-group' + (submitted && !user.firstName ? ' has-error' : '')}>
+                    <div className={"row form-group" + (submitted && !user.penulisBuku ? ' has-error' : '')}>
+                        <div className="col-md-2"> 
+                            <label htmlFor="">Penulis</label> 
+                        </div>
+                        <div className="col-md-1 "> <b>:</b>  </div>
+                        <div className="col-md-4">
+                            <input type="text" className="form-control" name="penulisBuku" placeholder="Masukkan Nama Penulis" value={user.penulisBuku} onChange={this.handleChange} />
+                            {submitted && !user.penulisBuku &&
+                            <div className="help-block">Penulis is required</div>
+                            }
+                        </div>  
+                    </div>
+
+                    <div className={"row form-group" + (submitted && !user.tahunTerbit ? ' has-error' : '')}>
+                        <div className="col-md-2"> 
+                            <label htmlFor="">Tahun Terbit</label> 
+                        </div>
+                        <div className="col-md-1 "> <b>:</b>  </div>
+                        <div className="col-md-4">
+                            <input type="number" className="form-control" name="tahunTerbit" placeholder="Masukkan Tahun Terbit" value={user.tahunTerbit} onChange={this.handleChange} />
+                            {submitted && !user.tahunTerbit &&
+                            <div className="help-block">Tahun Terbit is required</div>
+                            }
+                        </div>  
+                    </div>
+
+                    <div className={"row form-group" + (submitted && !user.penerbit ? ' has-error' : '')}>
+                        <div className="col-md-2"> 
+                            <label htmlFor="">Penerbit</label> 
+                        </div>
+                        <div className="col-md-1 "> <b>:</b>  </div>
+                        <div className="col-md-4">
+                            <input type="text" className="form-control" name="penerbit" placeholder="Masukkan Nama Penerbit" value={user.penerbit} onChange={this.handleChange} />
+                            {submitted && !user.penerbit &&
+                            <div className="help-block">Penerbit is required</div>
+                            }
+                        </div>  
+                    </div>
+
+                    {/* <div className={'form-group' + (submitted && !user.firstName ? ' has-error' : '')}>
                         <label htmlFor="firstName">First Name</label>
                         <input type="text" className="form-control" name="judulBuku" value={user.judulBuku} onChange={this.handleChange} />
                         {submitted && !user.firstName &&
                             <div className="help-block">First Name is required</div>
                         }
-                    </div>
-                    <div className={'form-group' + (submitted && !user.lastName ? ' has-error' : '')}>
+                    </div> */}
+                    {/* <div className={'form-group' + (submitted && !user.lastName ? ' has-error' : '')}>
                         <label htmlFor="lastName">Last Name</label>
                         <input type="text" className="form-control" name="lastName" value={user.lastName} onChange={this.handleChange} />
                         {submitted && !user.lastName &&
@@ -92,7 +134,7 @@ class AddPage extends React.Component {
                         {submitted && !user.password &&
                             <div className="help-block">Password is required</div>
                         }
-                    </div>
+                    </div> */}
                     <div className="form-group">
                         <button className="btn btn-primary">Simpan</button>
                         {/* {registering && 
