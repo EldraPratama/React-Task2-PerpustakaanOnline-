@@ -8,6 +8,7 @@ import { alertActions } from '../_actions';
 import { PrivateRoute } from '../_components';
 import { HomePage } from '../HomePage';
 import { DataBukuPage } from '../DataBukuPage';
+import { AddPage } from '../DataBukuPage';
 import { TransaksiPage } from '../TransaksiPage';
 import { LoginPage } from '../LoginPage';
 import { RegisterPage } from '../RegisterPage';
@@ -92,7 +93,8 @@ class App extends React.Component {
             <Router history={history}>
               <Switch>
                 <PrivateRoute exact path="/" component={HomePage} />
-                <Route path="/databuku" component={DataBukuPage} />
+                <Route exact path="/databuku" component={DataBukuPage} />
+                <Route path="/databuku/add" component={AddPage} />
                 <Route path="/transaksi" component={TransaksiPage} />
                 <Route path="/login" component={LoginPage} />
                 <Route path="/register" component={RegisterPage} />
