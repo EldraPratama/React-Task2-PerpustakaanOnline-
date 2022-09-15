@@ -56,7 +56,7 @@ class App extends React.Component {
                   {useNavbar ? (
                     <>
                       <li class="nav-item">
-                        <Link to="/databuku" class="nav-link">
+                        <Link to="/buku" class="nav-link">
                           Data Buku
                         </Link>
                       </li>
@@ -93,8 +93,8 @@ class App extends React.Component {
             <Router history={history}>
               <Switch>
                 <PrivateRoute exact path="/" component={HomePage} />
-                <Route exact path="/databuku" component={DataBukuPage} />
-                <Route path="/databuku/add" component={AddPage} />
+                <Route exact path="/buku" component={BukuPage} />
+                <Route path="/buku/add" component={AddPage} />
                 <Route path="/transaksi" component={TransaksiPage} />
                 <Route path="/login" component={LoginPage} />
                 <Route path="/register" component={RegisterPage} />
