@@ -1,12 +1,12 @@
 import { bookConstants } from '../_constants';
-import { userService } from '../_services';
+import { bookService } from '../_services';
 import { alertActions } from './';
 import { history } from '../_helpers';
 
 export const bookActions = {
     login,
     logout,
-    register,
+    add,
     getAll,
     delete: _delete
 };
@@ -15,7 +15,7 @@ function login(username, password) {
     return dispatch => {
         dispatch(request({ username }));
 
-        userService.login(username, password)
+        bookService.login(username, password)
             .then(
                 user => { 
                     dispatch(success(user));
@@ -34,20 +34,20 @@ function login(username, password) {
 }
 
 function logout() {
-    userService.logout();
+    bookService.logout();
     return { type: bookConstants.LOGOUT };
 }
 
-function register(user) {
+function add(book) {
     return dispatch => {
-        dispatch(request(user));
+        dispatch(request(book));
 
-        userService.register(user)
+        bookService.add(book)
             .then(
-                user => { 
+                book => { 
                     dispatch(success());
-                    history.push('/login');
-                    dispatch(alertActions.success('Registration successful'));
+                    history.push('/buku');
+                    dispatch(alertActions.success('Add book successful'));
                 },
                 error => {
                     dispatch(failure(error));
@@ -56,16 +56,16 @@ function register(user) {
             );
     };
 
-    function request(user) { return { type: bookConstants.REGISTER_REQUEST, user } }
-    function success(user) { return { type: bookConstants.REGISTER_SUCCESS, user } }
-    function failure(error) { return { type: bookConstants.REGISTER_FAILURE, error } }
+    function request(book) { return { type: bookConstants.ADD_REQUEST, book } }
+    function success(book) { return { type: bookConstants.ADD_SUCCESS, book } }
+    function failure(error) { return { type: bookConstants.ADD_FAILURE, error } }
 }
 
 function getAll() {
     return dispatch => {
         dispatch(request());
 
-        userService.getAll()
+        bookService.getAll()
             .then(
                 users => dispatch(success(users)),
                 error => dispatch(failure(error))
@@ -82,7 +82,7 @@ function _delete(id) {
     return dispatch => {
         dispatch(request(id));
 
-        userService.delete(id)
+        bookService.delete(id)
             .then(
                 user => { 
                     dispatch(success(id));

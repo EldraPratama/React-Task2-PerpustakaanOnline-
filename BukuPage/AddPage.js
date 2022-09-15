@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { userActions } from '../_actions';
+import { bookActions } from '../_actions';
 
 class AddPage extends React.Component {
     constructor(props) {
@@ -43,13 +43,15 @@ class AddPage extends React.Component {
 
         this.setState({ submitted: true });
         const { user } = this.state;
-        if (user.firstName && user.lastName && user.username && user.password) {
-            this.props.register(user);
-        }
+        // if (user.firstName && user.lastName && user.username && user.password) {
+        //     this.props.add(user);
+        // }
+        console.log(user)
+        this.props.add(user);
     }
 
     render() {
-        const { registering  } = this.props;
+        const { adding  } = this.props;
         const { user, submitted } = this.state;
         return (
             <div className="col-md-12">
@@ -58,7 +60,7 @@ class AddPage extends React.Component {
 
                     <div className={"row form-group" + (submitted && !user.judulBuku ? ' has-error' : '')}>
                         <div className="col-md-2"> 
-                            <label htmlFor="">Judul Buku</label> 
+                            <label>Judul Buku</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
@@ -71,7 +73,7 @@ class AddPage extends React.Component {
 
                     <div className={"row form-group" + (submitted && !user.penulisBuku ? ' has-error' : '')}>
                         <div className="col-md-2"> 
-                            <label htmlFor="">Penulis</label> 
+                            <label>Penulis</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
@@ -84,7 +86,7 @@ class AddPage extends React.Component {
 
                     <div className={"row form-group" + (submitted && !user.tahunTerbit ? ' has-error' : '')}>
                         <div className="col-md-2"> 
-                            <label htmlFor="">Tahun Terbit</label> 
+                            <label>Tahun Terbit</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
@@ -97,7 +99,7 @@ class AddPage extends React.Component {
 
                     <div className={"row form-group" + (submitted && !user.penerbit ? ' has-error' : '')}>
                         <div className="col-md-2"> 
-                            <label htmlFor="">Penerbit</label> 
+                            <label>Penerbit</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
@@ -110,7 +112,7 @@ class AddPage extends React.Component {
 
                     <div className={"row form-group" + (submitted && !user.jenisBuku ? ' has-error' : '')}>
                         <div className="col-md-2"> 
-                            <label htmlFor="">Jenis Buku</label> 
+                            <label>Jenis Buku</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
@@ -130,7 +132,7 @@ class AddPage extends React.Component {
 
                     <div className={"row form-group" + (submitted && !user.tanggalInput ? ' has-error' : '')}>
                         <div className="col-md-2"> 
-                            <label htmlFor="">Tanggal Input Buku</label> 
+                            <label>Tanggal Input Buku</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
@@ -143,7 +145,7 @@ class AddPage extends React.Component {
 
                     <div className={"row form-group" + (submitted && !user.sumberBuku ? ' has-error' : '')}>
                         <div className="col-md-2"> 
-                            <label htmlFor="">Sumber Buku</label> 
+                            <label>Sumber Buku</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
@@ -156,7 +158,7 @@ class AddPage extends React.Component {
 
                     <div className={"row form-group" + (submitted && !user.bukuLama ? ' has-error' : '')}>
                         <div className="col-md-2"> 
-                            <label htmlFor="">Buku Lama</label> 
+                            <label>Buku Lama</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
@@ -179,7 +181,7 @@ class AddPage extends React.Component {
 
                     <div className={"row form-group" + (submitted && !user.rakBuku ? ' has-error' : '')}>
                         <div className="col-md-2"> 
-                            <label htmlFor="">Rak Buku</label> 
+                            <label>Rak Buku</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
@@ -198,7 +200,7 @@ class AddPage extends React.Component {
 
                     <div className="form-group">
                         <button className="btn btn-primary">Simpan</button>
-                        {/* {registering && 
+                        {/* {adding && 
                             <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                         } */}
                         <Link to="/buku" className="btn btn-link">Kembali</Link>
@@ -210,12 +212,12 @@ class AddPage extends React.Component {
 }
 
 function mapState(state) {
-    const { registering } = state.registration;
-    return { registering };
+    const { adding } = state.registration;
+    return { adding };
 }
 
 const actionCreators = {
-    register: userActions.register
+    add: bookActions.add
 }
 
 const connectedAddPage = connect(mapState, actionCreators)(AddPage);

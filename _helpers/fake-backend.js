@@ -135,7 +135,7 @@ export function configureFakeBackend() {
 
                     // save new user
                     newBook.id = books.length ? Math.max(...books.map(book => book.id)) + 1 : 1;
-                    books.push(newUser);
+                    books.push(newBook);
                     localStorage.setItem('books', JSON.stringify(books));
 
                     // respond 200 OK
