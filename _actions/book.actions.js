@@ -4,39 +4,11 @@ import { alertActions } from './';
 import { history } from '../_helpers';
 
 export const bookActions = {
-    login,
-    logout,
     add,
     getAll,
     delete: _delete
 };
 
-function login(username, password) {
-    return dispatch => {
-        dispatch(request({ username }));
-
-        bookService.login(username, password)
-            .then(
-                user => { 
-                    dispatch(success(user));
-                    history.push('/');
-                },
-                error => {
-                    dispatch(failure(error));
-                    dispatch(alertActions.error(error));
-                }
-            );
-    };
-
-    function request(user) { return { type: bookConstants.LOGIN_REQUEST, user } }
-    function success(user) { return { type: bookConstants.LOGIN_SUCCESS, user } }
-    function failure(error) { return { type: bookConstants.LOGIN_FAILURE, error } }
-}
-
-function logout() {
-    bookService.logout();
-    return { type: bookConstants.LOGOUT };
-}
 
 function add(book) {
     return dispatch => {
