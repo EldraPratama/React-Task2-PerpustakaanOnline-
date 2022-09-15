@@ -1,0 +1,5 @@
+export const bookConstants = {
+  ADD_REQUEST: 'BOOKS_ADD_REQUEST',
+  ADD_SUCCESS: 'BOOKS_ADD_SUCCESS',
+  ADD_FAILURE: 'BOOKS_ADD_FAILURE',  
+};

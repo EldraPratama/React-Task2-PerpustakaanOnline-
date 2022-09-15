@@ -141,34 +141,61 @@ class AddPage extends React.Component {
                         </div>  
                     </div>
 
-                    {/* <div className={'form-group' + (submitted && !user.firstName ? ' has-error' : '')}>
-                        <label htmlFor="firstName">First Name</label>
-                        <input type="text" className="form-control" name="judulBuku" value={user.judulBuku} onChange={this.handleChange} />
-                        {submitted && !user.firstName &&
-                            <div className="help-block">First Name is required</div>
-                        }
-                    </div> */}
-                    {/* <div className={'form-group' + (submitted && !user.lastName ? ' has-error' : '')}>
-                        <label htmlFor="lastName">Last Name</label>
-                        <input type="text" className="form-control" name="lastName" value={user.lastName} onChange={this.handleChange} />
-                        {submitted && !user.lastName &&
-                            <div className="help-block">Last Name is required</div>
-                        }
+                    <div className={"row form-group" + (submitted && !user.sumberBuku ? ' has-error' : '')}>
+                        <div className="col-md-2"> 
+                            <label htmlFor="">Sumber Buku</label> 
+                        </div>
+                        <div className="col-md-1 "> <b>:</b>  </div>
+                        <div className="col-md-4">
+                            <input type="text" className="form-control" name="sumberBuku" placeholder="Masukkan Sumber Buku" value={user.sumberBuku} onChange={this.handleChange} />
+                            {submitted && !user.sumberBuku &&
+                            <div className="help-block">Sumber Buku is required</div>
+                            }
+                        </div>  
                     </div>
-                    <div className={'form-group' + (submitted && !user.username ? ' has-error' : '')}>
-                        <label htmlFor="username">Username</label>
-                        <input type="text" className="form-control" name="username" value={user.username} onChange={this.handleChange} />
-                        {submitted && !user.username &&
-                            <div className="help-block">Username is required</div>
-                        }
+
+                    <div className={"row form-group" + (submitted && !user.bukuLama ? ' has-error' : '')}>
+                        <div className="col-md-2"> 
+                            <label htmlFor="">Buku Lama</label> 
+                        </div>
+                        <div className="col-md-1 "> <b>:</b>  </div>
+                        <div className="col-md-4">
+                            {/* <input type="select" className="form-control" name="jenisBuku" placeholder="Pilih Jenis Buku" value={user.jenisBuku} onChange={this.handleChange} /> */}
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="bukuLama" id="inlineRadio1" value="Ya" onChange={this.handleChange}/>
+                                <label class="form-check-label" for="inlineRadio1">Ya</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="bukuLama" id="inlineRadio2" value="Tidak" onChange={this.handleChange}/>
+                                <label class="form-check-label" for="inlineRadio2">Tidak</label>
+                            </div>
+                            <p>{user.bukuLama}</p>
+
+                            {submitted && !user.jenisBuku &&
+                            <div className="help-block">Buku Lama is required</div>
+                            }
+                        </div>  
                     </div>
-                    <div className={'form-group' + (submitted && !user.password ? ' has-error' : '')}>
-                        <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" name="password" value={user.password} onChange={this.handleChange} />
-                        {submitted && !user.password &&
-                            <div className="help-block">Password is required</div>
-                        }
-                    </div> */}
+
+                    <div className={"row form-group" + (submitted && !user.rakBuku ? ' has-error' : '')}>
+                        <div className="col-md-2"> 
+                            <label htmlFor="">Rak Buku</label> 
+                        </div>
+                        <div className="col-md-1 "> <b>:</b>  </div>
+                        <div className="col-md-4">
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="rakBuku" onChange={this.handleChange}>
+                                <option selected>Pilih Rak buku</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                            </select>
+
+                            {submitted && !user.rakBuku &&
+                            <div className="help-block">Rak buku is required</div>
+                            }
+                        </div>  
+                    </div>
+
                     <div className="form-group">
                         <button className="btn btn-primary">Simpan</button>
                         {/* {registering && 
