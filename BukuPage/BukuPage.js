@@ -28,7 +28,7 @@ class BukuPage extends React.Component {
           </div>
           <div className="col-md-5"></div>
           <div className="col-md-2">
-              <Link to="/databuku/add" className="btn btn-primary float-end">Input Buku</Link>
+              <Link to="/buku/add" className="btn btn-primary float-end">Input Buku</Link>
           </div>
         </div>
         <table class="table table-bordered ">
