@@ -11,8 +11,8 @@ class BukuPage extends React.Component {
     this.props.getBooks();
   }
 
-  handleDeleteUser(id) {
-    return (e) => this.props.deleteUser(id);
+  handleDeleteBook(id) {
+    return (e) => this.props.deleteBook(id);
   }
 
   render() {
@@ -59,29 +59,19 @@ class BukuPage extends React.Component {
                           <td>{book.penulisBuku}</td>
                           <td>{book.jenisBuku}</td>
                           <td>{book.judulBuku}</td>
+                          <td>
+                            <a onClick={this.handleDeleteBook(book.id)} className="btn btn-sm btn-warning">Delete</a>
+
+                          </td>
                           {
                               // book.deleting ? <em> - Deleting...</em>
                               // : book.deleteError ? <span className="text-danger"> - ERROR: {book.deleteError}</span>
-                              // : <span> - <a onClick={this.handleDeleteBook(book.id)}>Delete</a></span>
                           }
                       </tr>
                   )}
               </tbody>
             }
           
-        </table>
-
-        <table class="table table-bordered ">
-          <thead class="table-primary">
-            {/* <tr>
-              <th scope="col">Judul Buku</th>
-              <th scope="col">Penulis</th>
-              <th scope="col">Jenis Buku</th>
-              <th scope="col">Status</th>
-              <th scope="col">Actions</th>
-            </tr> */}
-         
-          </thead>
         </table>
 
         <p>
@@ -100,8 +90,8 @@ function mapState(state) {
 
 const actionCreators = {
   // getUsers: userActions.getAll,
-  // deleteUser: userActions.delete,
   getBooks: bookActions.getAll,
+  deleteBook: bookActions.delete
 };
 
 

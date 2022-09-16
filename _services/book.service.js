@@ -54,7 +54,7 @@ function _delete(id) {
         headers: authHeader()
     };
 
-    return fetch(`/users/${id}`, requestOptions).then(handleResponse);
+    return fetch(`/buku/${id}`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

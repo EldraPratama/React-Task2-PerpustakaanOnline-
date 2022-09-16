@@ -56,8 +56,9 @@ function _delete(id) {
 
         bookService.delete(id)
             .then(
-                user => { 
+                book => { 
                     dispatch(success(id));
+                    dispatch(alertActions.success('Delete book successful'));
                 },
                 error => {
                     dispatch(failure(id, error));

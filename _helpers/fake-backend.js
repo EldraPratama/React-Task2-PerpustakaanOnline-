@@ -157,6 +157,32 @@ export function configureFakeBackend() {
                     return;
                 }   
 
+                // delete book
+                if (url.match(/\/buku\/\d+$/) && opts.method === 'DELETE') {
+                    // check for fake auth token in header and return user if valid, this security is implemented server side in a real application
+                    if (opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
+                        // find user by id in users array
+                        let urlParts = url.split('/');
+                        let id = parseInt(urlParts[urlParts.length - 1]);
+                        for (let i = 0; i < books.length; i++) {
+                            let book = books[i];
+                            if (book.id === id) {
+                                // delete book
+                                books.splice(i, 1);
+                                localStorage.setItem('books', JSON.stringify(books));
+                                break;
+                            }
+                        }
+
+                        // respond 200 OK
+                        resolve({ ok: true, text: () => Promise.resolve() });
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        reject('Unauthorised');
+                    }
+                    return;
+                }
+
 
 
                 // pass through any requests not handled above
