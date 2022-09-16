@@ -18,7 +18,8 @@ class AddPage extends React.Component {
                 tanggalInput:'',
                 sumberBuku:'',
                 bukuLama:'',
-                rakBuku:''
+                rakBuku:'',
+                status:'Tersedia'
             },
             submitted: false
         };
