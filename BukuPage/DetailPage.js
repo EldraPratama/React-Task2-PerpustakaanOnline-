@@ -4,28 +4,29 @@ import { connect } from 'react-redux';
 
 import { bookActions } from '../_actions';
 
+
 class DetailPage extends React.Component {
     constructor(props) {
-        super(props);
+      super(props);
 
-        this.state = {
-            user: {              
-                judulBuku:'',
-                penulisBuku:'',
-                tahunTerbit:'',
-                penerbit:'',
-                jenisBuku:'',
-                tanggalInput:'',
-                sumberBuku:'',
-                bukuLama:'',
-                rakBuku:'',
-                status:'Tersedia'
-            },
-            submitted: false
-        };
+      this.state = {
+          user: {              
+              judulBuku:'',
+              penulisBuku:'',
+              tahunTerbit:'',
+              penerbit:'',
+              jenisBuku:'',
+              tanggalInput:'',
+              sumberBuku:'',
+              bukuLama:'',
+              rakBuku:'',
+              status:'Tersedia'
+          },
+          submitted: false
+      };
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event) {
@@ -55,8 +56,9 @@ class DetailPage extends React.Component {
     }
 
     render() {
-        const { adding  } = this.props;
+        const { book  } = this.props;
         const { user, submitted } = this.state;
+        
         return (
             <div className="col-md-12">
                 <h2>Detail Buku</h2>
@@ -215,13 +217,17 @@ class DetailPage extends React.Component {
 }
 
 function mapState(state) {
-    const { adding } = state.registration;
-    return { adding };
+    // console.log(state);
+    const { book } = state.books;
+    return { book };
 }
 
 const actionCreators = {
-    add: bookActions.add
+    add: bookActions.add,
+    detail:bookActions.getById
 }
+
+// console.log(actionCreators.detail);
 
 const connectedDetailPage = connect(mapState, actionCreators)(DetailPage);
 export { connectedDetailPage as DetailPage };

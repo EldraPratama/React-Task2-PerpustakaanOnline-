@@ -167,6 +167,7 @@ export function configureFakeBackend() {
                         let book = matchedBooks.length ? matchedBooks[0] : null;
 
                         // respond 200 OK with book
+                        console.log(book)
                         resolve({ ok: true, text: () => JSON.stringify(book)});
                     } else {
                         // return 401 not authorised if token is null or invalid

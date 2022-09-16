@@ -50,11 +50,13 @@ function getAll() {
     function failure(error) { return { type: bookConstants.GETALL_FAILURE, error } }
 }
 
-function getById() {
+function getById(id) {
+    console.log(bookService.getById(4))
+
     return dispatch => {
         dispatch(request());
 
-        bookService.getById()
+        bookService.getById(id)
             .then(
                 books => dispatch(success(books)),
                 error => dispatch(failure(error))
