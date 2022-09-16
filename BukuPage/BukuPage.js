@@ -16,6 +16,7 @@ class BukuPage extends React.Component {
   }
 
   render() {
+    // console.log(toLowerCase('EL'))
     const { books } = this.props;
     return (
       <div className="col-lg">
@@ -58,7 +59,7 @@ class BukuPage extends React.Component {
                           <td>{book.judulBuku}</td>
                           <td>{book.penulisBuku}</td>
                           <td>{book.jenisBuku}</td>
-                          <td>{book.status == 'Tersedia' || book.status == 'tersedia'
+                          <td>{book.status == 'Tersedia' || book.status =='tersedia'
                                 ? <p className="btn btn-sm btn-success">{book.status}</p>
                                 : <p className="btn btn-sm btn-danger">{book.status}</p>
                               }
