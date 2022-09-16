@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { userActions } from '../_actions';
+// import { userActions } from '../_actions';
 import { bookActions } from '../_actions';
 
 class BukuPage extends React.Component {
   componentDidMount() {
     this.props.getBooks();
+    
   }
 
   handleDeleteUser(id) {
@@ -94,9 +95,9 @@ function mapState(state) {
 }
 
 const actionCreators = {
-  getUsers: userActions.getAll,
-  deleteUser: userActions.delete,
-  getBooks: bookActions.getAll,
+  // getUsers: userActions.getAll,
+  // deleteUser: userActions.delete,
+  getBooks: bookActions.getAll
 };
 
 const connectedBukuPage = connect(mapState, actionCreators)(BukuPage);
