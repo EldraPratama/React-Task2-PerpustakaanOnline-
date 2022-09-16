@@ -9,6 +9,7 @@ import { PrivateRoute } from '../_components';
 import { HomePage } from '../HomePage';
 import { BukuPage } from '../BukuPage';
 import { AddPage } from '../BukuPage';
+import { DetailPage } from '../BukuPage';
 import { TransaksiPage } from '../TransaksiPage';
 import { LoginPage } from '../LoginPage';
 import { RegisterPage } from '../RegisterPage';
@@ -95,7 +96,7 @@ class App extends React.Component {
                 <PrivateRoute exact path="/" component={HomePage} />
                 <Route exact path="/buku" component={BukuPage} />
                 <Route path="/buku/add" component={AddPage} />
-                <Route path="/buku/detail/:id" component={AddPage} />
+                <Route path="/buku/detail/:id" component={DetailPage} />
                 <Route path="/transaksi" component={TransaksiPage} />
                 <Route path="/login" component={LoginPage} />
                 <Route path="/register" component={RegisterPage} />
