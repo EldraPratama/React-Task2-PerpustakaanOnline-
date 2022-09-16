@@ -85,7 +85,7 @@ class App extends React.Component {
         </nav>
 
         {/* <div className="jumbotron"> */}
-        <div className="container">
+        <div className="container" height="1200px">
           <div className="col-12 col-offset-2">
             {alert.message && (
               <div className={`alert ${alert.type}`}>{alert.message}</div>
