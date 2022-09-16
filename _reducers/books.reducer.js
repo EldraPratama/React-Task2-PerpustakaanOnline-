@@ -14,6 +14,18 @@ export function books(state = {}, action) {
       return { 
         error: action.error
       };
+    case bookConstants.GETBYID_REQUEST:
+      return {
+        loading: true
+      };
+    case bookConstants.GETBYID_SUCCESS:
+      return {
+        items: action.books
+      };
+    case bookConstants.GETBYID_FAILURE:
+      return { 
+        error: action.error
+      };
     case bookConstants.DELETE_REQUEST:
       // add 'deleting:true' property to book being deleted
       return {

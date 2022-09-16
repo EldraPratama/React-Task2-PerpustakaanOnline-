@@ -6,6 +6,7 @@ import { history } from '../_helpers';
 export const bookActions = {
     add,
     getAll,
+    getById,
     delete: _delete
 };
 
@@ -47,6 +48,22 @@ function getAll() {
     function request() { return { type: bookConstants.GETALL_REQUEST } }
     function success(books) { return { type: bookConstants.GETALL_SUCCESS, books } }
     function failure(error) { return { type: bookConstants.GETALL_FAILURE, error } }
+}
+
+function getById() {
+    return dispatch => {
+        dispatch(request());
+
+        bookService.getById()
+            .then(
+                books => dispatch(success(books)),
+                error => dispatch(failure(error))
+            );
+    };
+
+    function request() { return { type: bookConstants.GETBYID_REQUEST } }
+    function success(books) { return { type: bookConstants.GETBYID_SUCCESS, books } }
+    function failure(error) { return { type: bookConstants.GETBYID_FAILURE, error } }
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript

@@ -24,7 +24,7 @@ function getById(id) {
         headers: authHeader()
     };
 
-    return fetch(`/users/${id}`, requestOptions).then(handleResponse);
+    return fetch(`/buku/detail/${id}`, requestOptions).then(handleResponse);
 }
 
 function add(buku) {

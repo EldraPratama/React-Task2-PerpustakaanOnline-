@@ -67,7 +67,6 @@ export function configureFakeBackend() {
                         // return 401 not authorised if token is null or invalid
                         reject('Unauthorised');
                     }
-
                     return;
                 }
 
@@ -157,6 +156,25 @@ export function configureFakeBackend() {
                     return;
                 }   
 
+                // get book by id
+                if (url.match(/\/buku\/\d+$/) && opts.method === 'GET') {
+                    // check for fake auth token in header and return user if valid, this security is implemented server side in a real application
+                    if (opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
+                        // find user by id in users array
+                        let urlParts = url.split('/');
+                        let id = parseInt(urlParts[urlParts.length - 1]);
+                        let matchedBooks = Books.filter(book => { return book.id === id; });
+                        let book = matchedBooks.length ? matchedBooks[0] : null;
+
+                        // respond 200 OK with book
+                        resolve({ ok: true, text: () => JSON.stringify(book)});
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        reject('Unauthorised');
+                    }
+                    return;
+                }
+
                 // delete book
                 if (url.match(/\/buku\/\d+$/) && opts.method === 'DELETE') {
                     // check for fake auth token in header and return user if valid, this security is implemented server side in a real application
@@ -182,9 +200,6 @@ export function configureFakeBackend() {
                     }
                     return;
                 }
-
-
-
                 // pass through any requests not handled above
                 realFetch(url, opts).then(response => resolve(response));
 
