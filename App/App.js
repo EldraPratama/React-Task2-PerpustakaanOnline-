@@ -95,6 +95,7 @@ class App extends React.Component {
                 <PrivateRoute exact path="/" component={HomePage} />
                 <Route exact path="/buku" component={BukuPage} />
                 <Route path="/buku/add" component={AddPage} />
+                <Route path="/buku/detail/:id" component={AddPage} />
                 <Route path="/transaksi" component={TransaksiPage} />
                 <Route path="/login" component={LoginPage} />
                 <Route path="/register" component={RegisterPage} />

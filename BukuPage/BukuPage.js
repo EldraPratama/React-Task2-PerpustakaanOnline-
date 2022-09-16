@@ -66,7 +66,10 @@ class BukuPage extends React.Component {
                           </td>
                           <td width="25%">
                             <center>  
-                              <a onClick={this.handleDeleteBook(book.id)} className="btn btn-sm btn-link mx-1">Detail</a>
+                              {/* <a onClick={this.handleDeleteBook(book.id)} className="btn btn-sm btn-link mx-1">Detail</a> */}
+                              <Link to={`/buku/detail/${book.id}`}  className="btn btn-sm btn-link mx-1">
+                                  Detail
+                              </Link>
                               <a onClick={this.handleDeleteBook(book.id)} className="btn btn-sm btn-link mx-1">Edit</a>
                               { book.status == 'Tersedia' || book.status == 'tersedia'
                                 ? <a onClick={this.handleDeleteBook(book.id)} className="btn btn-sm btn-link mx-1">Delete</a>
