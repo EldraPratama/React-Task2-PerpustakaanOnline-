@@ -20,7 +20,7 @@ export function books(state = {}, action) {
       };
     case bookConstants.GETBYID_SUCCESS:
       return {
-        items: action.books
+        items: action.book
       };
     case bookConstants.GETBYID_FAILURE:
       return { 

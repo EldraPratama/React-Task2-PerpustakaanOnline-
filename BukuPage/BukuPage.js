@@ -17,6 +17,7 @@ class BukuPage extends React.Component {
 
   render() {
     const { books } = this.props;
+    console.log(books);
     return (
       <div className="col-lg">
         <h1>Data Buku</h1>

@@ -45,7 +45,7 @@ function getAll() {
     };
 
     function request() { return { type: bookConstants.GETALL_REQUEST } }
-    function success(books) { console.log(books);return { type: bookConstants.GETALL_SUCCESS, books } }
+    function success(books) { return { type: bookConstants.GETALL_SUCCESS, books } }
     function failure(error) { return { type: bookConstants.GETALL_FAILURE, error } }
 }
 
@@ -61,7 +61,7 @@ function getById() {
     };
 
     function request() { return { type: bookConstants.GETBYID_REQUEST } }
-    function success(book) { console.log(book);return { type: bookConstants.GETBYID_SUCCESS, book } }
+    function success(book) { return { type: bookConstants.GETBYID_SUCCESS, book } }
     function failure(error) { return { type: bookConstants.GETBYID_FAILURE, error } }
 }
 

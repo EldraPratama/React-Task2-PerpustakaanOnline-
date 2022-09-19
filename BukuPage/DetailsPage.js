@@ -10,8 +10,6 @@ import { bookActions } from '../_actions';
 
 class DetailsPage extends React.Component {
   componentDidMount() {
-    // console.log(id);
-    this.props.getBooks();
     this.props.getBook();
   }
 
@@ -20,8 +18,9 @@ class DetailsPage extends React.Component {
   }
 
   render() {
-    const { books } = this.props;
-    // console.log(this.props);
+    //check if the data by id is found 
+    const book = this.props.books.items ? this.props.books.items : '';
+    // console.log(book.judulBuku);
     return (
       <div className="col-md-12">
       <h2>Input Buku</h2>
@@ -33,11 +32,11 @@ class DetailsPage extends React.Component {
 
           <div className={"row form-group"}>
               <div className="col-md-2"> 
-                  <label>Judul Buku</label> 
+                <label>Judul Buku</label> 
               </div>
               <div className="col-md-1 "> <b>:</b>  </div>
               <div className="col-md-4">
-                
+                <label>{book.judulBuku}</label> 
               </div>  
           </div>
 
@@ -47,7 +46,7 @@ class DetailsPage extends React.Component {
               </div>
               <div className="col-md-1 "> <b>:</b>  </div>
               <div className="col-md-4">
-                 
+                <label>{book.penulisBuku}</label> 
               </div>  
           </div>
 
@@ -57,7 +56,7 @@ class DetailsPage extends React.Component {
               </div>
               <div className="col-md-1 "> <b>:</b>  </div>
               <div className="col-md-4">
-           
+                <label>{book.tahunTerbit}</label> 
               </div>  
           </div>
 
@@ -67,7 +66,7 @@ class DetailsPage extends React.Component {
               </div>
               <div className="col-md-1 "> <b>:</b>  </div>
               <div className="col-md-4">
-              
+                <label>{book.penerbit}</label> 
               </div>  
           </div>
 
@@ -77,7 +76,7 @@ class DetailsPage extends React.Component {
               </div>
               <div className="col-md-1 "> <b>:</b>  </div>
               <div className="col-md-4">
-               
+                <label>{book.jenisBuku}</label> 
               </div>  
           </div>
 
@@ -87,7 +86,7 @@ class DetailsPage extends React.Component {
               </div>
               <div className="col-md-1 "> <b>:</b>  </div>
               <div className="col-md-4">
-               
+                <label>{book.tanggalInput}</label> 
               </div>  
           </div>
 
@@ -97,7 +96,7 @@ class DetailsPage extends React.Component {
               </div>
               <div className="col-md-1 "> <b>:</b>  </div>
               <div className="col-md-4">
-                
+                <label>{book.sumberBuku}</label> 
               </div>  
           </div>
 
@@ -128,7 +127,6 @@ class DetailsPage extends React.Component {
 }
 
 function mapState(state) {
-  // console.log(state);
   const { books } = state;
   return { books };
 }
@@ -136,7 +134,7 @@ function mapState(state) {
 
 const actionCreators = {
   // getUsers: userActions.getAll,
-  getBooks: bookActions.getAll,
+  // getBooks: bookActions.getAll,
   getBook: bookActions.getById,
   deleteBook: bookActions.delete
 };

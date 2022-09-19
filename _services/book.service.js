@@ -23,7 +23,6 @@ function getAll() {
 function getById() {
     let path = history.location.pathname.split('/');
     let id = parseInt(path[path.length-1]);
-    console.log(id);
 
     const requestOptions = {
         method: 'GET',
