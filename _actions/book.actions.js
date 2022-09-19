@@ -10,7 +10,6 @@ export const bookActions = {
     delete: _delete
 };
 
-
 function add(book) {
     return dispatch => {
         dispatch(request(book));
@@ -46,25 +45,23 @@ function getAll() {
     };
 
     function request() { return { type: bookConstants.GETALL_REQUEST } }
-    function success(books) { return { type: bookConstants.GETALL_SUCCESS, books } }
+    function success(books) { console.log(books);return { type: bookConstants.GETALL_SUCCESS, books } }
     function failure(error) { return { type: bookConstants.GETALL_FAILURE, error } }
 }
 
-function getById(id) {
-    console.log(bookService.getById(4))
-
+function getById() {
     return dispatch => {
         dispatch(request());
 
-        bookService.getById(id)
+        bookService.getById()
             .then(
-                books => dispatch(success(books)),
+                book => dispatch(success(book)),
                 error => dispatch(failure(error))
             );
     };
 
     function request() { return { type: bookConstants.GETBYID_REQUEST } }
-    function success(books) { return { type: bookConstants.GETBYID_SUCCESS, books } }
+    function success(book) { console.log(book);return { type: bookConstants.GETBYID_SUCCESS, book } }
     function failure(error) { return { type: bookConstants.GETBYID_FAILURE, error } }
 }
 

@@ -69,6 +69,9 @@ class BukuPage extends React.Component {
                               <Link to={`/buku/detail/${book.id}`}  className="btn btn-sm btn-link mx-1">
                                   Detail
                               </Link>
+                              <Link to={`/buku/${book.id}`}  className="btn btn-sm btn-link mx-1">
+                                  Detail
+                              </Link>
                               <a onClick={this.handleDeleteBook(book.id)} className="btn btn-sm btn-link mx-1">Edit</a>
                               { book.status == 'Tersedia' || book.status == 'tersedia'
                                 ? <a onClick={this.handleDeleteBook(book.id)} className="btn btn-sm btn-link mx-1">Delete</a>
@@ -97,6 +100,7 @@ class BukuPage extends React.Component {
 }
 
 function mapState(state) {
+  console.log(state);
   const { books } = state;
   return { books };
 }

@@ -142,6 +142,7 @@ export function configureFakeBackend() {
 
                     return;
                 }
+
                                 
                 // get books
                 if (url.endsWith('/buku') && opts.method === 'GET') {
@@ -163,18 +164,18 @@ export function configureFakeBackend() {
                         // find user by id in users array
                         let urlParts = url.split('/');
                         let id = parseInt(urlParts[urlParts.length - 1]);
-                        let matchedBooks = Books.filter(book => { return book.id === id; });
+                        let matchedBooks = books.filter(book => { return book.id === id; });
                         let book = matchedBooks.length ? matchedBooks[0] : null;
 
                         // respond 200 OK with book
-                        console.log(book)
-                        resolve({ ok: true, text: () => JSON.stringify(book)});
+                        resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(book))});
                     } else {
                         // return 401 not authorised if token is null or invalid
                         reject('Unauthorised');
                     }
                     return;
                 }
+
 
                 // delete book
                 if (url.match(/\/buku\/\d+$/) && opts.method === 'DELETE') {

@@ -1,4 +1,6 @@
 import { authHeader } from '../_helpers';
+import { history } from '../_helpers';
+
 
 export const bookService = {
     add,
@@ -18,13 +20,17 @@ function getAll() {
     return fetch(`/buku`, requestOptions).then(handleResponse);
 }
 
-function getById(id) {
+function getById() {
+    let path = history.location.pathname.split('/');
+    let id = parseInt(path[path.length-1]);
+    console.log(id);
+
     const requestOptions = {
         method: 'GET',
         headers: authHeader()
     };
 
-    return fetch(`/buku/detail/${id}`, requestOptions).then(handleResponse);
+    return fetch(`/buku/${id}`, requestOptions).then(handleResponse);
 }
 
 function add(buku) {
