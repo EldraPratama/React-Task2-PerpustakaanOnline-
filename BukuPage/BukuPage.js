@@ -101,7 +101,6 @@ class BukuPage extends React.Component {
 }
 
 function mapState(state) {
-  console.log(state);
   const { books } = state;
   return { books };
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { history } from '../_helpers';
 
 
 // import { userActions } from '../_actions';
@@ -9,6 +8,7 @@ import { bookActions } from '../_actions';
 
 
 class DetailsPage extends React.Component {
+
   componentDidMount() {
     this.props.getBook();
   }
@@ -18,8 +18,9 @@ class DetailsPage extends React.Component {
   }
 
   render() {
-    //check if the data by id is found 
     const book = this.props.books.items ? this.props.books.items : '';
+    //check if the data by id is found 
+    console.log(this.props.books.items)
     // console.log(book.judulBuku);
     return (
       <div className="col-md-12">
@@ -106,7 +107,7 @@ class DetailsPage extends React.Component {
               </div>
               <div className="col-md-1 "> <b>:</b>  </div>
               <div className="col-md-4">
-                 
+                <label>{book.bukuLama}</label> 
               </div>  
           </div>
 
@@ -116,7 +117,17 @@ class DetailsPage extends React.Component {
               </div>
               <div className="col-md-1 "> <b>:</b>  </div>
               <div className="col-md-4">
-             
+                <label>{book.rakBuku}</label> 
+              </div>  
+          </div>
+
+          <div className={"row form-group"}>
+              <div className="col-md-2"> 
+                  <label>Status</label> 
+              </div>
+              <div className="col-md-1 "> <b>:</b>  </div>
+              <div className="col-md-4">
+                <label>{book.status}</label> 
               </div>  
           </div>
 
