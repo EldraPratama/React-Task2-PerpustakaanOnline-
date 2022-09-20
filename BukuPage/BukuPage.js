@@ -7,6 +7,25 @@ import { bookActions } from '../_actions';
 
 
 class BukuPage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+        search:'',
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    const { name, value } = event.target;
+    this.setState({
+      search: value
+    });
+    console.log(this.state);
+
+  }
+
   componentDidMount() {
     this.props.getBooks();
   }
@@ -17,7 +36,7 @@ class BukuPage extends React.Component {
 
   render() {
     const { books } = this.props;
-    console.log(books);
+    // console.log(books);
     return (
       <div className="col-lg">
         <h1>Data Buku</h1>
@@ -30,6 +49,7 @@ class BukuPage extends React.Component {
                   className="form-control"
                   name="search"
                   placeholder="Search"
+                  onChange={this.handleChange}
                 />
               </div>
             </form>
@@ -59,10 +79,11 @@ class BukuPage extends React.Component {
                           <td>{book.judulBuku}</td>
                           <td>{book.penulisBuku}</td>
                           <td>{book.jenisBuku}</td>
-                          <td>{book.status === 'Tersedia' || book.status ==='tersedia'
+                          <td><center>
+                              {book.status === 'Tersedia' || book.status ==='tersedia'
                                 ? <p className="btn btn-sm btn-success">{book.status}</p>
                                 : <p className="btn btn-sm btn-danger">Dipinjam</p>
-                              }
+                              }</center>
                           </td>
                           <td width="25%">
                             <center>  
@@ -70,10 +91,9 @@ class BukuPage extends React.Component {
                               <Link to={`/buku/detail/${book.id}`}  className="btn btn-sm btn-link mx-1">
                                   Detail
                               </Link>
-                              <Link to={`/buku/${book.id}`}  className="btn btn-sm btn-link mx-1">
-                                  Detail
+                              <Link to={`/buku/edit/${book.id}`}  className="btn btn-sm btn-link mx-1">
+                                  Edit
                               </Link>
-                              <a onClick={this.handleDeleteBook(book.id)} className="btn btn-sm btn-link mx-1">Edit</a>
                               { book.status == 'Tersedia' || book.status == 'tersedia'
                                 ? <a onClick={this.handleDeleteBook(book.id)} className="btn btn-sm btn-link mx-1">Delete</a>
                                 : ''
@@ -91,10 +111,6 @@ class BukuPage extends React.Component {
             }
           
         </table>
-
-        <p>
-          <Link to="/login">Logout</Link>
-        </p>
       </div>
     );
   }

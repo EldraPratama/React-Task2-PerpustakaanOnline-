@@ -154,6 +154,11 @@ export function configureFakeBackend() {
                         reject('Unauthorised');
                     }
 
+                    //filter book's data based judul buku 
+                    console.log(books);
+                    const filtered = books.filter(book => book.judulBuku.toLowerCase().includes('ua'));
+                    console.log(filtered);
+
                     return;
                 }   
 

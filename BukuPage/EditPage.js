@@ -4,32 +4,82 @@ import { connect } from 'react-redux';
 
 import { bookActions } from '../_actions';
 
-class AddPage extends React.Component {
+class EditPage extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            book: {              
-                judulBuku:'',
-                penulisBuku:'',
-                tahunTerbit:'',
-                penerbit:'',
-                jenisBuku:'',
-                tanggalInput:'',
-                sumberBuku:'',
-                bukuLama:'',
-                rakBuku:'',
-                status:'Tersedia'
+          book: {              
+              judulBuku: '',
+              penulisBuku: '',
+              tahunTerbit: '',
+              penerbit:'',
+              jenisBuku:'',
+              // tanggalInput:getBook.,
+              // sumberBuku:getBook.,
+              // bukuLama:getBook.,
+              // rakBuku:getBook.,
+              // status:getBook.
+          },
+          submitted: false
+        }; 
+ 
+        //get data by id for edit book's value 
+        this.props.getBook();
+        let getBook = this.props.books.item ? this.props.books.item : null ;
+        console.log(getBook);
+
+        if(getBook != null ){ 
+          this.state = {
+            book: {               
+                judulBuku: getBook.judulBuku,
+                penulisBuku: getBook.penulisBuku,
+                tahunTerbit: getBook.tahunTerbit,
+                penerbit:getBook.penerbit,
+                jenisBuku:getBook.jenisBuku,
+                // tanggalInput:getBook.,
+                // sumberBuku:getBook.,
+                // bukuLama:getBook.,
+                // rakBuku:getBook.,
+                // status:getBook.
             },
             submitted: false
-        };
+          };
+        }
+        console.log(this.state);
+       
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+
+    }
+
+    componentDidMount() {
+      this.props.getBook();
+      let getBook = this.props.books.item ? this.props.books.item : null ;
+      console.log(getBook);
+
+      if(getBook != null ){ 
+        this.setState ({
+          book: {               
+              judulBuku: getBook.judulBuku,
+              penulisBuku: getBook.penulisBuku,
+              tahunTerbit: getBook.tahunTerbit,
+              penerbit:getBook.penerbit,
+              jenisBuku:getBook.jenisBuku,
+              // tanggalInput:getBook.,
+              // sumberBuku:getBook.,
+              // bukuLama:getBook.,
+              // rakBuku:getBook.,
+              // status:getBook.
+          }, 
+          submitted: false
+        });
+      }
+      console.log(this.state);
     }
 
     handleChange(event) {
-        console.log(event);
         const { name, value } = event.target;
         const { book } = this.state;
         this.setState({
@@ -38,7 +88,6 @@ class AddPage extends React.Component {
                 [name]: value
             }
         });
-        console.log(this.state);
     }
 
     handleSubmit(event) {
@@ -51,17 +100,32 @@ class AddPage extends React.Component {
         //     this.props.add(book);
         // }
         // validate all input not empty 
-        if (book.judulBuku !== '' && book.penulisBuku !== '' && book.tahunTerbit !== '' && book.penerbit !== '' && book.jenisBuku !== '' && book.tanggalInput !== '' && book.sumberBuku !== '' && book.bukuLama !== '' && book.rakBuku !== ''  ) {
-            this.props.add(book);
-        } 
+        // if (book.judulBuku !== '' && book.penulisBuku !== '' && book.tahunTerbit !== '' && book.penerbit !== '' && book.jenisBuku !== '' && book.tanggalInput !== '' && book.sumberBuku !== '' && book.bukuLama !== '' && book.rakBuku !== ''  ) {
+        //     this.props.add(book);
+        // } 
     }
 
     render() {
-        const { adding  } = this.props;
-        const { book, submitted } = this.state;
+        // const { adding  } = this.props;
+        const { book,submitted } = this.state;
+        // let getBook = this.props.books.item ? this.props.books.item : '';
+
+        // if(getBook != ''){
+        //   console.log(getBook);
+        //   console.log(getBook.judulBuku);
+        //   // this.handleValueEdit(getBook);
+        //   // this.setState({
+        //   //   book: {
+        //   //     ...book,
+        //   //     judulBuku : getBook.judulBuku,
+        //   //   }
+        //   // });
+        // }
+        console.log(this.state);
+
         return (
             <div className="col-md-12">
-                <h2>Input Buku</h2>
+                <h2>Edit Buku</h2>
                 <form name="form" onSubmit={this.handleSubmit}>
 
                     <div className={"row form-group" + (submitted && !book.judulBuku ? ' has-error' : '')}>
@@ -76,7 +140,7 @@ class AddPage extends React.Component {
                             }
                         </div>  
                     </div>
-
+ 
                     <div className={"row form-group" + (submitted && !book.penulisBuku ? ' has-error' : '')}>
                         <div className="col-md-2"> 
                             <label>Penulis</label> 
@@ -124,8 +188,11 @@ class AddPage extends React.Component {
                         <div className="col-md-4">
                             {/* <input type="select" className="form-control" name="jenisBuku" placeholder="Pilih Jenis Buku" value={book.jenisBuku} onChange={this.handleChange} /> */}
                             <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="jenisBuku" onChange={this.handleChange}>
+                                
                                 <option selected>Pilih Jenis buku</option>
                                 <option value="Novel">Novel</option>
+                                {/* {book.jenisBuku=="Novel"? <option selected value="Novel">Novel</option> :                                 <option value="Novel">Novel</option> } */}
+
                                 <option value="Sejarah">Sejarah</option>
                                 <option value="Ensiklopedia">Ensiklopedia</option>
                             </select>
@@ -217,13 +284,15 @@ class AddPage extends React.Component {
 }
 
 function mapState(state) {
-    const { adding } = state.registration;
-    return { adding };
+    const { books } = state;
+    return { books };
 }
 
 const actionCreators = {
-    add: bookActions.add
+    add: bookActions.add,
+    getBook: bookActions.getById,
+
 }
 
-const connectedAddPage = connect(mapState, actionCreators)(AddPage);
-export { connectedAddPage as AddPage };
+const connectedEditPage = connect(mapState, actionCreators)(EditPage);
+export { connectedEditPage as EditPage };
