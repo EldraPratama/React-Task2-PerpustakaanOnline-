@@ -8,45 +8,26 @@ class EditPage extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-          book: {              
-              judulBuku: '',
-              penulisBuku: '',
-              tahunTerbit: '',
-              penerbit:'',
-              jenisBuku:'',
-              // tanggalInput:getBook.,
-              // sumberBuku:getBook.,
-              // bukuLama:getBook.,
-              // rakBuku:getBook.,
-              // status:getBook.
-          },
-          submitted: false
-        }; 
+        // this.state = {
+        //   book: {              
+        //       judulBuku: '',
+        //       penulisBuku: '',
+        //       tahunTerbit: '',
+        //       penerbit:'',
+        //       jenisBuku:'',
+        //       // tanggalInput:getBook.,
+        //       // sumberBuku:getBook.,
+        //       // bukuLama:getBook.,
+        //       // rakBuku:getBook.,
+        //       // status:getBook.
+        //   },
+        //   submitted: false
+        // }; 
  
         //get data by id for edit book's value 
         this.props.getBook();
-        let getBook = this.props.books.item ? this.props.books.item : null ;
-        console.log(getBook);
 
-        if(getBook != null ){ 
-          this.state = {
-            book: {               
-                judulBuku: getBook.judulBuku,
-                penulisBuku: getBook.penulisBuku,
-                tahunTerbit: getBook.tahunTerbit,
-                penerbit:getBook.penerbit,
-                jenisBuku:getBook.jenisBuku,
-                // tanggalInput:getBook.,
-                // sumberBuku:getBook.,
-                // bukuLama:getBook.,
-                // rakBuku:getBook.,
-                // status:getBook.
-            },
-            submitted: false
-          };
-        }
-        console.log(this.state);
+
        
 
         this.handleChange = this.handleChange.bind(this);
@@ -56,27 +37,6 @@ class EditPage extends React.Component {
 
     componentDidMount() {
       this.props.getBook();
-      let getBook = this.props.books.item ? this.props.books.item : null ;
-      console.log(getBook);
-
-      if(getBook != null ){ 
-        this.setState ({
-          book: {               
-              judulBuku: getBook.judulBuku,
-              penulisBuku: getBook.penulisBuku,
-              tahunTerbit: getBook.tahunTerbit,
-              penerbit:getBook.penerbit,
-              jenisBuku:getBook.jenisBuku,
-              // tanggalInput:getBook.,
-              // sumberBuku:getBook.,
-              // bukuLama:getBook.,
-              // rakBuku:getBook.,
-              // status:getBook.
-          }, 
-          submitted: false
-        });
-      }
-      console.log(this.state);
     }
 
     handleChange(event) {
@@ -93,9 +53,10 @@ class EditPage extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        this.setState({ submitted: true });
-        const { book } = this.state;
-        console.log(book)
+        // this.setState({ submitted: true });
+        
+        // console.log(this.state==null);
+        // const { book } = this.state;
         // if (book.judulBuku !== null && book.tahunTerbit && book.penulisBuku && book.penerbit) {
         //     this.props.add(book);
         // }
@@ -106,8 +67,14 @@ class EditPage extends React.Component {
     }
 
     render() {
-        // const { adding  } = this.props;
-        const { book,submitted } = this.state;
+        const book = this.props.books.item ? this.props.books.item : '';
+        console.log(this.props);
+
+        // console.log(this.state);
+        // if(this.state){
+        //     console.log(this.state);
+        //     const { book,submitted } = this.state;
+        // }
         // let getBook = this.props.books.item ? this.props.books.item : '';
 
         // if(getBook != ''){
@@ -121,66 +88,65 @@ class EditPage extends React.Component {
         //   //   }
         //   // });
         // }
-        console.log(this.state);
 
         return (
             <div className="col-md-12">
                 <h2>Edit Buku</h2>
                 <form name="form" onSubmit={this.handleSubmit}>
 
-                    <div className={"row form-group" + (submitted && !book.judulBuku ? ' has-error' : '')}>
+                    <div className={"row form-group" + ( typeof book == 'undefined' ? '' : !book.judulBuku ? ' has-error' : '')}>
                         <div className="col-md-2"> 
                             <label>Judul Buku</label> 
-                        </div>
+                        </div> 
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <input type="text" className="form-control" name="judulBuku" placeholder="Masukkan judul buku" value={book.judulBuku} onChange={this.handleChange} />
-                            {submitted && !book.judulBuku &&
+                            <input type="text" className="form-control" name="judulBuku" placeholder="Masukkan judul buku" value={typeof book != 'undefined' ? book.judulBuku : 'zzz' } onChange={this.handleChange} />
+                            {/* { !book.judulBuku &&
                             <div className="help-block">Judul Buku is required</div>
-                            }
+                            } */}
                         </div>  
                     </div>
  
-                    <div className={"row form-group" + (submitted && !book.penulisBuku ? ' has-error' : '')}>
+                    <div className={"row form-group" + ( typeof book == 'undefined' ? '' : !book.penulisBuku ? ' has-error' : '')}>
                         <div className="col-md-2"> 
                             <label>Penulis</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <input type="text" className="form-control" name="penulisBuku" placeholder="Masukkan Nama Penulis" value={book.penulisBuku} onChange={this.handleChange} />
-                            {submitted && !book.penulisBuku &&
+                            <input type="text" className="form-control" name="penulisBuku" placeholder="Masukkan Nama Penulis" value={typeof book != 'undefined' ? book.penulisBuku :''} onChange={this.handleChange} />
+                            {/* { !book.penulisBuku &&
                             <div className="help-block">Penulis is required</div>
-                            }
+                            } */}
                         </div>  
                     </div>
 
-                    <div className={"row form-group" + (submitted && !book.tahunTerbit ? ' has-error' : '')}>
+                    <div className={"row form-group" + ( typeof book == 'undefined' ? '' : !book.tahunTerbit ? ' has-error' : '')}>
                         <div className="col-md-2"> 
                             <label>Tahun Terbit</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <input type="number" className="form-control" name="tahunTerbit" placeholder="Masukkan Tahun Terbit" value={book.tahunTerbit} onChange={this.handleChange} />
-                            {submitted && !book.tahunTerbit &&
+                            <input type="number" className="form-control" name="tahunTerbit" placeholder="Masukkan Tahun Terbit" value={typeof book != 'undefined' ? book.tahunTerbit :''} onChange={this.handleChange} />
+                            {/* { !book.tahunTerbit &&
                             <div className="help-block">Tahun Terbit is required</div>
-                            }
+                            } */}
                         </div>  
                     </div>
 
-                    <div className={"row form-group" + (submitted && !book.penerbit ? ' has-error' : '')}>
+                    <div className={"row form-group" + ( typeof book == 'undefined' ? '' : !book.penerbit ? ' has-error' : '')}>
                         <div className="col-md-2"> 
                             <label>Penerbit</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <input type="text" className="form-control" name="penerbit" placeholder="Masukkan Nama Penerbit" value={book.penerbit} onChange={this.handleChange} />
-                            {submitted && !book.penerbit &&
+                            <input type="text" className="form-control" name="penerbit" placeholder="Masukkan Nama Penerbit" value={typeof book != 'undefined' ? book.penerbit :''} onChange={this.handleChange} />
+                            {/* { !book.penerbit &&
                             <div className="help-block">Penerbit is required</div>
-                            }
+                            } */}
                         </div>  
                     </div>
 
-                    <div className={"row form-group" + (submitted && !book.jenisBuku ? ' has-error' : '')}>
+                    <div className={"row form-group" + ( typeof book == 'undefined' ? '' : !book.jenisBuku ? ' has-error' : '')}>
                         <div className="col-md-2"> 
                             <label>Jenis Buku</label> 
                         </div>
@@ -190,6 +156,10 @@ class EditPage extends React.Component {
                             <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="jenisBuku" onChange={this.handleChange}>
                                 
                                 <option selected>Pilih Jenis buku</option>
+                                {/* {typeof book != 'undefinded' 
+                                    ?
+                                    : 
+                                } */}
                                 <option value="Novel">Novel</option>
                                 {/* {book.jenisBuku=="Novel"? <option selected value="Novel">Novel</option> :                                 <option value="Novel">Novel</option> } */}
 
@@ -197,39 +167,39 @@ class EditPage extends React.Component {
                                 <option value="Ensiklopedia">Ensiklopedia</option>
                             </select>
 
-                            {submitted && !book.jenisBuku &&
+                            {/* { !book.jenisBuku &&
                             <div className="help-block">Jenis buku is required</div>
-                            }
+                            } */}
                         </div>  
                     </div>
-
-                    <div className={"row form-group" + (submitted && !book.tanggalInput ? ' has-error' : '')}>
+ 
+                    <div className={"row form-group" + ( typeof book == 'undefined' ? '' : !book.tanggalInput ? ' has-error' : '')}>
                         <div className="col-md-2"> 
                             <label>Tanggal Input Buku</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <input type="date" className="form-control" name="tanggalInput" value={book.tanggalInput ? book.tanggalInput : ''} onChange={this.handleChange} />
-                            {submitted && !book.tanggalInput &&
+                            <input type="date" className="form-control" name="tanggalInput" value={typeof book != 'undefined' ? book.tanggalInput :''} onChange={this.handleChange} />
+                            {/* { !book.tanggalInput &&
                             <div className="help-block">Tanggal Input is required</div>
-                            }
+                            } */}
                         </div>  
                     </div>
 
-                    <div className={"row form-group" + (submitted && !book.sumberBuku ? ' has-error' : '')}>
+                    <div className={"row form-group" + ( typeof book == 'undefined' ? '' : !book.sumberBuku ? ' has-error' : '')}>
                         <div className="col-md-2"> 
                             <label>Sumber Buku</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <input type="text" className="form-control" name="sumberBuku" placeholder="Masukkan Sumber Buku" value={book.sumberBuku} onChange={this.handleChange} />
-                            {submitted && !book.sumberBuku &&
+                            <input type="text" className="form-control" name="sumberBuku" placeholder="Masukkan Sumber Buku" value={typeof book != 'undefined' ? book.sumberBuku :''} onChange={this.handleChange} />
+                            {/* { !book.sumberBuku &&
                             <div className="help-block">Sumber Buku is required</div>
-                            }
+                            } */}
                         </div>  
                     </div>
 
-                    <div className={"row form-group" + (submitted && !book.bukuLama ? ' has-error' : '')}>
+                    <div className={"row form-group" + ( typeof book == 'undefined' ? '' : !book.bukuLama ? ' has-error' : '')}>
                         <div className="col-md-2"> 
                             <label>Buku Lama</label> 
                         </div>
@@ -245,13 +215,13 @@ class EditPage extends React.Component {
                                 <label class="form-check-label" for="inlineRadio2">Tidak</label>
                             </div>
 
-                            {submitted && !book.jenisBuku &&
+                            {/* { !book.jenisBuku &&
                             <div className="help-block">Buku Lama is required</div>
-                            }
+                            } */}
                         </div>  
                     </div>
 
-                    <div className={"row form-group" + (submitted && !book.rakBuku ? ' has-error' : '')}>
+                    <div className={"row form-group" + ( typeof book == 'undefined' ? '' : !book.rakBuku ? ' has-error' : '')}>
                         <div className="col-md-2"> 
                             <label>Rak Buku</label> 
                         </div>
@@ -264,9 +234,9 @@ class EditPage extends React.Component {
                                 <option value="C">C</option>
                             </select>
 
-                            {submitted && !book.rakBuku &&
+                            {/* { !book.rakBuku &&
                             <div className="help-block">Rak buku is required</div>
-                            }
+                            } */}
                         </div>  
                     </div>
 

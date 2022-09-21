@@ -91,6 +91,10 @@ class BukuPage extends React.Component {
                               <Link to={`/buku/detail/${book.id}`}  className="btn btn-sm btn-link mx-1">
                                   Detail
                               </Link>
+                              {/* <a onClick={this.handleDeleteBook(book.id)} className="btn btn-sm btn-link mx-1">Detail</a> */}
+                              <Link to={`/buku/details/${book.id}`}  className="btn btn-sm btn-link mx-1">
+                                  Details
+                              </Link>
                               <Link to={`/buku/edit/${book.id}`}  className="btn btn-sm btn-link mx-1">
                                   Edit
                               </Link>

@@ -7,10 +7,16 @@ import { connect } from 'react-redux';
 import { bookActions } from '../_actions';
 
 
-class DetailPage extends React.Component {
-  
-  componentDidMount() {
+class DetailsPage extends React.Component {
+  constructor(props) {
+    super(props);
     this.props.getBook();
+
+}
+
+
+  componentDidMount() {
+    // this.props.getBook();
   }
 
   handleDeleteBook(id) {
@@ -25,7 +31,7 @@ class DetailPage extends React.Component {
     // console.log(book.judulBuku);
     return (
       <div className="col-md-12">
-      <h2>Detail Buku {book.judulBuku}</h2>
+      <h2>Detailss Buku {book.judulBuku}</h2>
         <Link to="/buku" className="btn btn-info">Kembali</Link>
         <Link to="/buku" className="btn btn-info mx-5 float-end">Hapus</Link>
         <Link to="/buku" className="btn btn-info mx-5 float-end">Edit</Link>
@@ -157,5 +163,5 @@ const actionCreators = {
 };
 
 
-const connectedDetailPage = connect(mapState, actionCreators)(DetailPage);
-export { connectedDetailPage as DetailPage };
+const connectedDetailsPage = connect(mapState, actionCreators)(DetailsPage);
+export { connectedDetailsPage as DetailsPage };

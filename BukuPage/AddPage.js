@@ -54,7 +54,7 @@ class AddPage extends React.Component {
         if (book.judulBuku !== '' && book.penulisBuku !== '' && book.tahunTerbit !== '' && book.penerbit !== '' && book.jenisBuku !== '' && book.tanggalInput !== '' && book.sumberBuku !== '' && book.bukuLama !== '' && book.rakBuku !== ''  ) {
             this.props.add(book);
         } 
-    }
+    } 
 
     render() {
         const { adding  } = this.props;
