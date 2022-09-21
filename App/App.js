@@ -99,7 +99,6 @@ class App extends React.Component {
                 <Route exact path="/buku" component={BukuPage} />
                 <Route path="/buku/add" component={AddPage} />
                 <Route exact path="/buku/detail/:id" component={DetailPage} />
-                <Route exact path="/buku/details/:id" component={DetailsPage} />
                 <Route exact path="/buku/edit/:id" component={EditPage} />
                 <Route path="/transaksi" component={TransaksiPage} />
                 <Route path="/login" component={LoginPage} />

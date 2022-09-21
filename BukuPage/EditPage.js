@@ -8,21 +8,21 @@ class EditPage extends React.Component {
     constructor(props) {
         super(props);
 
-        // this.state = {
-        //   book: {              
-        //       judulBuku: '',
-        //       penulisBuku: '',
-        //       tahunTerbit: '',
-        //       penerbit:'',
-        //       jenisBuku:'',
-        //       // tanggalInput:getBook.,
-        //       // sumberBuku:getBook.,
-        //       // bukuLama:getBook.,
-        //       // rakBuku:getBook.,
-        //       // status:getBook.
-        //   },
-        //   submitted: false
-        // }; 
+        this.state = {
+          book: {              
+              judulBuku: '',
+              penulisBuku: '',
+              tahunTerbit: '',
+              penerbit:'',
+              jenisBuku:'',
+              tanggalInput:'',
+              sumberBuku:'',
+              bukuLama:'',
+              rakBuku:'',
+              status:''
+          },
+          submitted: false
+        }; 
  
         //get data by id for edit book's value 
         this.props.getBook();
@@ -69,6 +69,7 @@ class EditPage extends React.Component {
     render() {
         const book = this.props.books.item ? this.props.books.item : '';
         console.log(this.props);
+        console.log(this.state);
 
         // console.log(this.state);
         // if(this.state){
@@ -152,17 +153,10 @@ class EditPage extends React.Component {
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            {/* <input type="select" className="form-control" name="jenisBuku" placeholder="Pilih Jenis Buku" value={book.jenisBuku} onChange={this.handleChange} /> */}
-                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="jenisBuku" onChange={this.handleChange}>
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="jenisBuku" value={book.jenisBuku} onChange={this.handleChange}>
                                 
-                                <option selected>Pilih Jenis buku</option>
-                                {/* {typeof book != 'undefinded' 
-                                    ?
-                                    : 
-                                } */}
+                                <option selected>Pilih jenis buku</option>
                                 <option value="Novel">Novel</option>
-                                {/* {book.jenisBuku=="Novel"? <option selected value="Novel">Novel</option> :                                 <option value="Novel">Novel</option> } */}
-
                                 <option value="Sejarah">Sejarah</option>
                                 <option value="Ensiklopedia">Ensiklopedia</option>
                             </select>
@@ -207,11 +201,11 @@ class EditPage extends React.Component {
                         <div className="col-md-4">
                             {/* <input type="select" className="form-control" name="jenisBuku" placeholder="Pilih Jenis Buku" value={book.jenisBuku} onChange={this.handleChange} /> */}
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="bukuLama" id="inlineRadio1" value="Ya" onChange={this.handleChange}/>
+                                <input class="form-check-input" type="radio" name="bukuLama" id="inlineRadio1" value="Ya" onChange={this.handleChange} checked={book.bukuLama=='Ya'}/>
                                 <label class="form-check-label" for="inlineRadio1">Ya</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="bukuLama" id="inlineRadio2" value="Tidak" onChange={this.handleChange}/>
+                                <input class="form-check-input" type="radio" name="bukuLama" id="inlineRadio2" value="Tidak" onChange={this.handleChange} checked={book.bukuLama=='Tidak'}/>
                                 <label class="form-check-label" for="inlineRadio2">Tidak</label>
                             </div>
 
@@ -227,7 +221,7 @@ class EditPage extends React.Component {
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="rakBuku" onChange={this.handleChange}>
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="rakBuku" value={book.rakBuku} onChange={this.handleChange}>
                                 <option selected>Pilih Rak buku</option>
                                 <option value="A">A</option>
                                 <option value="B">B</option>

@@ -22,7 +22,7 @@ class BukuPage extends React.Component {
     this.setState({
       search: value
     });
-    console.log(this.state);
+
 
   }
 
@@ -34,9 +34,25 @@ class BukuPage extends React.Component {
     return (e) => this.props.deleteBook(id);
   }
 
+
+
   render() {
-    const { books } = this.props;
-    // console.log(books);
+    let { books } = this.props;
+
+    //filter data based judul buku
+    if(books.items){
+      let valueSearch = this.state.search.toLowerCase()
+      books.items = books.items.filter(book => book.judulBuku.toLowerCase().includes(valueSearch));
+      //reset list book
+      if(books.items.length == 0 && valueSearch ==''){
+        this.props.getBooks();
+      }
+
+    }
+
+    // const filtered = books.filter(book => book.items.judulBuku.toLowerCase().includes('Bu'));
+    // console.log(filtered);
+    // console.log(this.state.search);
     return (
       <div className="col-lg">
         <h1>Data Buku</h1>
@@ -91,10 +107,6 @@ class BukuPage extends React.Component {
                               <Link to={`/buku/detail/${book.id}`}  className="btn btn-sm btn-link mx-1">
                                   Detail
                               </Link>
-                              {/* <a onClick={this.handleDeleteBook(book.id)} className="btn btn-sm btn-link mx-1">Detail</a> */}
-                              <Link to={`/buku/details/${book.id}`}  className="btn btn-sm btn-link mx-1">
-                                  Details
-                              </Link>
                               <Link to={`/buku/edit/${book.id}`}  className="btn btn-sm btn-link mx-1">
                                   Edit
                               </Link>
@@ -105,15 +117,16 @@ class BukuPage extends React.Component {
 
                             </center>
                           </td>
-                          {
-                              // book.deleting ? <em> - Deleting...</em>
-                              // : book.deleteError ? <span className="text-danger"> - ERROR: {book.deleteError}</span>
-                          }
                       </tr>
                   )}
+                  {books.items.length == 0 &&
+                    <tr>
+                      <td colspan="5"><center><b>Book data not available</b></center> </td>
+                    </tr>
+                  }
               </tbody>
             }
-          
+               
         </table>
       </div>
     );
@@ -129,6 +142,7 @@ function mapState(state) {
 const actionCreators = {
   // getUsers: userActions.getAll,
   getBooks: bookActions.getAll,
+  searchBooks: bookActions.getBySearch,
   deleteBook: bookActions.delete
 };
 
