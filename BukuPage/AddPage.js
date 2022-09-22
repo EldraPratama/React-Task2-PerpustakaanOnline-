@@ -29,7 +29,6 @@ class AddPage extends React.Component {
     }
 
     handleChange(event) {
-        console.log(event);
         const { name, value } = event.target;
         const { book } = this.state;
         this.setState({
@@ -38,7 +37,6 @@ class AddPage extends React.Component {
                 [name]: value
             }
         });
-        console.log(this.state);
     }
 
     handleSubmit(event) {
@@ -46,10 +44,7 @@ class AddPage extends React.Component {
 
         this.setState({ submitted: true });
         const { book } = this.state;
-        console.log(book)
-        // if (book.judulBuku !== null && book.tahunTerbit && book.penulisBuku && book.penerbit) {
-        //     this.props.add(book);
-        // }
+      
         // validate all input not empty 
         if (book.judulBuku !== '' && book.penulisBuku !== '' && book.tahunTerbit !== '' && book.penerbit !== '' && book.jenisBuku !== '' && book.tanggalInput !== '' && book.sumberBuku !== '' && book.bukuLama !== '' && book.rakBuku !== ''  ) {
             this.props.add(book);
@@ -58,6 +53,7 @@ class AddPage extends React.Component {
 
     render() {
         const { adding  } = this.props;
+        console.log(this.props);
         const { book, submitted } = this.state;
         return (
             <div className="col-md-12">
@@ -122,7 +118,6 @@ class AddPage extends React.Component {
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            {/* <input type="select" className="form-control" name="jenisBuku" placeholder="Pilih Jenis Buku" value={book.jenisBuku} onChange={this.handleChange} /> */}
                             <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="jenisBuku" onChange={this.handleChange}>
                                 <option selected>Pilih Jenis buku</option>
                                 <option value="Novel">Novel</option>
@@ -168,14 +163,13 @@ class AddPage extends React.Component {
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            {/* <input type="select" className="form-control" name="jenisBuku" placeholder="Pilih Jenis Buku" value={book.jenisBuku} onChange={this.handleChange} /> */}
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="bukuLama" id="inlineRadio1" value="Ya" onChange={this.handleChange}/>
-                                <label class="form-check-label" for="inlineRadio1">Ya</label>
+                            <div className="form-check form-check-inline">
+                                <input className="form-check-input" type="radio" name="bukuLama" id="inlineRadio1" value="Ya" onChange={this.handleChange}/>
+                                <label className="form-check-label" for="inlineRadio1">Ya</label>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="bukuLama" id="inlineRadio2" value="Tidak" onChange={this.handleChange}/>
-                                <label class="form-check-label" for="inlineRadio2">Tidak</label>
+                            <div className="form-check form-check-inline">
+                                <input className="form-check-input" type="radio" name="bukuLama" id="inlineRadio2" value="Tidak" onChange={this.handleChange}/>
+                                <label className="form-check-label" for="inlineRadio2">Tidak</label>
                             </div>
 
                             {submitted && !book.jenisBuku &&
@@ -190,7 +184,7 @@ class AddPage extends React.Component {
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="rakBuku" onChange={this.handleChange}>
+                            <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="rakBuku" onChange={this.handleChange}>
                                 <option selected>Pilih Rak buku</option>
                                 <option value="A">A</option>
                                 <option value="B">B</option>
@@ -205,9 +199,6 @@ class AddPage extends React.Component {
 
                     <div className="form-group">
                         <button className="btn btn-primary">Simpan</button>
-                        {/* {adding && 
-                            <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-                        } */}
                         <Link to="/buku" className="btn btn-link">Kembali</Link>
                     </div>
                 </form>

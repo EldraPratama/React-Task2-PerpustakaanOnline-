@@ -52,18 +52,18 @@ class EditPage extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        const { book } = this.state;
 
         // this.setState({ submitted: true });
         
         // console.log(this.state==null);
-        // const { book } = this.state;
         // if (book.judulBuku !== null && book.tahunTerbit && book.penulisBuku && book.penerbit) {
         //     this.props.add(book);
         // }
         // validate all input not empty 
-        // if (book.judulBuku !== '' && book.penulisBuku !== '' && book.tahunTerbit !== '' && book.penerbit !== '' && book.jenisBuku !== '' && book.tanggalInput !== '' && book.sumberBuku !== '' && book.bukuLama !== '' && book.rakBuku !== ''  ) {
-        //     this.props.add(book);
-        // } 
+        if (book.judulBuku !== '' && book.penulisBuku !== '' && book.tahunTerbit !== '' && book.penerbit !== '' && book.jenisBuku !== '' && book.tanggalInput !== '' && book.sumberBuku !== '' && book.bukuLama !== '' && book.rakBuku !== ''  ) {
+            this.props.update(book);
+        } 
     }
 
     render() {
@@ -71,11 +71,11 @@ class EditPage extends React.Component {
         const book = this.props.books.item ? this.props.books.item : '';
         //variabel to get state data 
         const state = this.state.book ;
-        console.log(this.state);
-        console.log(this.props);
+        // console.log(this.state);
+        // console.log(this.props);
         
         if(book){
-            console.log(book);
+            // console.log(book);
             if(state.judulBuku ==''){
                 this.setState({
                     book: {
@@ -278,6 +278,7 @@ function mapState(state) {
 const actionCreators = {
     add: bookActions.add,
     getBook: bookActions.getById,
+    update: bookActions.update,
 
 }
 

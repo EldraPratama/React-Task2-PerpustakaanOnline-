@@ -126,11 +126,11 @@ export function configureFakeBackend() {
                     let newBook = JSON.parse(opts.body);
 
                     // validation
-                    // let duplicateBook = books.filter(book => { return book.judulBuku === newBook.judulBuku; }).length;
-                    // if (duplicateBook) {
-                    //     reject('Judul Buku "' + newBook.judulBuku + '" is already taken');
-                    //     return;
-                    // }
+                    let duplicateBook = books.filter(book => { return book.judulBuku === newBook.judulBuku; }).length;
+                    if (duplicateBook) {
+                        reject('Judul Buku "' + newBook.judulBuku + '" is already taken');
+                        return;
+                    }
 
                     // save new book
                     newBook.id = books.length ? Math.max(...books.map(book => book.id)) + 1 : 1;
@@ -142,7 +142,46 @@ export function configureFakeBackend() {
 
                     return;
                 }
+                
+                // Update book
+                if (url.match(/\/buku\/\d+$/) && opts.method === 'PUT') {
+                    // get new value book from post body
+                    let newBook = JSON.parse(opts.body);
+                    console.log('berhasil ke backend');
+                    console.log(newBook);
+                    // get id 
+                    let urlParts = url.split('/');
+                    let id = parseInt(urlParts[urlParts.length - 1]);
+                    console.log(id);
 
+                    // validation
+                    // let duplicateBook = books.filter(book => { return book.judulBuku === newBook.judulBuku; }).length;
+                    // if (duplicateBook) {
+                    //     reject('Judul Buku "' + newBook.judulBuku + '" is already taken');
+                    //     return;
+                    // };
+
+                    // update book
+                    books.forEach((book,i) => {
+                        if(book.id == id){
+                            book.judulBuku = newBook.judulBuku;
+                            book.penulisBuku = newBook.penulisBuku;
+                            book.tahunTerbit = newBook.tahunTerbit;
+                            book.penerbit = newBook.penerbit;
+                            book.jenisBuku = newBook.jenisBuku;
+                            book.tanggalInput = newBook.tanggalInput;
+                            book.sumberBuku = newBook.sumberBuku;
+                            book.bukuLama = newBook.bukuLama;
+                            book.rakBuku = newBook.rakBuku;
+                        }
+                    });
+                    localStorage.setItem('books', JSON.stringify(books));
+
+                    // respond 200 OK
+                    resolve({ ok: true, text: () => Promise.resolve() });
+
+                    return;
+                }
                                 
                 // get books
                 if (url.endsWith('/buku') && opts.method === 'GET') {
@@ -153,11 +192,6 @@ export function configureFakeBackend() {
                         // return 401 not authorised if token is null or invalid
                         reject('Unauthorised');
                     }
-
-                    //filter book's data based judul buku 
-                    console.log(books);
-                    const filtered = books.filter(book => book.judulBuku.toLowerCase().includes('ua'));
-                    console.log(filtered);
 
                     return;
                 }   

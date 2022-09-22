@@ -41,7 +41,7 @@ class BukuPage extends React.Component {
 
     //filter data based judul buku
     if(books.items){
-      let valueSearch = this.state.search.toLowerCase()
+      let valueSearch = this.state.search.toLowerCase();
       books.items = books.items.filter(book => book.judulBuku.toLowerCase().includes(valueSearch));
       //reset list book
       

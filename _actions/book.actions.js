@@ -5,6 +5,7 @@ import { history } from '../_helpers';
 
 export const bookActions = {
     add,
+    update,
     getAll,
     getById,
     delete: _delete
@@ -31,6 +32,28 @@ function add(book) {
     function request(book) { return { type: bookConstants.ADD_REQUEST, book } }
     function success(book) { return { type: bookConstants.ADD_SUCCESS, book } }
     function failure(error) { return { type: bookConstants.ADD_FAILURE, error } }
+}
+function update(book) {
+    return dispatch => {
+        dispatch(request(book));
+
+        bookService.update(book)
+            .then(
+                book => { 
+                    dispatch(success());
+                    history.push('/buku');
+                    dispatch(alertActions.success('update book successful'));
+                },
+                error => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            );
+    };
+
+    function request(book) { return { type: bookConstants.UPDATE_REQUEST, book } }
+    function success(book) { return { type: bookConstants.UPDATE_SUCCESS, book } }
+    function failure(error) { return { type: bookConstants.UPDATE_FAILURE, error } }
 }
 
 function getAll() {
@@ -86,3 +109,4 @@ function _delete(id) {
     function success(id) { return { type: bookConstants.DELETE_SUCCESS, id } }
     function failure(id, error) { return { type: bookConstants.DELETE_FAILURE, id, error } }
 }
+

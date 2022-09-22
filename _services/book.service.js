@@ -21,6 +21,7 @@ function getAll() {
 }
 
 function getById() {
+    //get id
     let path = history.location.pathname.split('/');
     let id = parseInt(path[path.length-1]);
 
@@ -42,14 +43,18 @@ function add(buku) {
     return fetch(`/buku/add`, requestOptions).then(handleResponse);
 }
 
-function update(user) {
+function update(book) {
+    //get id
+    let path = history.location.pathname.split('/');
+    let id = parseInt(path[path.length-1]);
+
     const requestOptions = {
         method: 'PUT',
         headers: { ...authHeader(), 'Content-Type': 'application/json' },
-        body: JSON.stringify(user)
+        body: JSON.stringify(book)
     };
 
-    return fetch(`/users/${user.id}`, requestOptions).then(handleResponse);;
+    return fetch(`/buku/${id}`, requestOptions).then(handleResponse);;
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript
