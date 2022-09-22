@@ -47,7 +47,7 @@ class BukuPage extends React.Component {
       books.items = books.items.filter(book => book.judulBuku.toLowerCase().includes(valueSearch));
       //reset list book
       
-      if(books.items.length == 0 && valueSearch == '' && namePath == 'buku' ){
+      if(books.items.length == 0 && valueSearch == ''){
         this.props.getBooks();
       }
      
