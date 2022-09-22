@@ -67,9 +67,32 @@ class EditPage extends React.Component {
     }
 
     render() {
+        //variabel to get book data based on id
         const book = this.props.books.item ? this.props.books.item : '';
-        console.log(this.props);
+        //variabel to get state data 
+        const state = this.state.book ;
         console.log(this.state);
+        console.log(this.props);
+        
+        if(book){
+            console.log(book);
+            if(state.judulBuku ==''){
+                this.setState({
+                    book: {
+                        judulBuku : book.judulBuku,
+                        penulisBuku : book.penulisBuku,
+                        tahunTerbit : book.tahunTerbit,
+                        penerbit : book.penerbit,
+                        jenisBuku : book.jenisBuku,
+                        tanggalInput : book.tanggalInput,
+                        sumberBuku : book.sumberBuku,
+                        bukuLama : book.bukuLama,
+                        rakBuku : book.rakBuku,
+                        status : book.status,
+                    }
+                });
+            }
+        }
 
         // console.log(this.state);
         // if(this.state){
@@ -101,7 +124,7 @@ class EditPage extends React.Component {
                         </div> 
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <input type="text" className="form-control" name="judulBuku" placeholder="Masukkan judul buku" value={typeof book != 'undefined' ? book.judulBuku : 'zzz' } onChange={this.handleChange} />
+                            <input type="text" className="form-control" name="judulBuku" placeholder="Masukkan judul buku" value={state.judulBuku} onChange={this.handleChange} />
                             {/* { !book.judulBuku &&
                             <div className="help-block">Judul Buku is required</div>
                             } */}
@@ -114,7 +137,7 @@ class EditPage extends React.Component {
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <input type="text" className="form-control" name="penulisBuku" placeholder="Masukkan Nama Penulis" value={typeof book != 'undefined' ? book.penulisBuku :''} onChange={this.handleChange} />
+                            <input type="text" className="form-control" name="penulisBuku" placeholder="Masukkan Nama Penulis" value={state.penulisBuku} onChange={this.handleChange} />
                             {/* { !book.penulisBuku &&
                             <div className="help-block">Penulis is required</div>
                             } */}
@@ -127,7 +150,7 @@ class EditPage extends React.Component {
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <input type="number" className="form-control" name="tahunTerbit" placeholder="Masukkan Tahun Terbit" value={typeof book != 'undefined' ? book.tahunTerbit :''} onChange={this.handleChange} />
+                            <input type="number" className="form-control" name="tahunTerbit" placeholder="Masukkan Tahun Terbit" value={state.tahunTerbit} onChange={this.handleChange} />
                             {/* { !book.tahunTerbit &&
                             <div className="help-block">Tahun Terbit is required</div>
                             } */}
@@ -140,7 +163,7 @@ class EditPage extends React.Component {
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <input type="text" className="form-control" name="penerbit" placeholder="Masukkan Nama Penerbit" value={typeof book != 'undefined' ? book.penerbit :''} onChange={this.handleChange} />
+                            <input type="text" className="form-control" name="penerbit" placeholder="Masukkan Nama Penerbit" value={state.penerbit} onChange={this.handleChange} />
                             {/* { !book.penerbit &&
                             <div className="help-block">Penerbit is required</div>
                             } */}
@@ -153,7 +176,7 @@ class EditPage extends React.Component {
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="jenisBuku" value={book.jenisBuku} onChange={this.handleChange}>
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="jenisBuku" value={state.jenisBuku} onChange={this.handleChange}>
                                 
                                 <option selected>Pilih jenis buku</option>
                                 <option value="Novel">Novel</option>
@@ -173,7 +196,7 @@ class EditPage extends React.Component {
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <input type="date" className="form-control" name="tanggalInput" value={typeof book != 'undefined' ? book.tanggalInput :''} onChange={this.handleChange} />
+                            <input type="date" className="form-control" name="tanggalInput" value={state.tanggalInput} onChange={this.handleChange} />
                             {/* { !book.tanggalInput &&
                             <div className="help-block">Tanggal Input is required</div>
                             } */}
@@ -186,7 +209,7 @@ class EditPage extends React.Component {
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <input type="text" className="form-control" name="sumberBuku" placeholder="Masukkan Sumber Buku" value={typeof book != 'undefined' ? book.sumberBuku :''} onChange={this.handleChange} />
+                            <input type="text" className="form-control" name="sumberBuku" placeholder="Masukkan Sumber Buku" value={state.sumberBuku} onChange={this.handleChange} />
                             {/* { !book.sumberBuku &&
                             <div className="help-block">Sumber Buku is required</div>
                             } */}
@@ -201,11 +224,11 @@ class EditPage extends React.Component {
                         <div className="col-md-4">
                             {/* <input type="select" className="form-control" name="jenisBuku" placeholder="Pilih Jenis Buku" value={book.jenisBuku} onChange={this.handleChange} /> */}
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="bukuLama" id="inlineRadio1" value="Ya" onChange={this.handleChange} checked={book.bukuLama=='Ya'}/>
+                                <input class="form-check-input" type="radio" name="bukuLama" id="inlineRadio1" value="Ya" onChange={this.handleChange} checked={ state.bukuLama =='Ya'}/>
                                 <label class="form-check-label" for="inlineRadio1">Ya</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="bukuLama" id="inlineRadio2" value="Tidak" onChange={this.handleChange} checked={book.bukuLama=='Tidak'}/>
+                                <input class="form-check-input" type="radio" name="bukuLama" id="inlineRadio2" value="Tidak" onChange={this.handleChange} checked={ state.bukuLama =='Tidak'}/>
                                 <label class="form-check-label" for="inlineRadio2">Tidak</label>
                             </div>
 
@@ -221,7 +244,7 @@ class EditPage extends React.Component {
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="rakBuku" value={book.rakBuku} onChange={this.handleChange}>
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="rakBuku" value={state.rakBuku} onChange={this.handleChange}>
                                 <option selected>Pilih Rak buku</option>
                                 <option value="A">A</option>
                                 <option value="B">B</option>
