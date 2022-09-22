@@ -77,7 +77,7 @@ class EditPage extends React.Component {
         
         if(book){
             // console.log(book);
-            if(state.judulBuku =='' &&){
+            if(state.judulBuku =='' && state.penulisBuku ==''){
                 this.setState({
                     book: {
                         judulBuku : book.judulBuku,
