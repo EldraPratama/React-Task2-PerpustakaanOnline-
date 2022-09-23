@@ -87,6 +87,7 @@ class BukuPage extends React.Component {
               {books.items &&
                 valueSearch !='' 
                 ?
+                //show data with filter search
                   <tbody>
                     {filtered.map((book, index) =>
                         <tr key={book.id}>
@@ -122,6 +123,7 @@ class BukuPage extends React.Component {
                     }
                   </tbody>
                 :
+                //show data without filter search
                   <tbody>
                     {books.items.map((book, index) =>
                         <tr key={book.id}>

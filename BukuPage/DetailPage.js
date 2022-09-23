@@ -19,7 +19,7 @@ class DetailPage extends React.Component {
 
   render() {
     const book = this.props.books.item ? this.props.books.item : '';
-    console.log(this.props);
+    // console.log(this.props);
     //check if the data by id is found 
     // console.log(this.props.books.item)
     // console.log(book.judulBuku);

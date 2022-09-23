@@ -206,6 +206,10 @@ export function configureFakeBackend() {
                         let matchedBooks = books.filter(book => { return book.id === id; });
                         let book = matchedBooks.length ? matchedBooks[0] : null;
 
+                        // if(book == null){
+                            
+                        // }
+
                         // respond 200 OK with book
                         resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(book))});
                     } else {

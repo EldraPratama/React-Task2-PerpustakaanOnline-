@@ -80,11 +80,17 @@ function getById() {
             .then(
                 book => dispatch(success(book)),
                 error => dispatch(failure(error))
-            );
+        );
     };
 
     function request() { return { type: bookConstants.GETBYID_REQUEST } }
-    function success(book) { return { type: bookConstants.GETBYID_SUCCESS, book } }
+    function success(book) { 
+        // if detail data not found redirect to page buku
+        if(book == null){
+            history.push('/buku')
+        };
+        return { type: bookConstants.GETBYID_SUCCESS, book } 
+    }
     function failure(error) { return { type: bookConstants.GETBYID_FAILURE, error } }
 }
 

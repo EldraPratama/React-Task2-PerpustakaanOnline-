@@ -54,6 +54,7 @@ class AddPage extends React.Component {
     render() {
         const { adding  } = this.props;
         console.log(this.props);
+        console.log();
         const { book, submitted } = this.state;
         return (
             <div className="col-md-12">
@@ -92,7 +93,7 @@ class AddPage extends React.Component {
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <input type="number" className="form-control" name="tahunTerbit" placeholder="Masukkan Tahun Terbit" value={book.tahunTerbit} onChange={this.handleChange} />
+                            <input type="number" className="form-control" name="tahunTerbit" placeholder="Masukkan Tahun Terbit" value={book.tahunTerbit} onChange={this.handleChange} min={1900} max={new Date().getFullYear()}/>
                             {submitted && !book.tahunTerbit &&
                             <div className="help-block">Tahun Terbit is required</div>
                             }
@@ -137,7 +138,7 @@ class AddPage extends React.Component {
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <input type="date" className="form-control" name="tanggalInput" value={book.tanggalInput ? book.tanggalInput : ''} onChange={this.handleChange} />
+                            <input type="date" className="form-control" name="tanggalInput"  value={book.tanggalInput ? book.tanggalInput : ''} onChange={this.handleChange} max={new Date().toISOString().slice(0, -14)} />
                             {submitted && !book.tanggalInput &&
                             <div className="help-block">Tanggal Input is required</div>
                             }
