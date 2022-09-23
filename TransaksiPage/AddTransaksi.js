@@ -29,6 +29,10 @@ class AddTransaksi extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        this.props.getBooks();
+    }
+
     handleChange(event) {
         const { name, value } = event.target;
         const { book } = this.state;
@@ -50,10 +54,6 @@ class AddTransaksi extends React.Component {
         if (book.judulBuku !== '' && book.penulisBuku !== '' && book.tahunTerbit !== '' && book.penerbit !== '' && book.jenisBuku !== '' && book.tanggalInput !== '' && book.sumberBuku !== '' && book.bukuLama !== '' && book.rakBuku !== ''  ) {
             this.props.add(book);
         } 
-    }
-
-    componentDidMount() {
-        this.props.getBooks();
     }
 
     render() {
