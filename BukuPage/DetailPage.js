@@ -29,7 +29,11 @@ class DetailPage extends React.Component {
         <div className="col-md-12">
         <h2>Detail Buku {book.judulBuku}</h2>
           <Link to="/buku" className="btn btn-info">Kembali</Link>
-          <Link to="/buku" className="btn btn-info mx-5 float-end">Hapus</Link>
+          {/* <Link to="/buku" className="btn btn-info mx-5 float-end">Hapus</Link> */}
+          { book.status == 'Tersedia' || book.status == 'tersedia'
+            ? <a onClick={this.handleDeleteBook(book.id)} className="btn btn-info mx-5 float-end">Delete</a>
+            : ''
+          }
           <Link to={`/buku/edit/${book.id}`} className="btn btn-info mx-5 float-end">Edit</Link>
           <div className="mb-4"></div>
         <form name="form" >

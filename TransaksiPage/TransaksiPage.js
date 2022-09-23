@@ -53,9 +53,6 @@ class TransaksiPage extends React.Component {
           </tbody>
         </table>
 
-        <p>
-          <Link to="/login">Logout</Link>
-        </p>
       </div>
     );
   }

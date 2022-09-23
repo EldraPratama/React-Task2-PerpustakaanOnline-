@@ -40,29 +40,18 @@ class BukuPage extends React.Component {
   render() {
     let { books } = this.props;
   
-
     //filter data based judul buku
+    let filtered ;
+    let valueSearch = this.state.search.toLowerCase() ;
     if(books.items){
-      let valueSearch = this.state.search.toLowerCase();
-      books.items = books.items.filter(book => book.judulBuku.toLowerCase().includes(valueSearch));
-      //reset list book
-      
-      if(books.items.length == 0 && valueSearch == ''){
-        this.props.getBooks();
-      }
-     
-
-
+      filtered = books.items.filter(book => book.judulBuku.toLowerCase().includes(valueSearch));
     }
 
-    // const filtered = books.filter(book => book.items.judulBuku.toLowerCase().includes('Bu'));
-    // console.log(filtered);
-    // console.log(this.state.search);
     return (
       books.items 
       ?
         <div className="col-lg">
-          <h1>Data Buku</h1>
+          <h1>Data Buku </h1>
           <div className="row mb-3">
             <div className="col-md-5">
               <form name="form">
@@ -94,23 +83,24 @@ class BukuPage extends React.Component {
                 <th scope="col">Actions</th>
               </tr>
             </thead>
+
               {books.items &&
-                <tbody>
-                    {books.items.map((book, index) =>
-                    
+                valueSearch !='' 
+                ?
+                  <tbody>
+                    {filtered.map((book, index) =>
                         <tr key={book.id}>
-                            <td>{book.judulBuku}</td>
+                            <td width="40%">{book.judulBuku}</td>
                             <td>{book.penulisBuku}</td>
                             <td>{book.jenisBuku}</td>
-                            <td><center>
+                            <td width="10%"><center>
                                 {book.status === 'Tersedia' || book.status ==='tersedia'
                                   ? <p className="btn btn-sm btn-success">{book.status}</p>
                                   : <p className="btn btn-sm btn-danger">Dipinjam</p>
                                 }</center>
                             </td>
-                            <td width="25%">
+                            <td width="20%">
                               <center>  
-                                {/* <a onClick={this.handleDeleteBook(book.id)} className="btn btn-sm btn-link mx-1">Detail</a> */}
                                 <Link to={`/buku/detail/${book.id}`}  className="btn btn-sm btn-link mx-1">
                                     Detail
                                 </Link>
@@ -121,7 +111,41 @@ class BukuPage extends React.Component {
                                   ? <a onClick={this.handleDeleteBook(book.id)} className="btn btn-sm btn-link mx-1">Delete</a>
                                   : ''
                                 }
-
+                              </center>
+                            </td>
+                        </tr>
+                    )}
+                    {filtered.length == 0 &&
+                      <tr>
+                        <td colspan="5"><center><b>Book data not available</b></center> </td>
+                      </tr>
+                    }
+                  </tbody>
+                :
+                  <tbody>
+                    {books.items.map((book, index) =>
+                        <tr key={book.id}>
+                            <td width="40%">{book.judulBuku}</td>
+                            <td>{book.penulisBuku}</td>
+                            <td>{book.jenisBuku}</td>
+                            <td width="10%"><center>
+                                {book.status === 'Tersedia' || book.status ==='tersedia'
+                                  ? <p className="btn btn-sm btn-success">{book.status}</p>
+                                  : <p className="btn btn-sm btn-danger">Dipinjam</p>
+                                }</center>
+                            </td>
+                            <td width="20%">
+                              <center>  
+                                <Link to={`/buku/detail/${book.id}`}  className="btn btn-sm btn-link mx-1">
+                                    Detail
+                                </Link>
+                                <Link to={`/buku/edit/${book.id}`}  className="btn btn-sm btn-link mx-1">
+                                    Edit
+                                </Link>
+                                { book.status == 'Tersedia' || book.status == 'tersedia'
+                                  ? <a onClick={this.handleDeleteBook(book.id)} className="btn btn-sm btn-link mx-1">Delete</a>
+                                  : ''
+                                }
                               </center>
                             </td>
                         </tr>
@@ -131,7 +155,7 @@ class BukuPage extends React.Component {
                         <td colspan="5"><center><b>Book data not available</b></center> </td>
                       </tr>
                     }
-                </tbody>
+                  </tbody>
               }
                 
           </table>
