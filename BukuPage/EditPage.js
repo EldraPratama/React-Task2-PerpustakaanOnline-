@@ -24,12 +24,8 @@ class EditPage extends React.Component {
           },
           submitted: false
         }; 
- 
         //get data by id for edit book's value 
         this.props.getBook();
-
-
-       
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -77,7 +73,7 @@ class EditPage extends React.Component {
         
         if(book){
             // console.log(book);
-            if(state.judulBuku =='' && state.penulisBuku ==''){
+            if(state.judulBuku == '' && state.penulisBuku == '' && state.tahunTerbit == ''){
                 this.setState({
                     book: {
                         judulBuku : book.judulBuku,

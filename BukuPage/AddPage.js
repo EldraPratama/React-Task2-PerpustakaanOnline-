@@ -209,6 +209,7 @@ class AddPage extends React.Component {
 }
 
 function mapState(state) {
+    console.log(state);
     const { adding } = state.registration;
     return { adding };
 }

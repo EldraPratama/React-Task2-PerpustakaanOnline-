@@ -11,8 +11,8 @@ import { BukuPage } from '../BukuPage';
 import { AddPage } from '../BukuPage';
 import { EditPage } from '../BukuPage';
 import { DetailPage } from '../BukuPage';
-import { DetailsPage } from '../BukuPage';
 import { TransaksiPage } from '../TransaksiPage';
+import { AddTransaksi } from '../TransaksiPage';
 import { LoginPage } from '../LoginPage';
 import { RegisterPage } from '../RegisterPage';
 
@@ -100,7 +100,8 @@ class App extends React.Component {
                 <Route path="/buku/add" component={AddPage} />
                 <Route exact path="/buku/detail/:id" component={DetailPage} />
                 <Route exact path="/buku/edit/:id" component={EditPage} />
-                <Route path="/transaksi" component={TransaksiPage} />
+                <Route exact path="/transaksi" component={TransaksiPage} />
+                <Route path="/transaksi/add" component={AddTransaksi} />
                 <Route path="/login" component={LoginPage} />
                 <Route path="/register" component={RegisterPage} />
                 <Redirect from="*" to="/" />
