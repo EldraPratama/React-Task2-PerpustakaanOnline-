@@ -39,6 +39,7 @@ class BukuPage extends React.Component {
 
   render() {
     let { books } = this.props;
+    console.log(books);
   
     //filter data based judul buku
     let filtered ;

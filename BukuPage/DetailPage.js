@@ -39,101 +39,101 @@ class DetailPage extends React.Component {
         <form name="form" >
 
             <div className={"row form-group"}>
-                <div className="col-md-2"> 
+                <div className="col-2"> 
                   <label>Judul Buku</label> 
                 </div>
-                <div className="col-md-1 "> <b>:</b>  </div>
-                <div className="col-md-4">
+                <div className="col-1 "> <b>:</b>  </div>
+                <div className="col-4">
                   <label>{book.judulBuku}</label> 
                 </div>  
             </div>
 
             <div className={"row form-group"}>
-                <div className="col-md-2"> 
+                <div className="col-2"> 
                     <label>Penulis</label> 
                 </div>
-                <div className="col-md-1 "> <b>:</b>  </div>
-                <div className="col-md-4">
+                <div className="col-1 "> <b>:</b>  </div>
+                <div className="col-4">
                   <label>{book.penulisBuku}</label> 
                 </div>  
             </div>
 
             <div className={"row form-group"}>
-                <div className="col-md-2"> 
+                <div className="col-2"> 
                     <label>Tahun Terbit</label> 
                 </div>
-                <div className="col-md-1 "> <b>:</b>  </div>
-                <div className="col-md-4">
+                <div className="col-1 "> <b>:</b>  </div>
+                <div className="col-4">
                   <label>{book.tahunTerbit}</label> 
                 </div>  
             </div>
 
             <div className={"row form-group" }>
-                <div className="col-md-2"> 
+                <div className="col-2"> 
                     <label>Penerbit</label> 
                 </div>
-                <div className="col-md-1 "> <b>:</b>  </div>
-                <div className="col-md-4">
+                <div className="col-1 "> <b>:</b>  </div>
+                <div className="col-4">
                   <label>{book.penerbit}</label> 
                 </div>  
             </div>
 
             <div className={"row form-group"}>
-                <div className="col-md-2"> 
+                <div className="col-2"> 
                     <label>Jenis Buku</label> 
                 </div>
-                <div className="col-md-1 "> <b>:</b>  </div>
-                <div className="col-md-4">
+                <div className="col-1 "> <b>:</b>  </div>
+                <div className="col-4">
                   <label>{book.jenisBuku}</label> 
                 </div>  
             </div>
 
             <div className={"row form-group"}>
-                <div className="col-md-2"> 
+                <div className="col-2"> 
                     <label>Tanggal Input Buku</label> 
                 </div>
-                <div className="col-md-1 "> <b>:</b>  </div>
-                <div className="col-md-4">
+                <div className="col-1 "> <b>:</b>  </div>
+                <div className="col-4">
                   <label>{book.tanggalInput}</label> 
                 </div>  
             </div>
 
             <div className={"row form-group"}>
-                <div className="col-md-2"> 
+                <div className="col-2"> 
                     <label>Sumber Buku</label> 
                 </div>
-                <div className="col-md-1 "> <b>:</b>  </div>
-                <div className="col-md-4">
+                <div className="col-1 "> <b>:</b>  </div>
+                <div className="col-4">
                   <label>{book.sumberBuku}</label> 
                 </div>  
             </div>
 
             <div className={"row form-group" }>
-                <div className="col-md-2"> 
+                <div className="col-2"> 
                     <label>Buku Lama</label> 
                 </div>
-                <div className="col-md-1 "> <b>:</b>  </div>
-                <div className="col-md-4">
+                <div className="col-1 "> <b>:</b>  </div>
+                <div className="col-4">
                   <label>{book.bukuLama}</label> 
                 </div>  
             </div>
 
             <div className={"row form-group"}>
-                <div className="col-md-2"> 
+                <div className="col-2"> 
                     <label>Rak Buku</label> 
                 </div>
-                <div className="col-md-1 "> <b>:</b>  </div>
-                <div className="col-md-4">
+                <div className="col-1 "> <b>:</b>  </div>
+                <div className="col-4">
                   <label>{book.rakBuku}</label> 
                 </div>  
             </div>
 
             <div className={"row form-group"}>
-                <div className="col-md-2"> 
+                <div className="col-2"> 
                     <label>Status</label> 
                 </div>
-                <div className="col-md-1 "> <b>:</b>  </div>
-                <div className="col-md-4">
+                <div className="col-1 "> <b>:</b>  </div>
+                <div className="col-4">
                   <label>
                   {book.status === 'Tersedia' || book.status ==='tersedia'
                     ? <p className="btn btn-sm btn-success">{book.status}</p>

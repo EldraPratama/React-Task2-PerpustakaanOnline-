@@ -50,12 +50,16 @@ class AddTransaksi extends React.Component {
         if (book.judulBuku !== '' && book.penulisBuku !== '' && book.tahunTerbit !== '' && book.penerbit !== '' && book.jenisBuku !== '' && book.tanggalInput !== '' && book.sumberBuku !== '' && book.bukuLama !== '' && book.rakBuku !== ''  ) {
             this.props.add(book);
         } 
-    } 
+    }
+
+    componentDidMount() {
+        this.props.getBooks();
+    }
 
     render() {
-        const { adding  } = this.props;
+        const { adding , books } = this.props;
+        console.log(books);
         console.log(this.props);
-        console.log();
         const { book, submitted } = this.state;
         return (
             <div className="col-md-12">
@@ -68,9 +72,16 @@ class AddTransaksi extends React.Component {
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <input type="text" className="form-control" name="judulBuku" placeholder="Masukkan judul buku" value={book.judulBuku} onChange={this.handleChange} />
-                            {submitted && !book.judulBuku &&
-                            <div className="help-block">Judul Buku is required</div>
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="jenisBuku" onChange={this.handleChange}>
+                                <option selected>Pilih Jenis buku</option>
+
+                                <option value="Novel">Novel</option>
+                                <option value="Sejarah">Sejarah</option>
+                                <option value="Ensiklopedia">Ensiklopedia</option>
+                            </select>
+
+                            {submitted && !book.jenisBuku &&
+                            <div className="help-block">Jenis buku is required</div>
                             }
                         </div>  
                     </div>
@@ -112,7 +123,7 @@ class AddTransaksi extends React.Component {
 
                     <div className={"row form-group" + (submitted && !book.umur ? ' has-error' : '')}>
                         <div className="col-md-2"> 
-                            <label>Tahun Terbit</label> 
+                            <label>Umur Peminjam</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
@@ -125,13 +136,26 @@ class AddTransaksi extends React.Component {
 
                     <div className={"row form-group" + (submitted && !book.tanggalInput ? ' has-error' : '')}>
                         <div className="col-md-2"> 
-                            <label>Tanggal Input Buku</label> 
+                            <label>Tanggal Pinjam Buku</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
                             <input type="date" className="form-control" name="tanggalInput"  value={book.tanggalInput ? book.tanggalInput : ''} onChange={this.handleChange} max={new Date().toISOString().slice(0, -14)} />
                             {submitted && !book.tanggalInput &&
-                            <div className="help-block">Tanggal Input is required</div>
+                            <div className="help-block">Tanggal Pinjam is required</div>
+                            }
+                        </div>  
+                    </div>
+
+                    <div className={"row form-group" + (submitted && !book.tanggalInput ? ' has-error' : '')}>
+                        <div className="col-md-2"> 
+                            <label>Estimasi Pengembalian </label> 
+                        </div>
+                        <div className="col-md-1 "> <b>:</b>  </div>
+                        <div className="col-md-4">
+                            <input type="date" className="form-control" name="tanggalInput"  value={book.tanggalInput ? book.tanggalInput : ''} onChange={this.handleChange} min={new Date( new Date().getTime() + 86400000 ).toISOString().slice(0, -14)} />
+                            {submitted && !book.tanggalInput &&
+                            <div className="help-block">Estimasi Pengembalian is required</div>
                             }
                         </div>  
                     </div>
@@ -149,12 +173,13 @@ class AddTransaksi extends React.Component {
 }
 
 function mapState(state) {
-    console.log(state);
+    // console.log(state);
     const { adding } = state.registration;
     return { adding };
 }
 
 const actionCreators = {
+    getBooks: bookActions.getAll,
     add: bookActions.add
 }
 
