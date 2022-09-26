@@ -19,7 +19,7 @@ function add(transaction) {
             .then(
                 transaction => { 
                     dispatch(success());
-                    history.push('/buku');
+                    history.push('/transaksi');
                     dispatch(alertActions.success('Add transaction successful'));
                 },
                 error => {

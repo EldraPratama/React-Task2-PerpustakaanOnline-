@@ -39,7 +39,7 @@ class BukuPage extends React.Component {
 
   render() {
     let { books } = this.props;
-    console.log(books);
+    // console.log(books);
   
     //filter data based judul buku
     let filtered ;
@@ -178,7 +178,7 @@ function mapState(state) {
 const actionCreators = {
   // getUsers: userActions.getAll,
   getBooks: bookActions.getAll,
-  searchBooks: bookActions.getBySearch,
+  // searchBooks: bookActions.getBySearch,
   deleteBook: bookActions.delete
 };
 
