@@ -5,8 +5,8 @@ import { history } from '../_helpers';
 
 export const transactionActions = {
     add,
+    getAll,
     // update,
-    // getAll,
     // getById,
     // delete: _delete
 };
@@ -57,21 +57,21 @@ function add(transaction) {
 //     function failure(error) { return { type: bookConstants.UPDATE_FAILURE, error } }
 // }
 
-// function getAll() {
-//     return dispatch => {
-//         dispatch(request());
+function getAll() {
+    return dispatch => {
+        dispatch(request());
 
-//         bookService.getAll()
-//             .then(
-//                 books => dispatch(success(books)),
-//                 error => dispatch(failure(error))
-//             );
-//     };
+        transactionService.getAll()
+            .then(
+                transactions => dispatch(success(transactions)),
+                error => dispatch(failure(error))
+            );
+    };
 
-//     function request() { return { type: bookConstants.GETALL_REQUEST } }
-//     function success(books) { return { type: bookConstants.GETALL_SUCCESS, books } }
-//     function failure(error) { return { type: bookConstants.GETALL_FAILURE, error } }
-// }
+    function request() { return { type: transactionConstants.GETALL_REQUEST } }
+    function success(transactions) { return { type: transactionConstants.GETALL_SUCCESS, transactions } }
+    function failure(error) { return { type: transactionConstants.GETALL_FAILURE, error } }
+}
 
 // function getById() {
 //     return dispatch => {

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { bookActions } from '../_actions';
+import { transactionActions } from '../_actions';
 
 class AddTransaksi extends React.Component {
     constructor(props) {
@@ -47,9 +48,10 @@ class AddTransaksi extends React.Component {
 
         this.setState({ submitted: true });
         const { book } = this.state;
+        // console.log(book);
       
         // validate all input not empty 
-        if (book.judulBuku !== '' && book.penulisBuku !== '' && book.peminjam !== '' && book.umurPeminjam !== '' && book.tanggalPinjam !== ''  && book.estimasiPengembalian !== '' && book.rakBuku !== ''  ) {
+        if (book.judulBuku !== '' && book.peminjam !== '' && book.umurPeminjam !== '' && book.tanggalPinjam !== ''  && book.estimasiPengembalian !== '' ) {
             this.props.add(book);
         } 
     }
@@ -61,9 +63,10 @@ class AddTransaksi extends React.Component {
         console.log(book);
         
         let selected ;
-        let judulBuku = this.state.book.judulBuku  ;
+        let judulBuku = this.state.book.judulBuku ;
+        
         if(books.items && judulBuku !=''){
-          selected = books.items.filter(book => book.judulBuku.toLowerCase().includes( judulBuku.toLowerCase() ));
+          selected = books.items.filter(book => book.judulBuku.includes( judulBuku ));
         //   console.log(selected);
         //   console.log(selected[0].penulisBuku);
         //   this.setState({ 
@@ -102,7 +105,7 @@ class AddTransaksi extends React.Component {
 
                                 </select>
 
-                                {submitted && !book.jenisBuku &&
+                                {submitted && !book.judulBuku &&
                                 <div className="help-block">Jenis buku is required</div>
                                 }
                             </div>  
@@ -204,7 +207,7 @@ function mapState(state) {
 
 const actionCreators = {
     getBooks: bookActions.getAll,
-    add: bookActions.add
+    add: transactionActions.add
 }
 
 const connectedAddTransaksi = connect(mapState, actionCreators)(AddTransaksi);

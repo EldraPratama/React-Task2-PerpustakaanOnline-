@@ -1,6 +1,7 @@
 // array in local storage for registered users
-let users = JSON.parse(localStorage.getItem('users')) || [];
-let books = JSON.parse(localStorage.getItem('books')) || [];
+let users        = JSON.parse(localStorage.getItem('users')) || [];
+let books        = JSON.parse(localStorage.getItem('books')) || [];
+let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
     
 export function configureFakeBackend() {
     let realFetch = window.fetch;
@@ -245,6 +246,43 @@ export function configureFakeBackend() {
                     }
                     return;
                 }
+
+                // get Transactions
+                if (url.endsWith('/transaksi') && opts.method === 'GET') {
+                    // check for fake auth token in header and return users if valid, this security is implemented server side in a real application
+                    if (opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
+                        resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(transactions))});
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        reject('Unauthorised');
+                    }
+
+                    return;
+                }   
+
+                // Add Transaction
+                if (url.endsWith('/transaksi/add') && opts.method === 'POST') {
+                    // get new user object from post body
+                    let newTransaction = JSON.parse(opts.body);
+
+                    // validation
+                    // let duplicateBook = books.filter(book => { return book.judulBuku === newBook.judulBuku; }).length;
+                    // if (duplicateBook) {
+                    //     reject('Judul Buku "' + newBook.judulBuku + '" is already taken');
+                    //     return;
+                    // }
+
+                    // save new book
+                    newTransaction.id = transactions.length ? Math.max(...transactions.map(transaction => transaction.id)) + 1 : 1;
+                    transactions.push(newTransaction);
+                    localStorage.setItem('transactions', JSON.stringify(transactions));
+
+                    // respond 200 OK
+                    resolve({ ok: true, text: () => Promise.resolve() });
+
+                    return;
+                }
+
                 // pass through any requests not handled above
                 realFetch(url, opts).then(response => resolve(response));
 

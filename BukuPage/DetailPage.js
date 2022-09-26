@@ -136,8 +136,8 @@ class DetailPage extends React.Component {
                 <div className="col-4">
                   <label>
                   {book.status === 'Tersedia' || book.status ==='tersedia'
-                    ? <p className="btn btn-sm btn-success">{book.status}</p>
-                    : <p className="btn btn-sm btn-danger">Dipinjam</p>
+                    ? <p className="btn btn-sm btn-success"><b>{book.status}</b></p>
+                    : <p className="btn btn-sm btn-danger"><b>Dipinjam</b></p>
                   }
                   </label> 
                 </div>  
