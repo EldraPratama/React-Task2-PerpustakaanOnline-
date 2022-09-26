@@ -9,7 +9,7 @@ class TransaksiPage extends React.Component {
     this.props.getTransactions();
   }
 
-  handleDeleteUser(id) {
+  handlePengembalianTransaction(id) {
     return (e) => this.props.deleteUser(id);
   }
 
@@ -39,47 +39,41 @@ class TransaksiPage extends React.Component {
           <table class="table table-bordered ">
             <thead class="table-primary">
               <tr>
-                <th scope="col">Judul Buku</th>
-                <th scope="col">Nama Peminjam</th>
-                <th scope="col">Tanggal Pinjam</th>
-                <th scope="col">Estimasi Pengembalian</th>
-                <th scope="col">Tanggal Kembali</th>
-                <th scope="col">Actions</th>
+                <th scope="col"><center>Judul Buku </center></th>
+                <th scope="col"><center>Nama Peminjam </center></th>
+                <th scope="col"><center>Tanggal Pinjam </center></th>
+                <th scope="col"><center>Estimasi Pengembalian </center></th>
+                <th scope="col"><center>Tanggal Kembali </center></th>
+                <th scope="col"><center> Actions </center></th>
               </tr>
             </thead>
 
             {transactions.items && 
-                //show data without filter search
-                <tbody>
-                  {transactions.items.map((transaction, index) =>
-                      <tr key={transaction.id}>
-                          <td>{transaction.judulBuku}</td>
-                          <td>{transaction.peminjam}</td>
-                          <td>{transaction.tanggalPinjam}</td>
-                          <td>{transaction.estimasiPengembalian}</td>
-                          <td>{transaction.tanggalKembali}</td>
-                          {/* <td>{transaction.jenisBuku}</td>
-                          <td width="20%">
-                            <center>  
-                              <Link to={`/buku/detail/${transaction.id}`}  className="btn btn-sm btn-link mx-1">
-                                  Detail
-                              </Link>
-                              <Link to={`/buku/edit/${transaction.id}`}  className="btn btn-sm btn-link mx-1">
-                                  Edit
-                              </Link>
-                              { transaction.status == 'Tersedia' || transaction.status == 'tersedia'
-                                ? <a onClick={this.handleDeletetransaction(transaction.id)} className="btn btn-sm btn-link mx-1">Delete</a>
-                                : ''
-                              }
-                            </center>
-                          </td> */}
-                      </tr>
-                  )}
-                  {transactions.items.length == 0 &&
-                    <tr>
-                      <td colspan="5"><center><b>Book data not available</b></center> </td>
-                    </tr>
-                  }
+              //show data without filter search
+              <tbody>
+                {transactions.items.map((transaction, index) =>
+                  <tr key={transaction.id}>
+                    <td><center>{transaction.judulBuku}</center></td>
+                    <td><center>{transaction.peminjam}</center></td>
+                    <td><center>{transaction.tanggalPinjam}</center></td>
+                    <td><center>{transaction.estimasiPengembalian}</center></td>
+                    <td><center> {transaction.tanggalKembali ? transaction.tanggalKembali : "-"} </center></td>
+                    <td width="20%">
+                      <center>  
+                        { transaction.tanggalKembali == ''
+                          // ? <a onClick={this.handleDeletetransaction(transaction.id)} className="btn btn-sm btn-link mx-1">Delete</a>
+                          ? <a onClick={this.handlePengembalianTransaction(transaction.id)} className="btn btn-sm btn-link      mx-1">Pengembalian</a>
+                          : ''
+                        }
+                      </center>
+                    </td>
+                  </tr>
+                )}
+                {transactions.items.length == 0 &&
+                  <tr>
+                    <td colspan="5"><center><b>Book data not available</b></center> </td>
+                  </tr>
+                }
               </tbody>
             }
           </table>

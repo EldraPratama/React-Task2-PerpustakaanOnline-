@@ -77,11 +77,11 @@ class BukuPage extends React.Component {
           <table class="table table-bordered ">
             <thead class="table-primary">
               <tr>
-                <th scope="col">Judul Buku</th>
-                <th scope="col">Penulis</th>
-                <th scope="col">Jenis Buku</th>
-                <th scope="col">Status</th>
-                <th scope="col">Actions</th>
+                <th scope="col"><center> Judul Buku </center></th>
+                <th scope="col"><center> Penulis </center></th>
+                <th scope="col"><center> Jenis Buku </center></th>
+                <th scope="col"><center> Status </center></th>
+                <th scope="col"><center> Actions </center></th>
               </tr>
             </thead>
 
