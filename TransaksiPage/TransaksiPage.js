@@ -10,9 +10,11 @@ class TransaksiPage extends React.Component {
 
     this.state = {
       search:'',
+      pengembalian: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
+
   }
 
   handleChange(event) {
@@ -25,16 +27,27 @@ class TransaksiPage extends React.Component {
   componentDidMount() {
     this.props.getTransactions();
   }
+  // componentDidUpdate() {
+  //   this.props.getTransactions();
+  // }
 
   handlePengembalianTransaction(id) {
+    this.setState({ pengembalian: true });
     return (e) => this.props.update(id);
   }
 
   render() {
-    // console.log(this.props)
-    // const transaction = this.props.transactions.items;
     const { user, users, transactions } = this.props;
-    // console.log(transactions);
+
+    //refresh data transaction
+    if(this.state.pengembalian != false){
+      console.log(this.state.pengembalian)
+      // this.props.getTransactions();
+      this.setState({ pengembalian: true });
+      console.log(this.state.pengembalian)
+    }
+
+    //filter data transaction
     let filtered ;
     let valueSearch = this.state.search.toLowerCase();
     if(transactions.items){

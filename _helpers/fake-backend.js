@@ -287,37 +287,33 @@ export function configureFakeBackend() {
                 if (url.endsWith('/transaksi') && opts.method === 'PUT') {
                     // get id and tanggal kembali to update transaction
                     let id = JSON.parse(opts.body);
-                    let tanggalKembali = new Date().toISOString().slice(0, 10)
+                    let tanggalKembali = new Date().toISOString().slice(0, 10);
+                    let judulBuku;
 
+                    //update tanggal kembali data transaction
                     transactions.forEach((transaction, i) => {
                         if(transaction.id == id){
                             transaction.tanggalKembali = tanggalKembali 
+                            judulBuku = transaction.judulBuku;
                         }
-                        console.log(transaction.tanggalKembali)
-
+                        
                     });
+                    
+                    //update status data book 
+                    books.forEach((book, i) => {
+                        if(book.judulBuku == judulBuku){
+                            book.status = 'Tersedia'
+                        }
+                    })
 
                     console.log('berhasil ke backend');
+                    console.log(tanggalKembali)
+                    console.log(judulBuku)
                     // console.log(id);
                     // console.log(tanggalKembali);
 
-
-
-                    // update book
-                    // books.forEach((book,i) => {
-                    //     if(book.id == id){
-                    //         book.judulBuku = newBook.judulBuku;
-                    //         book.penulisBuku = newBook.penulisBuku;
-                    //         book.tahunTerbit = newBook.tahunTerbit;
-                    //         book.penerbit = newBook.penerbit;
-                    //         book.jenisBuku = newBook.jenisBuku;
-                    //         book.tanggalInput = newBook.tanggalInput;
-                    //         book.sumberBuku = newBook.sumberBuku;
-                    //         book.bukuLama = newBook.bukuLama;
-                    //         book.rakBuku = newBook.rakBuku;
-                    //     }
-                    // });
-                    // localStorage.setItem('books', JSON.stringify(books));
+                    localStorage.setItem('books', JSON.stringify(books));
+                    localStorage.setItem('transactions', JSON.stringify(transactions));
 
                     // respond 200 OK
                     resolve({ ok: true, text: () => Promise.resolve() });
