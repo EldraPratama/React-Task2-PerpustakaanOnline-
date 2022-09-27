@@ -52,11 +52,7 @@ class EditPage extends React.Component {
         const { book } = this.state;
 
         this.setState({ submitted: true });
-        
-        // console.log(this.state==null);
-        // if (book.judulBuku !== null && book.tahunTerbit && book.penulisBuku && book.penerbit) {
-        //     this.props.add(book);
-        // }
+
         // validate all input not empty 
         if (book.judulBuku !== '' && book.penulisBuku !== '' && book.tahunTerbit !== '' && book.penerbit !== '' && book.jenisBuku !== '' && book.tanggalInput !== '' && book.sumberBuku !== '' && book.bukuLama !== '' && book.rakBuku !== ''  ) {
             this.props.update(book);

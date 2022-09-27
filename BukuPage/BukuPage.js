@@ -19,7 +19,7 @@ class BukuPage extends React.Component {
   }
 
   handleChange(event) {
-    const { name, value } = event.target;
+    const { value } = event.target;
     this.setState({
       search: value
     });
@@ -37,13 +37,16 @@ class BukuPage extends React.Component {
 
   render() {
     let { books } = this.props;
-    // console.log(books);
+    // console.log(this.props);
   
     //filter data based judul buku
     let filtered ;
     let valueSearch = this.state.search.toLowerCase() ;
     if(books.items){
-      filtered = books.items.filter(book => book.judulBuku.toLowerCase().includes(valueSearch));
+      filtered = books.items.filter(book => book.judulBuku.toLowerCase().includes( valueSearch ) 
+        || book.penulisBuku.toLowerCase().includes( valueSearch )
+        || book.jenisBuku.toLowerCase().includes( valueSearch )
+      );
     }
 
     return (
@@ -91,34 +94,34 @@ class BukuPage extends React.Component {
                   <tbody>
                     {filtered.map((book, index) =>
                         <tr key={book.id}>
-                            <td width="40%">{book.judulBuku}</td>
-                            <td>{book.penulisBuku}</td>
-                            <td>{book.jenisBuku}</td>
-                            <td width="10%"><center>
-                                {book.status === 'Tersedia' || book.status ==='tersedia'
-                                  ? <p className="btn btn-sm btn-success">{book.status}</p>
-                                  : <p className="btn btn-sm btn-danger">Dipinjam</p>
-                                }</center>
-                            </td>
-                            <td width="20%">
-                              <center>  
-                                <Link to={`/buku/detail/${book.id}`}  className="btn btn-sm btn-link mx-1">
-                                    Detail
-                                </Link>
-                                <Link to={`/buku/edit/${book.id}`}  className="btn btn-sm btn-link mx-1">
-                                    Edit
-                                </Link>
-                                { book.status == 'Tersedia' || book.status == 'tersedia'
-                                  ? <a onClick={this.handleDeleteBook(book.id)} className="btn btn-sm btn-link mx-1">Delete</a>
-                                  : ''
-                                }
-                              </center>
-                            </td>
+                          <td width="40%">{book.judulBuku}</td>
+                          <td>{book.penulisBuku}</td>
+                          <td>{book.jenisBuku}</td>
+                          <td width="10%"><center>
+                              {book.status === 'Tersedia' || book.status ==='tersedia'
+                                ? <p className="btn btn-sm btn-success">{book.status}</p>
+                                : <p className="btn btn-sm btn-danger">Dipinjam</p>
+                              }</center>
+                          </td>
+                          <td width="20%">
+                            <center>  
+                              <Link to={`/buku/detail/${book.id}`}  className="btn btn-sm btn-link mx-1">
+                                  Detail
+                              </Link>
+                              <Link to={`/buku/edit/${book.id}`}  className="btn btn-sm btn-link mx-1">
+                                  Edit
+                              </Link>
+                              { book.status == 'Tersedia' || book.status == 'tersedia'
+                                ? <a onClick={this.handleDeleteBook(book.id)} className="btn btn-sm btn-link mx-1">Delete</a>
+                                : ''
+                              }
+                            </center>
+                          </td>
                         </tr>
                     )}
                     {filtered.length == 0 &&
                       <tr>
-                        <td colspan="5"><center><b>Book data not available</b></center> </td>
+                        <td colspan="5"><center><b>Book data not found</b></center> </td>
                       </tr>
                     }
                   </tbody>

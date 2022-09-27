@@ -6,7 +6,7 @@ import { history } from '../_helpers';
 export const transactionActions = {
     add,
     getAll,
-    // update,
+    update,
     // getById,
     // delete: _delete
 };
@@ -34,28 +34,28 @@ function add(transaction) {
     function failure(error) { return { type: transactionConstants.ADD_FAILURE, error } }
 }
 
-// function update(book) {
-//     return dispatch => {
-//         dispatch(request(book));
+function update(transaction) {
+    return dispatch => {
+        dispatch(request(transaction));
 
-//         bookService.update(book)
-//             .then(
-//                 book => { 
-//                     dispatch(success());
-//                     history.push('/buku');
-//                     dispatch(alertActions.success('update book successful'));
-//                 },
-//                 error => {
-//                     dispatch(failure(error));
-//                     dispatch(alertActions.error(error));
-//                 }
-//             );
-//     };
+        transactionService.update(transaction)
+            .then(
+                transaction => { 
+                    dispatch(success());
+                    history.push('/transaksi');
+                    dispatch(alertActions.success('update transaction successful'));
+                },
+                error => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            );
+    };
 
-//     function request(book) { return { type: bookConstants.UPDATE_REQUEST, book } }
-//     function success(book) { return { type: bookConstants.UPDATE_SUCCESS, book } }
-//     function failure(error) { return { type: bookConstants.UPDATE_FAILURE, error } }
-// }
+    function request(transaction) { return { type: transactionConstants.UPDATE_REQUEST, transaction } }
+    function success(transaction) { return { type: transactionConstants.UPDATE_SUCCESS, transaction } }
+    function failure(error) { return { type: transactionConstants.UPDATE_FAILURE, error } }
+}
 
 function getAll() {
     return dispatch => {

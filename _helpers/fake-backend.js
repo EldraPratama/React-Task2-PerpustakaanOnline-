@@ -283,6 +283,48 @@ export function configureFakeBackend() {
                     return;
                 }
 
+                // Update Transaction
+                if (url.endsWith('/transaksi') && opts.method === 'PUT') {
+                    // get id and tanggal kembali to update transaction
+                    let id = JSON.parse(opts.body);
+                    let tanggalKembali = new Date().toISOString().slice(0, 10)
+
+                    transactions.forEach((transaction, i) => {
+                        if(transaction.id == id){
+                            transaction.tanggalKembali = tanggalKembali 
+                        }
+                        console.log(transaction.tanggalKembali)
+
+                    });
+
+                    console.log('berhasil ke backend');
+                    // console.log(id);
+                    // console.log(tanggalKembali);
+
+
+
+                    // update book
+                    // books.forEach((book,i) => {
+                    //     if(book.id == id){
+                    //         book.judulBuku = newBook.judulBuku;
+                    //         book.penulisBuku = newBook.penulisBuku;
+                    //         book.tahunTerbit = newBook.tahunTerbit;
+                    //         book.penerbit = newBook.penerbit;
+                    //         book.jenisBuku = newBook.jenisBuku;
+                    //         book.tanggalInput = newBook.tanggalInput;
+                    //         book.sumberBuku = newBook.sumberBuku;
+                    //         book.bukuLama = newBook.bukuLama;
+                    //         book.rakBuku = newBook.rakBuku;
+                    //     }
+                    // });
+                    // localStorage.setItem('books', JSON.stringify(books));
+
+                    // respond 200 OK
+                    resolve({ ok: true, text: () => Promise.resolve() });
+
+                    return;
+                }
+
                 // pass through any requests not handled above
                 realFetch(url, opts).then(response => resolve(response));
 

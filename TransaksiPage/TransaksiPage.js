@@ -27,7 +27,7 @@ class TransaksiPage extends React.Component {
   }
 
   handlePengembalianTransaction(id) {
-    return (e) => this.props.deleteUser(id);
+    return (e) => this.props.update(id);
   }
 
   render() {
@@ -72,8 +72,10 @@ class TransaksiPage extends React.Component {
               </tr>
             </thead>
 
+            {/* show data */}
             {transactions.items && 
               valueSearch !=''
+              //show data with filter search
               ?
                 <tbody>
                   {filtered.map((transaction, index) =>
@@ -96,7 +98,7 @@ class TransaksiPage extends React.Component {
                   )}
                   {filtered.length == 0 &&
                     <tr>
-                      <td colspan="5"><center><b>Book data not available</b></center> </td>
+                      <td colspan="5"><center><b>Transaction data not available</b></center> </td>
                     </tr>
                   }
                 </tbody>
@@ -123,7 +125,7 @@ class TransaksiPage extends React.Component {
                   )}
                   {transactions.items.length == 0 &&
                     <tr>
-                      <td colspan="5"><center><b>Book data not available</b></center> </td>
+                      <td colspan="5"><center><b>Transaction data not available</b></center> </td>
                     </tr>
                   }
                 </tbody>
@@ -145,6 +147,7 @@ function mapState(state) {
 }
 
 const actionCreators = {
+  update: transactionActions.update,
   getTransactions: transactionActions.getAll,
   // deleteUser: transactionActions.delete,
 };

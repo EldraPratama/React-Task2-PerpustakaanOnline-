@@ -43,18 +43,18 @@ function add(transaksi) {
     return fetch(`/transaksi/add`, requestOptions).then(handleResponse);
 }
 
-function update(book) {
+function update(id) {
     //get id
-    let path = history.location.pathname.split('/');
-    let id = parseInt(path[path.length-1]);
+    // let path = history.location.pathname.split('/');
+    // let id = parseInt(path[path.length-1]);
 
     const requestOptions = {
         method: 'PUT',
         headers: { ...authHeader(), 'Content-Type': 'application/json' },
-        body: JSON.stringify(book)
+        body: JSON.stringify(id)
     };
 
-    return fetch(`/buku/${id}`, requestOptions).then(handleResponse);;
+    return fetch(`/transaksi`, requestOptions).then(handleResponse);;
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript
