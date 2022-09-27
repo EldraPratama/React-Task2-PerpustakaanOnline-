@@ -34,7 +34,6 @@ class BukuPage extends React.Component {
   }
 
 
-
   render() {
     let { books } = this.props;
     // console.log(this.props);
@@ -49,7 +48,14 @@ class BukuPage extends React.Component {
       );
     }
 
-    
+    //show data with or without filter
+    const data = () => {
+      if(this.state.search !=''){
+        return filtered;
+      }else{  
+        return books.items;
+      }
+    }
 
     return (
       books.items 
@@ -88,81 +94,42 @@ class BukuPage extends React.Component {
               </tr>
             </thead>
 
-              {/* show data */}
+              {/* show data book with / without filter */}
               {books.items &&
-                valueSearch !='' 
-                ?
-                //show data with filter search
-                  <tbody>
-                    {filtered.map((book, index) =>
-                        <tr key={book.id}>
-                          <td width="40%">{book.judulBuku}</td>
-                          <td>{book.penulisBuku}</td>
-                          <td>{book.jenisBuku}</td>
-                          <td width="10%"><center>
-                              {book.status === 'Tersedia' || book.status ==='tersedia'
-                                ? <p className="btn btn-sm btn-success">{book.status}</p>
-                                : <p className="btn btn-sm btn-danger">Dipinjam</p>
-                              }</center>
-                          </td>
-                          <td width="20%">
-                            <center>  
-                              <Link to={`/buku/detail/${book.id}`}  className="btn btn-sm btn-link mx-1">
-                                  Detail
-                              </Link>
-                              <Link to={`/buku/edit/${book.id}`}  className="btn btn-sm btn-link mx-1">
-                                  Edit
-                              </Link>
-                              { book.status == 'Tersedia' || book.status == 'tersedia'
-                                ? <a onClick={this.handleDeleteBook(book.id)} className="btn btn-sm btn-link mx-1">Delete</a>
-                                : ''
-                              }
-                            </center>
-                          </td>
-                        </tr>
-                    )}
-                    {filtered.length == 0 &&
-                      <tr>
-                        <td colspan="5"><center><b>Book data not found</b></center> </td>
-                      </tr>
-                    }
-                  </tbody>
-                :
-                //show data without filter search
-                  <tbody>
-                    {books.items.map((book, index) =>
-                        <tr key={book.id}>
-                            <td width="40%">{book.judulBuku}</td>
-                            <td>{book.penulisBuku}</td>
-                            <td>{book.jenisBuku}</td>
-                            <td width="10%"><center>
-                                {book.status === 'Tersedia' || book.status ==='tersedia'
-                                  ? <p className="btn btn-sm btn-success">{book.status}</p>
-                                  : <p className="btn btn-sm btn-danger">Dipinjam</p>
-                                }</center>
-                            </td>
-                            <td width="20%">
-                              <center>  
-                                <Link to={`/buku/detail/${book.id}`}  className="btn btn-sm btn-link mx-1">
-                                    Detail
-                                </Link>
-                                <Link to={`/buku/edit/${book.id}`}  className="btn btn-sm btn-link mx-1">
-                                    Edit
-                                </Link>
-                                { book.status == 'Tersedia' || book.status == 'tersedia'
-                                  ? <a onClick={this.handleDeleteBook(book.id)} className="btn btn-sm btn-link mx-1">Delete</a>
-                                  : ''
-                                }
-                              </center>
-                            </td>
-                        </tr>
-                    )}
-                    {books.items.length == 0 &&
-                      <tr>
-                        <td colspan="5"><center><b>Book data not available</b></center> </td>
-                      </tr>
-                    }
-                  </tbody>
+                <tbody>
+                  {data().map((book, index) =>
+                    <tr key={book.id}>
+                      <td width="40%">{book.judulBuku}</td>
+                      <td>{book.penulisBuku}</td>
+                      <td>{book.jenisBuku}</td>
+                      <td width="10%"><center>
+                          {book.status === 'Tersedia' || book.status ==='tersedia'
+                            ? <p className="btn btn-sm btn-success">{book.status}</p>
+                            : <p className="btn btn-sm btn-danger">Dipinjam</p>
+                          }</center>
+                      </td>
+                      <td width="20%">
+                        <center>  
+                          <Link to={`/buku/detail/${book.id}`}  className="btn btn-sm btn-link mx-1">
+                              Detail
+                          </Link>
+                          <Link to={`/buku/edit/${book.id}`}  className="btn btn-sm btn-link mx-1">
+                              Edit
+                          </Link>
+                          { book.status == 'Tersedia' || book.status == 'tersedia'
+                            ? <a onClick={this.handleDeleteBook(book.id)} className="btn btn-sm btn-link mx-1">Delete</a>
+                            : ''
+                          }
+                        </center>
+                      </td>
+                    </tr>
+                  )}
+                  {data().length == 0 &&
+                    <tr>
+                      <td colspan="5"><center><b>Book data not found</b></center> </td>
+                    </tr>
+                  }
+                </tbody>
               }
                 
           </table>

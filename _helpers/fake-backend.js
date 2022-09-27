@@ -262,20 +262,22 @@ export function configureFakeBackend() {
 
                 // Add Transaction
                 if (url.endsWith('/transaksi/add') && opts.method === 'POST') {
-                    // get new user object from post body
+                    // get new transaction object from post body
                     let newTransaction = JSON.parse(opts.body);
 
-                    // validation
-                    // let duplicateBook = books.filter(book => { return book.judulBuku === newBook.judulBuku; }).length;
-                    // if (duplicateBook) {
-                    //     reject('Judul Buku "' + newBook.judulBuku + '" is already taken');
-                    //     return;
-                    // }
+                    //update status book to Dipinjam
+                    books.forEach((book, i) => {
+                        if(book.judulBuku == newTransaction.judulBuku){
+                            book.status = 'Dipinjam'
+                        }
+                    })
 
-                    // save new book
+                    // save new transaction and data book
                     newTransaction.id = transactions.length ? Math.max(...transactions.map(transaction => transaction.id)) + 1 : 1;
                     transactions.push(newTransaction);
                     localStorage.setItem('transactions', JSON.stringify(transactions));
+
+                    localStorage.setItem('books', JSON.stringify(books));
 
                     // respond 200 OK
                     resolve({ ok: true, text: () => Promise.resolve() });

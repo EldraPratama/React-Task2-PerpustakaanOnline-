@@ -27,12 +27,10 @@ class TransaksiPage extends React.Component {
   componentDidMount() {
     this.props.getTransactions();
   }
-  // componentDidUpdate() {
-  //   this.props.getTransactions();
-  // }
 
-  handlePengembalianTransaction(id) {
-    this.setState({ pengembalian: true });
+  handlePengembalian(id) {
+    // this.setState({ pengembalian: true });
+    console.log(id)
     return (e) => this.props.update(id);
   }
 
@@ -40,8 +38,8 @@ class TransaksiPage extends React.Component {
     const { user, users, transactions } = this.props;
 
     //refresh data transaction
-    if(this.state.pengembalian != false){
-      console.log(this.state.pengembalian)
+    console.log(this.state.pengembalian)
+    if(this.state.pengembalian == true){
       // this.props.getTransactions();
       this.setState({ pengembalian: true });
       console.log(this.state.pengembalian)
@@ -54,6 +52,16 @@ class TransaksiPage extends React.Component {
       filtered = transactions.items.filter(transaction => transaction.judulBuku.toLowerCase().includes(valueSearch));
       console.log(filtered);
     }
+
+    //show data with or without filter
+    const data = () => {
+      if(this.state.search !=''){
+        return filtered;
+      }else{  
+        return transactions.items;
+      }
+    }
+
     return (
       transactions.items
       ?
@@ -62,10 +70,10 @@ class TransaksiPage extends React.Component {
           <div className="row mb-3">
             <div className="col-md-5">
               <form name="form">
-                  <div className={'form-group'}>
-                      <input type="text" className="form-control" name="search" placeholder="Search"
-                      onChange={this.handleChange}/>
-                  </div>
+                <div className={'form-group'}>
+                  <input type="text" className="form-control" name="search" placeholder="Search"
+                  onChange={this.handleChange}/>
+                </div>
               </form>
             </div>
             <div className="col-md-5"></div>
@@ -85,63 +93,32 @@ class TransaksiPage extends React.Component {
               </tr>
             </thead>
 
-            {/* show data */}
+            {/* show data with or without filter  */}
             {transactions.items && 
-              valueSearch !=''
-              //show data with filter search
-              ?
-                <tbody>
-                  {filtered.map((transaction, index) =>
-                    <tr key={transaction.id}>
-                      <td><center>{transaction.judulBuku}</center></td>
-                      <td><center>{transaction.peminjam}</center></td>
-                      <td><center>{transaction.tanggalPinjam}</center></td>
-                      <td><center>{transaction.estimasiPengembalian}</center></td>
-                      <td><center> {transaction.tanggalKembali ? transaction.tanggalKembali : "-"} </center></td>
-                      <td width="20%">
-                        <center>  
-                          { transaction.tanggalKembali == ''
-                            // ? <a onClick={this.handleDeletetransaction(transaction.id)} className="btn btn-sm btn-link mx-1">Delete</a>
-                            ? <a onClick={this.handlePengembalianTransaction(transaction.id)} className="btn btn-sm btn-link      mx-1">Pengembalian</a>
-                            : ''
-                          }
-                        </center>
-                      </td>
-                    </tr>
-                  )}
-                  {filtered.length == 0 &&
-                    <tr>
-                      <td colspan="5"><center><b>Transaction data not available</b></center> </td>
-                    </tr>
-                  }
-                </tbody>
-              //show data without filter search
-              :
-                <tbody>
-                  {transactions.items.map((transaction, index) =>
-                    <tr key={transaction.id}>
-                      <td><center>{transaction.judulBuku}</center></td>
-                      <td><center>{transaction.peminjam}</center></td>
-                      <td><center>{transaction.tanggalPinjam}</center></td>
-                      <td><center>{transaction.estimasiPengembalian}</center></td>
-                      <td><center> {transaction.tanggalKembali ? transaction.tanggalKembali : "-"} </center></td>
-                      <td width="20%">
-                        <center>  
-                          { transaction.tanggalKembali == ''
-                            // ? <a onClick={this.handleDeletetransaction(transaction.id)} className="btn btn-sm btn-link mx-1">Delete</a>
-                            ? <a onClick={this.handlePengembalianTransaction(transaction.id)} className="btn btn-sm btn-link      mx-1">Pengembalian</a>
-                            : ''
-                          }
-                        </center>
-                      </td>
-                    </tr>
-                  )}
-                  {transactions.items.length == 0 &&
-                    <tr>
-                      <td colspan="5"><center><b>Transaction data not available</b></center> </td>
-                    </tr>
-                  }
-                </tbody>
+              <tbody>
+                {data().map((transaction, index) =>
+                  <tr key={transaction.id}>
+                    <td><center>{transaction.judulBuku}</center></td>
+                    <td><center>{transaction.peminjam}</center></td>
+                    <td><center>{transaction.tanggalPinjam}</center></td>
+                    <td><center>{transaction.estimasiPengembalian}</center></td>
+                    <td><center> {transaction.tanggalKembali ? transaction.tanggalKembali : "-"} </center></td>
+                    <td width="20%">
+                      <center>  
+                        { transaction.tanggalKembali == ''
+                          ? <a onClick={this.handlePengembalian(transaction.id)} className="btn btn-sm btn-link      mx-1">Pengembalian</a>
+                          : ''
+                        }
+                      </center>
+                    </td>
+                  </tr>
+                )}
+                {data().length == 0 &&
+                  <tr>
+                    <td colspan="5"><center><b>Transaction data not found</b></center> </td>
+                  </tr>
+                }
+              </tbody>
             }
           </table>
 

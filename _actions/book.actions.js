@@ -103,7 +103,7 @@ function _delete(id) {
             .then(
                 book => { 
                     dispatch(success(id));
-                    dispatch(alertActions.success('Delete book successful'));
+                    dispatch(alertActions.error('Delete book successful'));
                 },
                 error => {
                     dispatch(failure(id, error));
