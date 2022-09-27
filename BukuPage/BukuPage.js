@@ -23,8 +23,6 @@ class BukuPage extends React.Component {
     this.setState({
       search: value
     });
-
-
   }
 
   componentDidMount() {
@@ -85,6 +83,7 @@ class BukuPage extends React.Component {
               </tr>
             </thead>
 
+              {/* show data */}
               {books.items &&
                 valueSearch !='' 
                 ?

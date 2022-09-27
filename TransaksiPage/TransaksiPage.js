@@ -5,6 +5,23 @@ import { connect } from 'react-redux';
 import { transactionActions } from '../_actions';
 
 class TransaksiPage extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      search:'',
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    const { name, value } = event.target;
+    this.setState({
+      search: value
+    });
+  }
+
   componentDidMount() {
     this.props.getTransactions();
   }
@@ -15,9 +32,15 @@ class TransaksiPage extends React.Component {
 
   render() {
     // console.log(this.props)
-    const { user, users, transactions } = this.props;
     // const transaction = this.props.transactions.items;
-    console.log(transactions)
+    const { user, users, transactions } = this.props;
+    // console.log(transactions);
+    let filtered ;
+    let valueSearch = this.state.search.toLowerCase();
+    if(transactions.items){
+      filtered = transactions.items.filter(transaction => transaction.judulBuku.toLowerCase().includes(valueSearch));
+      console.log(filtered);
+    }
     return (
       transactions.items
       ?
@@ -27,7 +50,8 @@ class TransaksiPage extends React.Component {
             <div className="col-md-5">
               <form name="form">
                   <div className={'form-group'}>
-                      <input type="text" className="form-control" name="search" placeholder="Search"/>
+                      <input type="text" className="form-control" name="search" placeholder="Search"
+                      onChange={this.handleChange}/>
                   </div>
               </form>
             </div>
@@ -49,32 +73,60 @@ class TransaksiPage extends React.Component {
             </thead>
 
             {transactions.items && 
+              valueSearch !=''
+              ?
+                <tbody>
+                  {filtered.map((transaction, index) =>
+                    <tr key={transaction.id}>
+                      <td><center>{transaction.judulBuku}</center></td>
+                      <td><center>{transaction.peminjam}</center></td>
+                      <td><center>{transaction.tanggalPinjam}</center></td>
+                      <td><center>{transaction.estimasiPengembalian}</center></td>
+                      <td><center> {transaction.tanggalKembali ? transaction.tanggalKembali : "-"} </center></td>
+                      <td width="20%">
+                        <center>  
+                          { transaction.tanggalKembali == ''
+                            // ? <a onClick={this.handleDeletetransaction(transaction.id)} className="btn btn-sm btn-link mx-1">Delete</a>
+                            ? <a onClick={this.handlePengembalianTransaction(transaction.id)} className="btn btn-sm btn-link      mx-1">Pengembalian</a>
+                            : ''
+                          }
+                        </center>
+                      </td>
+                    </tr>
+                  )}
+                  {filtered.length == 0 &&
+                    <tr>
+                      <td colspan="5"><center><b>Book data not available</b></center> </td>
+                    </tr>
+                  }
+                </tbody>
               //show data without filter search
-              <tbody>
-                {transactions.items.map((transaction, index) =>
-                  <tr key={transaction.id}>
-                    <td><center>{transaction.judulBuku}</center></td>
-                    <td><center>{transaction.peminjam}</center></td>
-                    <td><center>{transaction.tanggalPinjam}</center></td>
-                    <td><center>{transaction.estimasiPengembalian}</center></td>
-                    <td><center> {transaction.tanggalKembali ? transaction.tanggalKembali : "-"} </center></td>
-                    <td width="20%">
-                      <center>  
-                        { transaction.tanggalKembali == ''
-                          // ? <a onClick={this.handleDeletetransaction(transaction.id)} className="btn btn-sm btn-link mx-1">Delete</a>
-                          ? <a onClick={this.handlePengembalianTransaction(transaction.id)} className="btn btn-sm btn-link      mx-1">Pengembalian</a>
-                          : ''
-                        }
-                      </center>
-                    </td>
-                  </tr>
-                )}
-                {transactions.items.length == 0 &&
-                  <tr>
-                    <td colspan="5"><center><b>Book data not available</b></center> </td>
-                  </tr>
-                }
-              </tbody>
+              :
+                <tbody>
+                  {transactions.items.map((transaction, index) =>
+                    <tr key={transaction.id}>
+                      <td><center>{transaction.judulBuku}</center></td>
+                      <td><center>{transaction.peminjam}</center></td>
+                      <td><center>{transaction.tanggalPinjam}</center></td>
+                      <td><center>{transaction.estimasiPengembalian}</center></td>
+                      <td><center> {transaction.tanggalKembali ? transaction.tanggalKembali : "-"} </center></td>
+                      <td width="20%">
+                        <center>  
+                          { transaction.tanggalKembali == ''
+                            // ? <a onClick={this.handleDeletetransaction(transaction.id)} className="btn btn-sm btn-link mx-1">Delete</a>
+                            ? <a onClick={this.handlePengembalianTransaction(transaction.id)} className="btn btn-sm btn-link      mx-1">Pengembalian</a>
+                            : ''
+                          }
+                        </center>
+                      </td>
+                    </tr>
+                  )}
+                  {transactions.items.length == 0 &&
+                    <tr>
+                      <td colspan="5"><center><b>Book data not available</b></center> </td>
+                    </tr>
+                  }
+                </tbody>
             }
           </table>
 
