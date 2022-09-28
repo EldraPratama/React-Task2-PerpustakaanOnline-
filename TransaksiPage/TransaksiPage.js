@@ -30,9 +30,9 @@ class TransaksiPage extends React.Component {
 
   handlePengembalian(id) {
     // this.setState({ pengembalian: true });
-    console.log(id);
+    // console.log(id);
     // event.preventDefault();
-    console.log('tedt');
+    // console.log('tedt');
     return (e) => this.props.update(id);
      
 
@@ -112,7 +112,7 @@ class TransaksiPage extends React.Component {
                     <td width="20%">
                         
                         { transaction.tanggalKembali == ''
-                          ? <a onClick={this.handlePengembalian(transaction.id)} className="btn btn-sm btn-link      mx-1">Pengembalian</a>
+                          ? <a onClick={()=>this.handlePengembalian(transaction.id)} className="btn btn-sm btn-link      mx-1">Pengembalian</a>
                           : ''
                         }
                       
