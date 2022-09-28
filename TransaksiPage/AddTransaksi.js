@@ -82,7 +82,7 @@ class AddTransaksi extends React.Component {
                             </div>
                             <div className="col-md-1 "> <b>:</b>  </div>
                             <div className="col-md-4">
-                                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="judulBuku" onChange={this.handleChange}>
+                                <select class="form-select form-select mb-3" aria-label=".form-select-lg example" name="judulBuku" onChange={this.handleChange}>
 
                                     {/* show judul buku where status "Tersedia" */}
                                     <option value="" selected>Pilih Jenis buku</option>

@@ -130,7 +130,15 @@ class TransaksiPage extends React.Component {
 
         </div>
       :
-        <div></div>
+        //show spinner 
+        <div class="m-5">
+          <div class="text-center">
+            <div class="spinner-grow text-primary mx-4" role="status"></div>
+            <div class="spinner-grow text-success mx-4" role="status"></div>
+            <div class="spinner-grow text-danger mx-4" role="status"></div>
+            <div class="spinner-grow text-warning mx-4" role="status"></div>
+          </div>
+        </div>
     );
   }
 }

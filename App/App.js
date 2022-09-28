@@ -37,7 +37,7 @@ class App extends React.Component {
     }
     return (
       <>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
           <div class="container-fluid">
             <a class="navbar-brand " href="#">
               Perpustakaan Online
