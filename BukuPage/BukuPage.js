@@ -145,10 +145,10 @@ class BukuPage extends React.Component {
                           }
                       </td>
                       <td width="20%">
-                          <Link to={`/buku/detail/${book.id}`}  className="btn btn-sm btn-link mx-1">
+                          <Link to={`/buku/detail/${book.id}`}  className="btn btn-sm btn-link">
                               Detail
                           </Link>
-                          <Link to={`/buku/edit/${book.id}`}  className="btn btn-sm btn-link mx-1">
+                          <Link to={`/buku/edit/${book.id}`}  className="btn btn-sm btn-link">
                               Edit
                           </Link>
                           { book.status == 'Tersedia' || book.status == 'tersedia'
