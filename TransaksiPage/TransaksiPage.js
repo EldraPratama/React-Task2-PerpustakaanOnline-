@@ -30,20 +30,16 @@ class TransaksiPage extends React.Component {
 
   handlePengembalian(id) {
     // this.setState({ pengembalian: true });
-    // console.log(id);
-    // event.preventDefault();
-    // console.log('tedt');
-    return (e) => this.props.update(id);
+    console.log(id);
+    // return (e) => this.props.update(id);
      
-
-    
   }
 
   render() {
     const { user, users, transactions } = this.props;
 
     //refresh data transaction
-    console.log(this.state.pengembalian)
+    // console.log(this.state.pengembalian)
     if(this.state.pengembalian == true){
       // this.props.getTransactions();
       this.setState({ pengembalian: true });
