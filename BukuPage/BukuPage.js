@@ -86,11 +86,11 @@ class BukuPage extends React.Component {
           <table class="table table-bordered ">
             <thead class="table-primary">
               <tr>
-                <th scope="col"><center> Judul Buku </center></th>
-                <th scope="col"><center> Penulis </center></th>
-                <th scope="col"><center> Jenis Buku </center></th>
-                <th scope="col"><center> Status </center></th>
-                <th scope="col"><center> Actions </center></th>
+                <th scope="col"> Judul Buku </th>
+                <th scope="col"> Penulis </th>
+                <th scope="col"> Jenis Buku </th>
+                <th scope="col"> Status </th>
+                <th scope="col"> Actions </th>
               </tr>
             </thead>
 
@@ -102,14 +102,14 @@ class BukuPage extends React.Component {
                       <td width="40%">{book.judulBuku}</td>
                       <td>{book.penulisBuku}</td>
                       <td>{book.jenisBuku}</td>
-                      <td width="10%"><center>
+                      <td width="10%">
                           {book.status === 'Tersedia' || book.status ==='tersedia'
                             ? <p className="btn btn-sm btn-success">{book.status}</p>
                             : <p className="btn btn-sm btn-danger">Dipinjam</p>
-                          }</center>
+                          }
                       </td>
                       <td width="20%">
-                        <center>  
+                          
                           <Link to={`/buku/detail/${book.id}`}  className="btn btn-sm btn-link mx-1">
                               Detail
                           </Link>
@@ -120,13 +120,13 @@ class BukuPage extends React.Component {
                             ? <a onClick={this.handleDeleteBook(book.id)} className="btn btn-sm btn-link mx-1">Delete</a>
                             : ''
                           }
-                        </center>
+                        
                       </td>
                     </tr>
                   )}
                   {data().length == 0 &&
                     <tr>
-                      <td colspan="5"><center><b>Book data not found</b></center> </td>
+                      <td colspan="5"><b>Book data not found</b> </td>
                     </tr>
                   }
                 </tbody>

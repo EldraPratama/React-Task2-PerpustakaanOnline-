@@ -43,6 +43,7 @@ function update(transaction) {
                 transaction => { 
                     dispatch(success());
                     history.push('/transaksi');
+                    history.push('/transaksi');
                     dispatch(alertActions.success('update transaction successful'));
                 },
                 error => {

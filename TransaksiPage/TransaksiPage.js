@@ -30,8 +30,13 @@ class TransaksiPage extends React.Component {
 
   handlePengembalian(id) {
     // this.setState({ pengembalian: true });
-    console.log(id)
+    console.log(id);
+    // event.preventDefault();
+    console.log('tedt');
     return (e) => this.props.update(id);
+     
+
+    
   }
 
   render() {
@@ -49,8 +54,9 @@ class TransaksiPage extends React.Component {
     let filtered ;
     let valueSearch = this.state.search.toLowerCase();
     if(transactions.items){
-      filtered = transactions.items.filter(transaction => transaction.judulBuku.toLowerCase().includes(valueSearch));
-      console.log(filtered);
+      filtered = transactions.items.filter(transaction => transaction.judulBuku.toLowerCase().includes(valueSearch)
+      || transaction.peminjam.toLowerCase().includes(valueSearch));
+      // console.log(filtered);
     }
 
     //show data with or without filter
@@ -84,12 +90,12 @@ class TransaksiPage extends React.Component {
           <table class="table table-bordered ">
             <thead class="table-primary">
               <tr>
-                <th scope="col"><center>Judul Buku </center></th>
-                <th scope="col"><center>Nama Peminjam </center></th>
-                <th scope="col"><center>Tanggal Pinjam </center></th>
-                <th scope="col"><center>Estimasi Pengembalian </center></th>
-                <th scope="col"><center>Tanggal Kembali </center></th>
-                <th scope="col"><center> Actions </center></th>
+                <th scope="col">Judul Buku </th>
+                <th scope="col">Nama Peminjam </th>
+                <th scope="col">Tanggal Pinjam </th>
+                <th scope="col">Estimasi Pengembalian </th>
+                <th scope="col">Tanggal Kembali </th>
+                <th scope="col"> Actions </th>
               </tr>
             </thead>
 
@@ -98,24 +104,24 @@ class TransaksiPage extends React.Component {
               <tbody>
                 {data().map((transaction, index) =>
                   <tr key={transaction.id}>
-                    <td><center>{transaction.judulBuku}</center></td>
-                    <td><center>{transaction.peminjam}</center></td>
-                    <td><center>{transaction.tanggalPinjam}</center></td>
-                    <td><center>{transaction.estimasiPengembalian}</center></td>
-                    <td><center> {transaction.tanggalKembali ? transaction.tanggalKembali : "-"} </center></td>
+                    <td>{transaction.judulBuku}</td>
+                    <td>{transaction.peminjam}</td>
+                    <td>{transaction.tanggalPinjam}</td>
+                    <td>{transaction.estimasiPengembalian}</td>
+                    <td> {transaction.tanggalKembali ? transaction.tanggalKembali : "-"} </td>
                     <td width="20%">
-                      <center>  
+                        
                         { transaction.tanggalKembali == ''
                           ? <a onClick={this.handlePengembalian(transaction.id)} className="btn btn-sm btn-link      mx-1">Pengembalian</a>
                           : ''
                         }
-                      </center>
+                      
                     </td>
                   </tr>
                 )}
                 {data().length == 0 &&
                   <tr>
-                    <td colspan="5"><center><b>Transaction data not found</b></center> </td>
+                    <td colspan="5"><b>Transaction data not found</b> </td>
                   </tr>
                 }
               </tbody>
