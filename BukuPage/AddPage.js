@@ -21,8 +21,11 @@ class AddPage extends React.Component {
                 rakBuku:'',
                 status:'Tersedia'
             },
-            submitted: false
+            submitted: false,
+            JenisBuku:['Novel','Komik','Ensiklopedi','Dongeng','Biografi','Panduan','Majalah','Cerita Bergambar','Kamus']
         };
+
+
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -121,11 +124,13 @@ class AddPage extends React.Component {
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="jenisBuku" onChange={this.handleChange}>
+                            <select class="form-select form-select mb-3" aria-label=".form-select-lg example" name="jenisBuku" onChange={this.handleChange}>
                                 <option selected>Pilih Jenis buku</option>
-                                <option value="Novel">Novel</option>
-                                <option value="Sejarah">Sejarah</option>
-                                <option value="Ensiklopedia">Ensiklopedia</option>
+                                {/* show data jenis buku */}
+                                {this.state.JenisBuku.map((data)=>
+                                    <option value={data}>{data}</option>
+                                )}
+
                             </select>
 
                             {submitted && !book.jenisBuku &&
@@ -187,7 +192,7 @@ class AddPage extends React.Component {
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="rakBuku" onChange={this.handleChange}>
+                            <select className="form-select form-select mb-3" aria-label=".form-select-lg example" name="rakBuku" onChange={this.handleChange}>
                                 <option selected>Pilih Rak buku</option>
                                 <option value="A">A</option>
                                 <option value="B">B</option>

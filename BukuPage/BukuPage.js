@@ -84,8 +84,8 @@ class BukuPage extends React.Component {
               Buku dengan judul <b>{judul}</b> akan dihapus
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-warning" data-bs-dismiss="modal">Close</button>
-              <button onClick={this.handleDeleteBook(id)} type="button" className="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+              <button onClick={this.handleDeleteBook(id)} type="button" className="btn btn-danger" data-bs-dismiss="modal">Iya</button>
+              <button type="button" className="btn btn-warning" data-bs-dismiss="modal">Tidak</button>
             </div>
           </div>
         </div>

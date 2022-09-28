@@ -152,7 +152,7 @@ class EditPage extends React.Component {
                             </div>
                             <div className="col-md-1 "> <b>:</b>  </div>
                             <div className="col-md-4">
-                                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="jenisBuku" value={state.jenisBuku} onChange={this.handleChange}>
+                                <select class="form-select form-select mb-3" aria-label=".form-select-lg example" name="jenisBuku" value={state.jenisBuku} onChange={this.handleChange}>
                                     
                                     <option selected>Pilih jenis buku</option>
                                     <option value="Novel">Novel</option>
@@ -220,7 +220,7 @@ class EditPage extends React.Component {
                             </div>
                             <div className="col-md-1 "> <b>:</b>  </div>
                             <div className="col-md-4">
-                                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="rakBuku" value={state.rakBuku} onChange={this.handleChange}>
+                                <select class="form-select form-select mb-3" aria-label=".form-select-lg example" name="rakBuku" value={state.rakBuku} onChange={this.handleChange}>
                                     <option selected>Pilih Rak buku</option>
                                     <option value="A">A</option>
                                     <option value="B">B</option>
