@@ -159,7 +159,6 @@ export function configureFakeBackend() {
                             return book.judulBuku === newBook.judulBuku; 
                         }
                     }).length;
-
                     if (duplicateBook) {
                         reject('Judul Buku "' + newBook.judulBuku + '" is already taken');
                         return;
