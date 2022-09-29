@@ -29,26 +29,18 @@ class TransaksiPage extends React.Component {
   }
 
   handlePengembalian(id) {
-    console.log(this.state.pengembalian);
     this.setState({ pengembalian: true });
-    // console.log(id);
-    console.log(this.state.pengembalian);
-    console.log(this.state.pengembalian);
-    this.setState({ pengembalian: false });
+    // console.log('onclick');
+    console.log(id);
+    // console.log(this.state.pengembalian);
     // return (e) => this.props.update(id);
+    this.props.update(id);
      
   }
 
   render() {
     const { user, users, transactions } = this.props;
 
-    //refresh data transaction
-    // console.log(this.state.pengembalian)
-    if(this.state.pengembalian == true){
-      // this.props.getTransactions();
-      this.setState({ pengembalian: true });
-      console.log(this.state.pengembalian)
-    }
 
     //filter data transaction
     let filtered ;
@@ -56,7 +48,6 @@ class TransaksiPage extends React.Component {
     if(transactions.items){
       filtered = transactions.items.filter(transaction => transaction.judulBuku.toLowerCase().includes(valueSearch)
       || transaction.peminjam.toLowerCase().includes(valueSearch));
-      // console.log(filtered);
     }
 
     //show data with or without filter
@@ -66,6 +57,14 @@ class TransaksiPage extends React.Component {
       }else{  
         return transactions.items;
       }
+    }
+
+    //refresh data transaction
+    if(this.state.pengembalian == true){
+      this.setState({ pengembalian: false });
+      console.log('render')
+      console.log(this.state.pengembalian)
+      this.props.getTransactions();
     }
 
     return (

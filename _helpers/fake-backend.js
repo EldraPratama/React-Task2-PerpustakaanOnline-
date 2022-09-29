@@ -308,12 +308,7 @@ export function configureFakeBackend() {
                         }
                     })
 
-                    console.log('berhasil ke backend');
-                    console.log(tanggalKembali)
-                    console.log(judulBuku)
-                    // console.log(id);
-                    // console.log(tanggalKembali);
-
+                    //update data on localstorage
                     localStorage.setItem('books', JSON.stringify(books));
                     localStorage.setItem('transactions', JSON.stringify(transactions));
 

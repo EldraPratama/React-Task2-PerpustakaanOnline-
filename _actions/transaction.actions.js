@@ -37,12 +37,12 @@ function add(transaction) {
 function update(transaction) {
     return dispatch => {
         dispatch(request(transaction));
+        console.log('action' + transaction)
 
         transactionService.update(transaction)
             .then(
                 transaction => { 
-                    dispatch(success());
-                    history.push('/transaksi');
+                    dispatch(success(transaction));
                     history.push('/transaksi');
                     dispatch(alertActions.success('update transaction successful'));
                 },
