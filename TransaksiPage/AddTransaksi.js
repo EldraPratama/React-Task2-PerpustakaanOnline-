@@ -11,6 +11,7 @@ class AddTransaksi extends React.Component {
 
         this.state = {
             book: {              
+                idBuku:'',
                 judulBuku:'',
                 penulisBuku:'',
                 rakBuku:'',
@@ -48,25 +49,37 @@ class AddTransaksi extends React.Component {
 
         this.setState({ submitted: true });
         const { book } = this.state;
-        // console.log(book);
+        console.log(book);
       
         // validate all input not empty 
-        if (book.judulBuku !== '' && book.peminjam !== '' && book.umurPeminjam !== '' && book.tanggalPinjam !== ''  && book.estimasiPengembalian !== '' ) {
-            this.props.add(book);
-        } 
+        // if (book.judulBuku !== '' && book.peminjam !== '' && book.umurPeminjam !== '' && book.tanggalPinjam !== ''  && book.estimasiPengembalian !== '' ) {
+        //     this.props.add(book);
+        // } 
     }
 
     render() {
         const { adding , books } = this.props;
         const { book, submitted } = this.state;
         // console.log(books);
-        // console.log(book);
-        
+        console.log(book);
         let selected ;
         let judulBuku = this.state.book.judulBuku ;
         
+        //get data book when user select judul buku
         if(books.items && judulBuku !=''){
           selected = books.items.filter(book => book.judulBuku.includes( judulBuku ));
+
+          //automatic set state idbook
+          if(selected[0].id){
+            if(!this.state.book.idBuku){
+                this.setState({
+                    book: {
+                        ...book,
+                        idBuku: selected[0].id
+                    }
+                }); 
+            } 
+          }
         }
         return (
             
@@ -107,7 +120,7 @@ class AddTransaksi extends React.Component {
                             <div className="col-md-1 "> <b>:</b>  </div>
                             <div className="col-md-4">
                                 <label> {selected ? selected[0].penulisBuku : "-" } </label>
-                            </div>  
+                            </div>
                         </div>
 
                         <div className={"row form-group" + (submitted && !book.rakBuku ? ' has-error' : '')}>
@@ -174,8 +187,6 @@ class AddTransaksi extends React.Component {
                             </div>  
                         </div>
 
-
-
                         <div className="form-group">
                             <button className="btn btn-primary">Simpan</button>
                             <Link to="/transaksi" className="btn btn-primary mx-3">Kembali</Link>
@@ -183,7 +194,15 @@ class AddTransaksi extends React.Component {
                     </form>
                 </div>
             :
-                <div></div>
+                //show spinner 
+                <div class="m-5">
+                    <div class="text-center">
+                        <div class="spinner-grow text-primary mx-4" role="status"></div>
+                        <div class="spinner-grow text-success mx-4" role="status"></div>
+                        <div class="spinner-grow text-danger mx-4" role="status"></div>
+                        <div class="spinner-grow text-warning mx-4" role="status"></div>
+                    </div>
+                </div>
         );
     }
 }
