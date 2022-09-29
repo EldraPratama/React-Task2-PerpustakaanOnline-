@@ -70,7 +70,7 @@ class AddPage extends React.Component {
                         <div className="col-md-4">
                             <input type="text" className="form-control" name="judulBuku" placeholder="Masukkan judul buku" value={book.judulBuku} onChange={this.handleChange} />
                             {submitted && !book.judulBuku &&
-                            <div className="help-block">Judul Buku is required</div>
+                            <div className="text-danger">Judul Buku is required</div>
                             }
                         </div>  
                     </div>
@@ -83,7 +83,7 @@ class AddPage extends React.Component {
                         <div className="col-md-4">
                             <input type="text" className="form-control" name="penulisBuku" placeholder="Masukkan Nama Penulis" value={book.penulisBuku} onChange={this.handleChange} />
                             {submitted && !book.penulisBuku &&
-                            <div className="help-block">Penulis is required</div>
+                            <div className="text-danger">Penulis is required</div>
                             }
                         </div>  
                     </div>
@@ -96,7 +96,7 @@ class AddPage extends React.Component {
                         <div className="col-md-4">
                             <input type="number" className="form-control" name="tahunTerbit" placeholder="Masukkan Tahun Terbit" value={book.tahunTerbit} onChange={this.handleChange} min={1900} max={new Date().getFullYear()}/>
                             {submitted && !book.tahunTerbit &&
-                            <div className="help-block">Tahun Terbit is required</div>
+                            <div className="text-danger">Tahun Terbit is required</div>
                             }
                         </div>  
                     </div>
@@ -109,7 +109,7 @@ class AddPage extends React.Component {
                         <div className="col-md-4">
                             <input type="text" className="form-control" name="penerbit" placeholder="Masukkan Nama Penerbit" value={book.penerbit} onChange={this.handleChange} />
                             {submitted && !book.penerbit &&
-                            <div className="help-block">Penerbit is required</div>
+                            <div className="text-danger">Penerbit is required</div>
                             }
                         </div>  
                     </div>
@@ -130,7 +130,7 @@ class AddPage extends React.Component {
                             </select>
 
                             {submitted && !book.jenisBuku &&
-                            <div className="help-block">Jenis buku is required</div>
+                            <div className="text-danger">Jenis buku is required</div>
                             }
                         </div>  
                     </div>
@@ -143,7 +143,7 @@ class AddPage extends React.Component {
                         <div className="col-md-4">
                             <input type="date" className="form-control" name="tanggalInput"  value={book.tanggalInput ? book.tanggalInput : ''} onChange={this.handleChange} max={new Date().toISOString().slice(0, -14)} />
                             {submitted && !book.tanggalInput &&
-                            <div className="help-block">Tanggal Input is required</div>
+                            <div className="text-danger">Tanggal Input is required</div>
                             }
                         </div>  
                     </div>
@@ -156,7 +156,7 @@ class AddPage extends React.Component {
                         <div className="col-md-4">
                             <input type="text" className="form-control" name="sumberBuku" placeholder="Masukkan Sumber Buku" value={book.sumberBuku} onChange={this.handleChange} />
                             {submitted && !book.sumberBuku &&
-                            <div className="help-block">Sumber Buku is required</div>
+                            <div className="text-danger">Sumber Buku is required</div>
                             }
                         </div>  
                     </div>
@@ -177,7 +177,7 @@ class AddPage extends React.Component {
                             </div>
 
                             {submitted && !book.jenisBuku &&
-                            <div className="help-block">Buku Lama is required</div>
+                            <div className="text-danger">Buku Lama is required</div>
                             }
                         </div>  
                     </div>
@@ -196,7 +196,7 @@ class AddPage extends React.Component {
                             </select>
 
                             {submitted && !book.rakBuku &&
-                            <div className="help-block">Rak buku is required</div>
+                            <div className="text-danger">Rak buku is required</div>
                             }
                         </div>  
                     </div>

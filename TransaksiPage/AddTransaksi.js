@@ -104,7 +104,7 @@ class AddTransaksi extends React.Component {
                                 </select>
 
                                 {submitted && !book.judulBuku &&
-                                <div className="help-block">Jenis buku is required</div>
+                                <div className="text-danger">Jenis buku is required</div>
                                 }
                             </div>  
                         </div>
@@ -139,7 +139,7 @@ class AddTransaksi extends React.Component {
                             <div className="col-md-4">
                                 <input type="text" className="form-control" name="peminjam" placeholder="Masukkan Nama peminjam" value={book.peminjam} onChange={this.handleChange} />
                                 {submitted && !book.peminjam &&
-                                <div className="help-block">Peminjam is required</div>
+                                <div className="text-danger">Peminjam is required</div>
                                 }
                             </div>  
                         </div>
@@ -152,7 +152,7 @@ class AddTransaksi extends React.Component {
                             <div className="col-md-4">
                                 <input type="number" className="form-control" name="umurPeminjam" placeholder="Masukkan umur peminjam" value={book.umurPeminjam} onChange={this.handleChange} min={8} max={70}/>
                                 {submitted && !book.umurPeminjam &&
-                                <div className="help-block">Umur peminjam is required</div>
+                                <div className="text-danger">Umur peminjam is required</div>
                                 }
                             </div>  
                         </div>
@@ -165,7 +165,7 @@ class AddTransaksi extends React.Component {
                             <div className="col-md-4">
                                 <input type="date" className="form-control" name="tanggalPinjam"  value={book.tanggalPinjam ? book.tanggalPinjam : '' } onChange={this.handleChange} max={new Date().toISOString().slice(0, -14)} />
                                 {submitted && !book.tanggalPinjam &&
-                                <div className="help-block">Tanggal Pinjam is required</div>
+                                <div className="text-danger">Tanggal Pinjam is required</div>
                                 }
                             </div>  
                         </div>
@@ -178,7 +178,7 @@ class AddTransaksi extends React.Component {
                             <div className="col-md-4">
                                 <input type="date" className="form-control" name="estimasiPengembalian"  value={book.estimasiPengembalian ? book.estimasiPengembalian : '' } onChange={this.handleChange} min={new Date( new Date().getTime() + 86400000 ).toISOString().slice(0, -14)} />
                                 {submitted && !book.estimasiPengembalian &&
-                                <div className="help-block">Estimasi Pengembalian is required</div>
+                                <div className="text-danger">Estimasi Pengembalian is required</div>
                                 }
                             </div>  
                         </div>
