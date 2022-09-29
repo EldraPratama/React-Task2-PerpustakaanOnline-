@@ -28,19 +28,15 @@ class TransaksiPage extends React.Component {
     this.props.getTransactions();
   }
 
+  //when pengembalian onclick  
   handlePengembalian(id) {
     this.setState({ pengembalian: true });
-    // console.log('onclick');
-    console.log(id);
-    // console.log(this.state.pengembalian);
-    // return (e) => this.props.update(id);
     this.props.update(id);
      
   }
 
   render() {
     const { user, users, transactions } = this.props;
-
 
     //filter data transaction
     let filtered ;
@@ -59,11 +55,9 @@ class TransaksiPage extends React.Component {
       }
     }
 
-    //refresh data transaction
+    //refresh data transaction and set state pengembalian
     if(this.state.pengembalian == true){
       this.setState({ pengembalian: false });
-      console.log('render')
-      console.log(this.state.pengembalian)
       this.props.getTransactions();
     }
 

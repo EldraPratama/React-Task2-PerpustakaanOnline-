@@ -47,8 +47,6 @@ class AddPage extends React.Component {
 
         this.setState({ submitted: true });
         const { book } = this.state;
-
-        console.log(event);
       
         // validate all input not empty 
         if (book.judulBuku !== '' && book.penulisBuku !== '' && book.tahunTerbit !== '' && book.penerbit !== '' && book.jenisBuku !== '' && book.tanggalInput !== '' && book.sumberBuku !== '' && book.bukuLama !== '' && book.rakBuku !== ''  ) {
@@ -58,8 +56,6 @@ class AddPage extends React.Component {
 
     render() {
         const { adding  } = this.props;
-        console.log(this.props);
-        console.log();
         const { book, submitted } = this.state;
         return (
             <div className="col-md-12">
@@ -216,7 +212,6 @@ class AddPage extends React.Component {
 }
 
 function mapState(state) {
-    // console.log(state);
     const { adding } = state.registration;
     return { adding };
 }

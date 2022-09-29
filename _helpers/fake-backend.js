@@ -186,6 +186,11 @@ export function configureFakeBackend() {
                                 
                 // get books
                 if (url.endsWith('/buku') && opts.method === 'GET') {
+                    //sort book based on id
+                    books.sort((a,b)=>{
+                        return b.id - a.id
+                    });
+
                     // check for fake auth token in header and return users if valid, this security is implemented server side in a real application
                     if (opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
                         resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(books))});
@@ -249,6 +254,11 @@ export function configureFakeBackend() {
 
                 // get Transactions
                 if (url.endsWith('/transaksi') && opts.method === 'GET') {
+                    //sort transaction based on id
+                    transactions.sort((a,b)=>{
+                        return b.id - a.id
+                    });
+
                     // check for fake auth token in header and return users if valid, this security is implemented server side in a real application
                     if (opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
                         resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(transactions))});

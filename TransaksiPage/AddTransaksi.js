@@ -59,8 +59,8 @@ class AddTransaksi extends React.Component {
     render() {
         const { adding , books } = this.props;
         const { book, submitted } = this.state;
-        console.log(books);
-        console.log(book);
+        // console.log(books);
+        // console.log(book);
         
         let selected ;
         let judulBuku = this.state.book.judulBuku ;
