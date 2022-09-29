@@ -148,13 +148,10 @@ export function configureFakeBackend() {
                 if (url.match(/\/buku\/\d+$/) && opts.method === 'PUT') {
                     // get new value book from post body
                     let newBook = JSON.parse(opts.body);
-                    console.log('berhasil ke backend');
-                    console.log(newBook);
 
                     // get id book
                     let urlParts = url.split('/');
                     let id = parseInt(urlParts[urlParts.length - 1]);
-                    console.log(id);
 
                     // validation duplicate book
                     let duplicateBook = books.filter(book => { 
@@ -163,7 +160,6 @@ export function configureFakeBackend() {
                         }
                     }).length;
 
-                    console.log(duplicateBook);
                     if (duplicateBook) {
                         reject('Judul Buku "' + newBook.judulBuku + '" is already taken');
                         return;

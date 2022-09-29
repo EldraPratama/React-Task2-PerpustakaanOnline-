@@ -39,9 +39,14 @@ class App extends React.Component {
       <>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
           <div class="container-fluid">
-            <a class="navbar-brand " href="#">
+            {/* <a class="navbar-brand " href="#">
               Perpustakaan Online
-            </a>
+            </a> */}
+            <Router history={history}>
+              <Link to="/" class="navbar-brand">
+                Perpustakaan Online
+              </Link>
+            </Router>
             <button
               class="navbar-toggler"
               type="button"
