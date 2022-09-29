@@ -150,17 +150,24 @@ export function configureFakeBackend() {
                     let newBook = JSON.parse(opts.body);
                     console.log('berhasil ke backend');
                     console.log(newBook);
-                    // get id 
+
+                    // get id book
                     let urlParts = url.split('/');
                     let id = parseInt(urlParts[urlParts.length - 1]);
                     console.log(id);
 
-                    // validation
-                    // let duplicateBook = books.filter(book => { return book.judulBuku === newBook.judulBuku; }).length;
-                    // if (duplicateBook) {
-                    //     reject('Judul Buku "' + newBook.judulBuku + '" is already taken');
-                    //     return;
-                    // };
+                    // validation duplicate book
+                    let duplicateBook = books.filter(book => { 
+                        if(book.id != id){
+                            return book.judulBuku === newBook.judulBuku; 
+                        }
+                    }).length;
+
+                    console.log(duplicateBook);
+                    if (duplicateBook) {
+                        reject('Judul Buku "' + newBook.judulBuku + '" is already taken');
+                        return;
+                    };
 
                     // update book
                     books.forEach((book,i) => {

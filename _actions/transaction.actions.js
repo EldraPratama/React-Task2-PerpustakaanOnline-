@@ -34,15 +34,15 @@ function add(transaction) {
     function failure(error) { return { type: transactionConstants.ADD_FAILURE, error } }
 }
 
-function update(transaction) {
+function update(id) {
     return dispatch => {
-        dispatch(request(transaction));
-        console.log('action' + transaction)
+        dispatch(request(id));
+        console.log('action' + id)
 
-        transactionService.update(transaction)
+        transactionService.update(id)
             .then(
-                transaction => { 
-                    dispatch(success(transaction));
+                id => { 
+                    dispatch(success(id));
                     history.push('/transaksi');
                     dispatch(alertActions.success('update transaction successful'));
                 },
@@ -53,8 +53,8 @@ function update(transaction) {
             );
     };
 
-    function request(transaction) { return { type: transactionConstants.UPDATE_REQUEST, transaction } }
-    function success(transaction) { return { type: transactionConstants.UPDATE_SUCCESS, transaction } }
+    function request(id) { return { type: transactionConstants.UPDATE_REQUEST, id } }
+    function success(id) { return { type: transactionConstants.UPDATE_SUCCESS, id } }
     function failure(error) { return { type: transactionConstants.UPDATE_FAILURE, error } }
 }
 
