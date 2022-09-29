@@ -179,6 +179,15 @@ export function configureFakeBackend() {
                             book.rakBuku = newBook.rakBuku;
                         }
                     });
+
+                    // update transaction 
+                    transactions.forEach((transaction, i) => {
+                        if(transaction.idBuku == id){
+                            transaction.judulBuku = newBook.judulBuku
+                        }
+                    })
+
+
                     localStorage.setItem('books', JSON.stringify(books));
 
                     // respond 200 OK

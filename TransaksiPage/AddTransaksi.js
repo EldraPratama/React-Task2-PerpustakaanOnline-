@@ -13,8 +13,6 @@ class AddTransaksi extends React.Component {
             book: {              
                 idBuku:'',
                 judulBuku:'',
-                penulisBuku:'',
-                rakBuku:'',
                 peminjam:'',
                 umurPeminjam:'',
                 tanggalPinjam:'',
@@ -49,19 +47,19 @@ class AddTransaksi extends React.Component {
 
         this.setState({ submitted: true });
         const { book } = this.state;
-        console.log(book);
+        // console.log(book);
       
         // validate all input not empty 
-        // if (book.judulBuku !== '' && book.peminjam !== '' && book.umurPeminjam !== '' && book.tanggalPinjam !== ''  && book.estimasiPengembalian !== '' ) {
-        //     this.props.add(book);
-        // } 
+        if (book.judulBuku !== '' && book.peminjam !== '' && book.umurPeminjam !== '' && book.tanggalPinjam !== ''  && book.estimasiPengembalian !== '' ) {
+            this.props.add(book);
+        } 
     }
 
     render() {
         const { adding , books } = this.props;
         const { book, submitted } = this.state;
         // console.log(books);
-        console.log(book);
+        // console.log(book);
         let selected ;
         let judulBuku = this.state.book.judulBuku ;
         
@@ -69,9 +67,8 @@ class AddTransaksi extends React.Component {
         if(books.items && judulBuku !=''){
           selected = books.items.filter(book => book.judulBuku.includes( judulBuku ));
 
-          //automatic set state idbook
-          if(selected[0].id){
-            if(!this.state.book.idBuku){
+          //automatic set state idbook when user select judul buku
+            if(selected[0].id && !this.state.book.idBuku){
                 this.setState({
                     book: {
                         ...book,
@@ -79,7 +76,6 @@ class AddTransaksi extends React.Component {
                     }
                 }); 
             } 
-          }
         }
         return (
             
