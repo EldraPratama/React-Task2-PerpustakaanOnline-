@@ -22,6 +22,7 @@ class AddPage extends React.Component {
                 status:'Tersedia'
             },
             submitted: false,
+            RakBuku:['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'],
             JenisBuku:['Novel','Komik','Ensiklopedi','Dongeng','Biografi','Panduan','Majalah','Cerita Bergambar','Kamus']
         };
 
@@ -188,9 +189,9 @@ class AddPage extends React.Component {
                         <div className="col-md-4">
                             <select className={"form-select" + (submitted && !book.rakBuku ? ' is-invalid' : '')} aria-label=".form-select-lg example" name="rakBuku" onChange={this.handleChange}>
                                 <option selected>Pilih Rak buku</option>
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="C">C</option>
+                                {this.state.RakBuku.map((data)=>
+                                    <option value={data}>{data}</option>
+                                )}
                             </select>
 
                             {submitted && !book.rakBuku &&

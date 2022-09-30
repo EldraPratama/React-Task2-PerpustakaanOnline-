@@ -43,7 +43,8 @@ class TransaksiPage extends React.Component {
     let valueSearch = this.state.search.toLowerCase();
     if(transactions.items){
       filtered = transactions.items.filter(transaction => transaction.judulBuku.toLowerCase().includes(valueSearch)
-      || transaction.peminjam.toLowerCase().includes(valueSearch));
+      || transaction.peminjam.toLowerCase().includes(valueSearch)
+      || transaction.tanggalPinjam.toLowerCase().includes(valueSearch));
     }
 
     //show data with or without filter

@@ -22,7 +22,10 @@ class EditPage extends React.Component {
               rakBuku:'',
               status:''
           },
-          submitted: false
+          submitted: false,
+          RakBuku:['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'],
+          JenisBuku:['Novel','Komik','Ensiklopedi','Dongeng','Biografi','Panduan','Majalah','Cerita Bergambar','Kamus']
+
         }; 
         //get data by id for edit book's value 
         this.props.getBook();
@@ -154,10 +157,10 @@ class EditPage extends React.Component {
                             </div>
                             <div className="col-md-1 "> <b>:</b>  </div>
                             <div className="col-md-4">
-                                <select class={"form-select" + ( submitted && !state.jenisBuku ? ' is-invalid' : '')} aria-label=".form-select-lg example" name="jenisBuku" value={state.jenisBuku} onChange={this.handleChange}>                                    
-                                    <option value="Novel">Novel</option>
-                                    <option value="Sejarah">Sejarah</option>
-                                    <option value="Ensiklopedia">Ensiklopedia</option>
+                                <select class={"form-select" + ( submitted && !state.jenisBuku ? ' is-invalid' : '')} aria-label=".form-select-lg example" name="jenisBuku" value={state.jenisBuku} onChange={this.handleChange}>                                   
+                                    {this.state.JenisBuku.map((data)=>
+                                        <option value={data}>{data}</option>
+                                    )}
                                 </select>
 
                                 {submitted && !state.jenisBuku &&
@@ -220,9 +223,9 @@ class EditPage extends React.Component {
                             <div className="col-md-1 "> <b>:</b>  </div>
                             <div className="col-md-4">
                                 <select class={"form-select"  + ( submitted && !state.rakBuku ? ' is-invalid' : '')} aria-label=".form-select-lg example" name="rakBuku" value={state.rakBuku} onChange={this.handleChange}>
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
+                                {this.state.RakBuku.map((data)=>
+                                    <option value={data}>{data}</option>
+                                )}
                                 </select>
 
                                 {submitted && !state.rakBuku &&
