@@ -85,13 +85,13 @@ class AddTransaksi extends React.Component {
                     <h2 className="mb-6">Peminjaman Buku</h2>
                     <form name="form" onSubmit={this.handleSubmit}>
 
-                        <div className={"row form-group" + (submitted && !book.judulBuku ? ' has-error' : '')}>
-                            <div className="col-md-2"> 
+                        <div className={"row form-group"}>
+                            <div className="col-md-3"> 
                                 <label>Judul Buku</label> 
                             </div>
                             <div className="col-md-1 "> <b>:</b>  </div>
                             <div className="col-md-4">
-                                <select class="form-select form-select mb-3" aria-label=".form-select-lg example" name="judulBuku" onChange={this.handleChange}>
+                                <select class={"form-select " + (submitted && !book.judulBuku ? ' is-invalid' : '')} aria-label=".form-select-lg example" name="judulBuku" onChange={this.handleChange}>
 
                                     {/* show judul buku where status "Tersedia" */}
                                     <option value="" selected>Pilih Jenis buku</option>
@@ -109,8 +109,8 @@ class AddTransaksi extends React.Component {
                             </div>  
                         </div>
 
-                        <div className={"row form-group" + (submitted && !book.penulisBuku ? ' has-error' : '')}>
-                            <div className="col-md-2"> 
+                        <div className={"row form-group mb-2 mt-2" + (submitted && !book.penulisBuku ? ' is-invalid' : '')}>
+                            <div className="col-md-3"> 
                                 <label>Penulis</label> 
                             </div>
                             <div className="col-md-1 "> <b>:</b>  </div>
@@ -119,8 +119,8 @@ class AddTransaksi extends React.Component {
                             </div>
                         </div>
 
-                        <div className={"row form-group" + (submitted && !book.rakBuku ? ' has-error' : '')}>
-                            <div className="col-md-2"> 
+                        <div className={"row form-group mb-2 mt-1" + (submitted && !book.rakBuku ? ' is-invalid' : '')}>
+                            <div className="col-md-3"> 
                                 <label>Rak Buku</label> 
                             </div>
                             <div className="col-md-1 "> <b>:</b>  </div>
@@ -131,52 +131,52 @@ class AddTransaksi extends React.Component {
 
 
 
-                        <div className={"row form-group" + (submitted && !book.peminjam ? ' has-error' : '')}>
-                            <div className="col-md-2"> 
+                        <div className={"row form-group mb-1"}>
+                            <div className="col-md-3"> 
                                 <label>Peminjam</label> 
                             </div>
                             <div className="col-md-1 "> <b>:</b>  </div>
                             <div className="col-md-4">
-                                <input type="text" className="form-control" name="peminjam" placeholder="Masukkan Nama peminjam" value={book.peminjam} onChange={this.handleChange} />
+                                <input type="text" className={"form-control" + (submitted && !book.peminjam ? ' is-invalid' : '')} name="peminjam" placeholder="Masukkan Nama peminjam" value={book.peminjam} onChange={this.handleChange} />
                                 {submitted && !book.peminjam &&
                                 <div className="text-danger">Peminjam is required</div>
                                 }
                             </div>  
                         </div>
 
-                        <div className={"row form-group" + (submitted && !book.umurPeminjam ? ' has-error' : '')}>
-                            <div className="col-md-2"> 
+                        <div className={"row form-group mb-1"}>
+                            <div className="col-md-3"> 
                                 <label>Umur Peminjam</label> 
                             </div>
                             <div className="col-md-1 "> <b>:</b>  </div>
                             <div className="col-md-4">
-                                <input type="number" className="form-control" name="umurPeminjam" placeholder="Masukkan umur peminjam" value={book.umurPeminjam} onChange={this.handleChange} min={8} max={70}/>
+                                <input type="number" className={"form-control" + (submitted && !book.umurPeminjam ? ' is-invalid' : '')} name="umurPeminjam" placeholder="Masukkan umur peminjam" value={book.umurPeminjam} onChange={this.handleChange} min={8} max={70}/>
                                 {submitted && !book.umurPeminjam &&
                                 <div className="text-danger">Umur peminjam is required</div>
                                 }
                             </div>  
                         </div>
 
-                        <div className={"row form-group" + (submitted && !book.tanggalPinjam ? ' has-error' : '')}>
-                            <div className="col-md-2"> 
+                        <div className={"row form-group mb-1"}>
+                            <div className="col-md-3"> 
                                 <label>Tanggal Pinjam Buku</label> 
                             </div>
                             <div className="col-md-1 "> <b>:</b>  </div>
                             <div className="col-md-4">
-                                <input type="date" className="form-control" name="tanggalPinjam"  value={book.tanggalPinjam ? book.tanggalPinjam : '' } onChange={this.handleChange} max={new Date().toISOString().slice(0, -14)} />
+                                <input type="date" className={"form-control" + (submitted && !book.tanggalPinjam ? ' is-invalid' : '')} name="tanggalPinjam"  value={book.tanggalPinjam ? book.tanggalPinjam : '' } onChange={this.handleChange} max={new Date().toISOString().slice(0, -14)} />
                                 {submitted && !book.tanggalPinjam &&
                                 <div className="text-danger">Tanggal Pinjam is required</div>
                                 }
                             </div>  
                         </div>
 
-                        <div className={"row form-group" + (submitted && !book.estimasiPengembalian ? ' has-error' : '')}>
-                            <div className="col-md-2"> 
+                        <div className={"row form-group mb-1"}>
+                            <div className="col-md-3"> 
                                 <label>Estimasi Pengembalian </label> 
                             </div>
                             <div className="col-md-1 "> <b>:</b>  </div>
                             <div className="col-md-4">
-                                <input type="date" className="form-control" name="estimasiPengembalian"  value={book.estimasiPengembalian ? book.estimasiPengembalian : '' } onChange={this.handleChange} min={new Date( new Date().getTime() + 86400000 ).toISOString().slice(0, -14)} />
+                                <input type="date" className={"form-control" + (submitted && !book.estimasiPengembalian ? ' is-invalid' : '')} name="estimasiPengembalian"  value={book.estimasiPengembalian ? book.estimasiPengembalian : '' } onChange={this.handleChange} min={new Date( new Date().getTime() + 86400000 ).toISOString().slice(0, -14)} />
                                 {submitted && !book.estimasiPengembalian &&
                                 <div className="text-danger">Estimasi Pengembalian is required</div>
                                 }
