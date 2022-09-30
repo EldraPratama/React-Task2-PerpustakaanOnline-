@@ -2,9 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-
 // import { userActions } from '../_actions';
-import { bookActions } from '../_actions';
+import { alertActions, bookActions } from '../_actions';
 
 
 class BukuPage extends React.Component {
@@ -19,6 +18,10 @@ class BukuPage extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleModal = this.handleModal.bind(this);
+
+    //clear alert in 5 second
+    setTimeout(() => this.props.clearAlerts(), 5000);
+
   }
 
   handleChange(event) {
@@ -48,7 +51,7 @@ class BukuPage extends React.Component {
 
   render() {
     let { books } = this.props;
-    // console.log(this.props);
+
   
     //filter data based judul buku
     let filtered ;
@@ -198,7 +201,7 @@ function mapState(state) {
 
 
 const actionCreators = {
-  // getUsers: userActions.getAll,
+  clearAlerts: alertActions.clear,
   getBooks: bookActions.getAll,
   // searchBooks: bookActions.getBySearch,
   deleteBook: bookActions.delete

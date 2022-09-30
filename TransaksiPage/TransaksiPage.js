@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { transactionActions } from '../_actions';
+import { alertActions, transactionActions } from '../_actions';
 
 class TransaksiPage extends React.Component {
   constructor(props){
@@ -15,6 +15,8 @@ class TransaksiPage extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
 
+    //clear alert in 5 second
+    setTimeout(() => this.props.clearAlerts(), 5000);
   }
 
   handleChange(event) {
@@ -145,7 +147,7 @@ function mapState(state) {
 const actionCreators = {
   update: transactionActions.update,
   getTransactions: transactionActions.getAll,
-  // deleteUser: transactionActions.delete,
+  clearAlerts: alertActions.clear,
 };
 
 const connectedTransaksiPage = connect(mapState, actionCreators)(TransaksiPage);

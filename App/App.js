@@ -26,10 +26,6 @@ class App extends React.Component {
     });
   }
 
-  componentDidMount() {
-    setTimeout(() => this.props.clearAlerts(), 5000);
-  }
-
   render() {
     const { alert } = this.props;
     // Decide to show the navbar
