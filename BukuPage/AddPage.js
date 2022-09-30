@@ -62,8 +62,8 @@ class AddPage extends React.Component {
                 <h2>Input Buku</h2>
                 <form name="form" onSubmit={this.handleSubmit}>
 
-                    <div className={"row form-group" + (submitted && !book.judulBuku ? ' has-error' : '')}>
-                        <div className="col-md-2"> 
+                    <div className={"row form-group mb-1" + (submitted && !book.judulBuku ? ' is-invalid' : '')}>
+                        <div className="col-md-3"> 
                             <label>Judul Buku</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
@@ -75,8 +75,8 @@ class AddPage extends React.Component {
                         </div>  
                     </div>
 
-                    <div className={"row form-group" + (submitted && !book.penulisBuku ? ' has-error' : '')}>
-                        <div className="col-md-2"> 
+                    <div className={"row form-group mb-1" + (submitted && !book.penulisBuku ? ' is-invalid' : '')}>
+                        <div className="col-md-3"> 
                             <label>Penulis</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
@@ -88,8 +88,8 @@ class AddPage extends React.Component {
                         </div>  
                     </div>
 
-                    <div className={"row form-group" + (submitted && !book.tahunTerbit ? ' has-error' : '')}>
-                        <div className="col-md-2"> 
+                    <div className={"row form-group mb-1" + (submitted && !book.tahunTerbit ? ' is-invalid' : '')}>
+                        <div className="col-md-3"> 
                             <label>Tahun Terbit</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
@@ -101,8 +101,8 @@ class AddPage extends React.Component {
                         </div>  
                     </div>
 
-                    <div className={"row form-group" + (submitted && !book.penerbit ? ' has-error' : '')}>
-                        <div className="col-md-2"> 
+                    <div className={"row form-group mb-1" + (submitted && !book.penerbit ? ' is-invalid' : '')}>
+                        <div className="col-md-3"> 
                             <label>Penerbit</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
@@ -114,29 +114,27 @@ class AddPage extends React.Component {
                         </div>  
                     </div>
 
-                    <div className={"row form-group" + (submitted && !book.jenisBuku ? ' has-error' : '')}>
-                        <div className="col-md-2"> 
+                    <div className={"row form-group mb-1" + (submitted && !book.jenisBuku ? ' is-invalid' : '')}>
+                        <div className="col-md-3"> 
                             <label>Jenis Buku</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <select class="form-select form-select mb-3" aria-label=".form-select-lg example" name="jenisBuku" onChange={this.handleChange}>
+                            <select class="form-select form-select" aria-label=".form-select-lg example" name="jenisBuku" onChange={this.handleChange}>
                                 <option selected>Pilih Jenis buku</option>
                                 {/* show data jenis buku */}
                                 {this.state.JenisBuku.map((data)=>
                                     <option value={data}>{data}</option>
                                 )}
-
                             </select>
-
                             {submitted && !book.jenisBuku &&
                             <div className="text-danger">Jenis buku is required</div>
                             }
                         </div>  
                     </div>
 
-                    <div className={"row form-group" + (submitted && !book.tanggalInput ? ' has-error' : '')}>
-                        <div className="col-md-2"> 
+                    <div className={"row form-group mb-1" + (submitted && !book.tanggalInput ? ' is-invalid' : '')}>
+                        <div className="col-md-3"> 
                             <label>Tanggal Input Buku</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
@@ -148,8 +146,8 @@ class AddPage extends React.Component {
                         </div>  
                     </div>
 
-                    <div className={"row form-group" + (submitted && !book.sumberBuku ? ' has-error' : '')}>
-                        <div className="col-md-2"> 
+                    <div className={"row form-group mb-1" + (submitted && !book.sumberBuku ? ' is-invalid' : '')}>
+                        <div className="col-md-3"> 
                             <label>Sumber Buku</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
@@ -161,8 +159,8 @@ class AddPage extends React.Component {
                         </div>  
                     </div>
 
-                    <div className={"row form-group" + (submitted && !book.bukuLama ? ' has-error' : '')}>
-                        <div className="col-md-2"> 
+                    <div className={"row form-group mb-1" + (submitted && !book.bukuLama ? ' is-invalid' : '')}>
+                        <div className="col-md-3"> 
                             <label>Buku Lama</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
@@ -182,13 +180,13 @@ class AddPage extends React.Component {
                         </div>  
                     </div>
 
-                    <div className={"row form-group" + (submitted && !book.rakBuku ? ' has-error' : '')}>
-                        <div className="col-md-2"> 
+                    <div className={"row form-group mb-1" + (submitted && !book.rakBuku ? ' is-invalid' : '')}>
+                        <div className="col-md-3"> 
                             <label>Rak Buku</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <select className="form-select form-select mb-3" aria-label=".form-select-lg example" name="rakBuku" onChange={this.handleChange}>
+                            <select className="form-select form-select" aria-label=".form-select-lg example" name="rakBuku" onChange={this.handleChange}>
                                 <option selected>Pilih Rak buku</option>
                                 <option value="A">A</option>
                                 <option value="B">B</option>

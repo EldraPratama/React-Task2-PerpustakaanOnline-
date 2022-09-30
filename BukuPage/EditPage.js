@@ -94,8 +94,8 @@ class EditPage extends React.Component {
                     <h2>Edit Buku</h2>
                     <form name="form" onSubmit={this.handleSubmit}>
 
-                        <div className={"row form-group" + ( typeof book == 'undefined' ? '' : !book.judulBuku ? ' has-error' : '')}>
-                            <div className="col-md-2"> 
+                        <div className={"row form-group mb-1" + ( typeof book == 'undefined' ? '' : !book.judulBuku ? ' has-error' : '')}>
+                            <div className="col-md-3"> 
                                 <label>Judul Buku</label> 
                             </div> 
                             <div className="col-md-1 "> <b>:</b>  </div>
@@ -107,8 +107,8 @@ class EditPage extends React.Component {
                             </div>  
                         </div>
     
-                        <div className={"row form-group" + ( typeof book == 'undefined' ? '' : !book.penulisBuku ? ' has-error' : '')}>
-                            <div className="col-md-2"> 
+                        <div className={"row form-group mb-1" + ( typeof book == 'undefined' ? '' : !book.penulisBuku ? ' has-error' : '')}>
+                            <div className="col-md-3"> 
                                 <label>Penulis</label> 
                             </div>
                             <div className="col-md-1 "> <b>:</b>  </div>
@@ -120,8 +120,8 @@ class EditPage extends React.Component {
                             </div>  
                         </div>
 
-                        <div className={"row form-group" + ( typeof book == 'undefined' ? '' : !book.tahunTerbit ? ' has-error' : '')}>
-                            <div className="col-md-2"> 
+                        <div className={"row form-group mb-1" + ( typeof book == 'undefined' ? '' : !book.tahunTerbit ? ' has-error' : '')}>
+                            <div className="col-md-3"> 
                                 <label>Tahun Terbit</label> 
                             </div>
                             <div className="col-md-1 "> <b>:</b>  </div>
@@ -133,8 +133,8 @@ class EditPage extends React.Component {
                             </div>  
                         </div>
 
-                        <div className={"row form-group" + ( typeof book == 'undefined' ? '' : !book.penerbit ? ' has-error' : '')}>
-                            <div className="col-md-2"> 
+                        <div className={"row form-group mb-1" + ( typeof book == 'undefined' ? '' : !book.penerbit ? ' has-error' : '')}>
+                            <div className="col-md-3"> 
                                 <label>Penerbit</label> 
                             </div>
                             <div className="col-md-1 "> <b>:</b>  </div>
@@ -146,13 +146,13 @@ class EditPage extends React.Component {
                             </div>  
                         </div>
 
-                        <div className={"row form-group" + ( typeof book == 'undefined' ? '' : !book.jenisBuku ? ' has-error' : '')}>
-                            <div className="col-md-2"> 
+                        <div className={"row form-group mb-1" + ( typeof book == 'undefined' ? '' : !book.jenisBuku ? ' has-error' : '')}>
+                            <div className="col-md-3"> 
                                 <label>Jenis Buku</label> 
                             </div>
                             <div className="col-md-1 "> <b>:</b>  </div>
                             <div className="col-md-4">
-                                <select class="form-select form-select mb-3" aria-label=".form-select-lg example" name="jenisBuku" value={state.jenisBuku} onChange={this.handleChange}>
+                                <select class="form-select form-select" aria-label=".form-select-lg example" name="jenisBuku" value={state.jenisBuku} onChange={this.handleChange}>
                                     
                                     <option selected>Pilih jenis buku</option>
                                     <option value="Novel">Novel</option>
@@ -166,8 +166,8 @@ class EditPage extends React.Component {
                             </div>  
                         </div>
     
-                        <div className={"row form-group" + ( typeof book == 'undefined' ? '' : !book.tanggalInput ? ' has-error' : '')}>
-                            <div className="col-md-2"> 
+                        <div className={"row form-group mb-1" + ( typeof book == 'undefined' ? '' : !book.tanggalInput ? ' has-error' : '')}>
+                            <div className="col-md-3"> 
                                 <label>Tanggal Input Buku</label> 
                             </div>
                             <div className="col-md-1 "> <b>:</b>  </div>
@@ -179,8 +179,8 @@ class EditPage extends React.Component {
                             </div>  
                         </div>
 
-                        <div className={"row form-group" + ( typeof book == 'undefined' ? '' : !book.sumberBuku ? ' has-error' : '')}>
-                            <div className="col-md-2"> 
+                        <div className={"row form-group mb-1" + ( typeof book == 'undefined' ? '' : !book.sumberBuku ? ' has-error' : '')}>
+                            <div className="col-md-3"> 
                                 <label>Sumber Buku</label> 
                             </div>
                             <div className="col-md-1 "> <b>:</b>  </div>
@@ -192,8 +192,8 @@ class EditPage extends React.Component {
                             </div>  
                         </div>
 
-                        <div className={"row form-group" + ( typeof book == 'undefined' ? '' : !book.bukuLama ? ' has-error' : '')}>
-                            <div className="col-md-2"> 
+                        <div className={"row form-group mb-1" + ( typeof book == 'undefined' ? '' : !book.bukuLama ? ' has-error' : '')}>
+                            <div className="col-md-3"> 
                                 <label>Buku Lama</label> 
                             </div>
                             <div className="col-md-1 "> <b>:</b>  </div>
@@ -214,13 +214,13 @@ class EditPage extends React.Component {
                             </div>  
                         </div>
 
-                        <div className={"row form-group" + ( typeof book == 'undefined' ? '' : !book.rakBuku ? ' has-error' : '')}>
-                            <div className="col-md-2"> 
+                        <div className={"row form-group mb-1" + ( typeof book == 'undefined' ? '' : !book.rakBuku ? ' has-error' : '')}>
+                            <div className="col-md-3"> 
                                 <label>Rak Buku</label> 
                             </div>
                             <div className="col-md-1 "> <b>:</b>  </div>
                             <div className="col-md-4">
-                                <select class="form-select form-select mb-3" aria-label=".form-select-lg example" name="rakBuku" value={state.rakBuku} onChange={this.handleChange}>
+                                <select class="form-select form-select" aria-label=".form-select-lg example" name="rakBuku" value={state.rakBuku} onChange={this.handleChange}>
                                     <option selected>Pilih Rak buku</option>
                                     <option value="A">A</option>
                                     <option value="B">B</option>
