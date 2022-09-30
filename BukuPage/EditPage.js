@@ -71,7 +71,7 @@ class EditPage extends React.Component {
         
         if(book){
             // console.log(book);
-            if(state.judulBuku == '' && state.penulisBuku == '' && state.tahunTerbit == ''){
+            if(state.judulBuku == '' && state.penulisBuku == '' && state.tahunTerbit == '' && state.penerbit == '' && state.jenisBuku == ''){
                 this.setState({
                     book: {
                         judulBuku : book.judulBuku,
@@ -128,7 +128,7 @@ class EditPage extends React.Component {
                             </div>
                             <div className="col-md-1 "> <b>:</b>  </div>
                             <div className="col-md-4">
-                                <input type="number" className={"form-control" + ( submitted && !state.tahunTerbit ? ' is-invalid' : '')} name="tahunTerbit" placeholder="Masukkan Tahun Terbit" value={state.tahunTerbit} onChange={this.handleChange} />
+                                <input type="number" className={"form-control" + ( submitted && !state.tahunTerbit ? ' is-invalid' : '')} name="tahunTerbit" placeholder="Masukkan Tahun Terbit" value={state.tahunTerbit} onChange={this.handleChange} min={1900} max={new Date().getFullYear()} />
                                 {submitted && !state.tahunTerbit &&
                                 <div className="text-danger">Tahun Terbit is required</div>
                                 }
