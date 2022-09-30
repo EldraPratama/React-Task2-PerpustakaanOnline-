@@ -26,13 +26,16 @@ class App extends React.Component {
     });
   }
 
+  componentDidMount() {
+    setTimeout(() => this.props.clearAlerts(), 5000);
+  }
+
   render() {
     const { alert } = this.props;
     // Decide to show the navbar
     let path = history.location.pathname;
     let useNavbar = true;
 
-    setTimeout(() => this.props.clearAlerts(), 7000);
 
 
     if (path == '/login' || path == '/register') {
