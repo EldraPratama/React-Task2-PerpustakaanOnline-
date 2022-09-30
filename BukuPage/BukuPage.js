@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // import { userActions } from '../_actions';
-import { bookActions } from '../_actions';
+import { alertActions, bookActions } from '../_actions';
 
 
 class BukuPage extends React.Component {
@@ -26,6 +26,8 @@ class BukuPage extends React.Component {
     this.setState({
       search: value
     });
+    //reset alert
+    this.props.clearAlerts();
   }
 
   componentDidMount() {
@@ -198,6 +200,7 @@ function mapState(state) {
 
 
 const actionCreators = {
+  clearAlerts: alertActions.clear,
   getBooks: bookActions.getAll,
   // searchBooks: bookActions.getBySearch,
   deleteBook: bookActions.delete

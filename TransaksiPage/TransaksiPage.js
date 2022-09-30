@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { transactionActions } from '../_actions';
+import { alertActions, transactionActions } from '../_actions';
 
 class TransaksiPage extends React.Component {
   constructor(props){
@@ -22,6 +22,8 @@ class TransaksiPage extends React.Component {
     this.setState({
       search: value
     });
+    //reset alert
+    this.props.clearAlerts();
   }
 
   componentDidMount() {
@@ -99,11 +101,11 @@ class TransaksiPage extends React.Component {
                 {data().map((transaction, index) =>
                   <tr key={transaction.id}>
                     <td>{transaction.judulBuku}</td>
-                    <td>{transaction.peminjam}</td>
-                    <td>{transaction.tanggalPinjam}</td>
-                    <td>{transaction.estimasiPengembalian}</td>
-                    <td> {transaction.tanggalKembali ? transaction.tanggalKembali : "-"} </td>
-                    <td width="20%">  
+                    <td width="20%">{transaction.peminjam}</td>
+                    <td width="12%">{transaction.tanggalPinjam}</td>
+                    <td width="12%">{transaction.estimasiPengembalian}</td>
+                    <td width="12%"> {transaction.tanggalKembali ? transaction.tanggalKembali : "-"} </td>
+                    <td width="12%">  
                         { transaction.tanggalKembali == ''
                           ? <a onClick={()=>this.handlePengembalian(transaction.id)} className="btn btn-sm btn-link      mx-1">Pengembalian</a>
                           : ''
@@ -145,6 +147,7 @@ function mapState(state) {
 const actionCreators = {
   update: transactionActions.update,
   getTransactions: transactionActions.getAll,
+  clearAlerts: alertActions.clear,
 };
 
 const connectedTransaksiPage = connect(mapState, actionCreators)(TransaksiPage);
