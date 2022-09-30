@@ -62,65 +62,65 @@ class AddPage extends React.Component {
                 <h2>Input Buku</h2>
                 <form name="form" onSubmit={this.handleSubmit}>
 
-                    <div className={"row form-group mb-1" + (submitted && !book.judulBuku ? ' is-invalid' : '')}>
+                    <div className={"row form-group mb-1"}>
                         <div className="col-md-3"> 
                             <label>Judul Buku</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <input type="text" className="form-control" name="judulBuku" placeholder="Masukkan judul buku" value={book.judulBuku} onChange={this.handleChange} />
+                            <input type="text" className={"form-control" + (submitted && !book.judulBuku ? ' is-invalid' : '')} name="judulBuku" placeholder="Masukkan judul buku" value={book.judulBuku} onChange={this.handleChange} />
                             {submitted && !book.judulBuku &&
                             <div className="text-danger">Judul Buku is required</div>
                             }
                         </div>  
                     </div>
 
-                    <div className={"row form-group mb-1" + (submitted && !book.penulisBuku ? ' is-invalid' : '')}>
+                    <div className={"row form-group mb-1"}>
                         <div className="col-md-3"> 
                             <label>Penulis</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <input type="text" className="form-control" name="penulisBuku" placeholder="Masukkan Nama Penulis" value={book.penulisBuku} onChange={this.handleChange} />
+                            <input type="text" className={"form-control" + (submitted && !book.penulisBuku ? ' is-invalid' : '')} name="penulisBuku" placeholder="Masukkan Nama Penulis" value={book.penulisBuku} onChange={this.handleChange} />
                             {submitted && !book.penulisBuku &&
                             <div className="text-danger">Penulis is required</div>
                             }
                         </div>  
                     </div>
 
-                    <div className={"row form-group mb-1" + (submitted && !book.tahunTerbit ? ' is-invalid' : '')}>
+                    <div className={"row form-group mb-1"}>
                         <div className="col-md-3"> 
                             <label>Tahun Terbit</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <input type="number" className="form-control" name="tahunTerbit" placeholder="Masukkan Tahun Terbit" value={book.tahunTerbit} onChange={this.handleChange} min={1900} max={new Date().getFullYear()}/>
+                            <input type="number" className={"form-control" + (submitted && !book.tahunTerbit ? ' is-invalid' : '')} name="tahunTerbit" placeholder="Masukkan Tahun Terbit" value={book.tahunTerbit} onChange={this.handleChange} min={1900} max={new Date().getFullYear()}/>
                             {submitted && !book.tahunTerbit &&
                             <div className="text-danger">Tahun Terbit is required</div>
                             }
                         </div>  
                     </div>
 
-                    <div className={"row form-group mb-1" + (submitted && !book.penerbit ? ' is-invalid' : '')}>
+                    <div className={"row form-group mb-1"}>
                         <div className="col-md-3"> 
                             <label>Penerbit</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <input type="text" className="form-control" name="penerbit" placeholder="Masukkan Nama Penerbit" value={book.penerbit} onChange={this.handleChange} />
+                            <input type="text" className={"form-control" + (submitted && !book.penerbit ? ' is-invalid' : '')} name="penerbit" placeholder="Masukkan Nama Penerbit" value={book.penerbit} onChange={this.handleChange} />
                             {submitted && !book.penerbit &&
                             <div className="text-danger">Penerbit is required</div>
                             }
                         </div>  
                     </div>
 
-                    <div className={"row form-group mb-1" + (submitted && !book.jenisBuku ? ' is-invalid' : '')}>
+                    <div className={"row form-group mb-1"}>
                         <div className="col-md-3"> 
                             <label>Jenis Buku</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <select class="form-select form-select" aria-label=".form-select-lg example" name="jenisBuku" onChange={this.handleChange}>
+                            <select class={"form-select" + (submitted && !book.jenisBuku ? ' is-invalid' : '')} aria-label=".form-select-lg example" name="jenisBuku" onChange={this.handleChange}>
                                 <option selected>Pilih Jenis buku</option>
                                 {/* show data jenis buku */}
                                 {this.state.JenisBuku.map((data)=>
@@ -133,26 +133,26 @@ class AddPage extends React.Component {
                         </div>  
                     </div>
 
-                    <div className={"row form-group mb-1" + (submitted && !book.tanggalInput ? ' is-invalid' : '')}>
+                    <div className={"row form-group mb-1"}>
                         <div className="col-md-3"> 
                             <label>Tanggal Input Buku</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <input type="date" className="form-control" name="tanggalInput"  value={book.tanggalInput ? book.tanggalInput : ''} onChange={this.handleChange} max={new Date().toISOString().slice(0, -14)} />
+                            <input type="date" className={"form-control"  + (submitted && !book.tanggalInput ? ' is-invalid' : '')} name="tanggalInput"  value={book.tanggalInput ? book.tanggalInput : ''} onChange={this.handleChange} max={new Date().toISOString().slice(0, -14)} />
                             {submitted && !book.tanggalInput &&
                             <div className="text-danger">Tanggal Input is required</div>
                             }
                         </div>  
                     </div>
 
-                    <div className={"row form-group mb-1" + (submitted && !book.sumberBuku ? ' is-invalid' : '')}>
+                    <div className={"row form-group mb-1"}>
                         <div className="col-md-3"> 
                             <label>Sumber Buku</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <input type="text" className="form-control" name="sumberBuku" placeholder="Masukkan Sumber Buku" value={book.sumberBuku} onChange={this.handleChange} />
+                            <input type="text" className={"form-control" + (submitted && !book.sumberBuku ? ' is-invalid' : '')} name="sumberBuku" placeholder="Masukkan Sumber Buku" value={book.sumberBuku} onChange={this.handleChange} />
                             {submitted && !book.sumberBuku &&
                             <div className="text-danger">Sumber Buku is required</div>
                             }
@@ -180,13 +180,13 @@ class AddPage extends React.Component {
                         </div>  
                     </div>
 
-                    <div className={"row form-group mb-1" + (submitted && !book.rakBuku ? ' is-invalid' : '')}>
+                    <div className={"row form-group mb-1"}>
                         <div className="col-md-3"> 
                             <label>Rak Buku</label> 
                         </div>
                         <div className="col-md-1 "> <b>:</b>  </div>
                         <div className="col-md-4">
-                            <select className="form-select form-select" aria-label=".form-select-lg example" name="rakBuku" onChange={this.handleChange}>
+                            <select className={"form-select" + (submitted && !book.rakBuku ? ' is-invalid' : '')} aria-label=".form-select-lg example" name="rakBuku" onChange={this.handleChange}>
                                 <option selected>Pilih Rak buku</option>
                                 <option value="A">A</option>
                                 <option value="B">B</option>
