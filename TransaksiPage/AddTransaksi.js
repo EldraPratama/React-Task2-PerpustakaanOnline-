@@ -82,7 +82,7 @@ class AddTransaksi extends React.Component {
             books.items
             ?
                 <div className="col-md-12">
-                    <h2 className="mb-6">Peminjaman Buku</h2>
+                    <h2 className="mb-5">Peminjaman Buku</h2>
                     <form name="form" onSubmit={this.handleSubmit}>
 
                         <div className={"row form-group"}>
@@ -109,7 +109,7 @@ class AddTransaksi extends React.Component {
                             </div>  
                         </div>
 
-                        <div className={"row form-group mb-2 mt-2"}>
+                        <div className={"row form-group mb-3 mt-2"}>
                             <div className="col-md-3"> 
                                 <label>Penulis</label> 
                             </div>
@@ -119,7 +119,7 @@ class AddTransaksi extends React.Component {
                             </div>
                         </div>
 
-                        <div className={"row form-group mb-2 mt-1"}>
+                        <div className={"row form-group mb-3 mt-1"}>
                             <div className="col-md-3"> 
                                 <label>Rak Buku</label> 
                             </div>
