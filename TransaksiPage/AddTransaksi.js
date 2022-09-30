@@ -109,7 +109,7 @@ class AddTransaksi extends React.Component {
                             </div>  
                         </div>
 
-                        <div className={"row form-group mb-2 mt-2" + (submitted && !book.penulisBuku ? ' is-invalid' : '')}>
+                        <div className={"row form-group mb-2 mt-2"}>
                             <div className="col-md-3"> 
                                 <label>Penulis</label> 
                             </div>
@@ -119,7 +119,7 @@ class AddTransaksi extends React.Component {
                             </div>
                         </div>
 
-                        <div className={"row form-group mb-2 mt-1" + (submitted && !book.rakBuku ? ' is-invalid' : '')}>
+                        <div className={"row form-group mb-2 mt-1"}>
                             <div className="col-md-3"> 
                                 <label>Rak Buku</label> 
                             </div>
