@@ -56,7 +56,7 @@ class TransaksiPage extends React.Component {
       }
     }
 
-    //refresh data transaction and set state pengembalian
+    //refresh data transaction and change state pengembalian when click pengembalian
     if(this.state.pengembalian == true){
       this.setState({ pengembalian: false });
       this.props.getTransactions();
@@ -103,13 +103,11 @@ class TransaksiPage extends React.Component {
                     <td>{transaction.tanggalPinjam}</td>
                     <td>{transaction.estimasiPengembalian}</td>
                     <td> {transaction.tanggalKembali ? transaction.tanggalKembali : "-"} </td>
-                    <td width="20%">
-                        
+                    <td width="20%">  
                         { transaction.tanggalKembali == ''
                           ? <a onClick={()=>this.handlePengembalian(transaction.id)} className="btn btn-sm btn-link      mx-1">Pengembalian</a>
                           : ''
-                        }
-                      
+                        }                     
                     </td>
                   </tr>
                 )}

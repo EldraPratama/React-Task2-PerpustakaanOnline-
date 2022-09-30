@@ -38,8 +38,8 @@ class DetailPage extends React.Component {
           <div className="mb-4"></div>
         <form name="form" >
 
-            <div className={"row form-group"}>
-                <div className="col-2"> 
+            <div className={"row form-group mb-3"}>
+                <div className="col-3"> 
                   <label>Judul Buku</label> 
                 </div>
                 <div className="col-1 "> <b>:</b>  </div>
@@ -48,8 +48,8 @@ class DetailPage extends React.Component {
                 </div>  
             </div>
 
-            <div className={"row form-group"}>
-                <div className="col-2"> 
+            <div className={"row form-group mb-3"}>
+                <div className="col-3"> 
                     <label>Penulis</label> 
                 </div>
                 <div className="col-1 "> <b>:</b>  </div>
@@ -58,8 +58,8 @@ class DetailPage extends React.Component {
                 </div>  
             </div>
 
-            <div className={"row form-group"}>
-                <div className="col-2"> 
+            <div className={"row form-group mb-3"}>
+                <div className="col-3"> 
                     <label>Tahun Terbit</label> 
                 </div>
                 <div className="col-1 "> <b>:</b>  </div>
@@ -68,8 +68,8 @@ class DetailPage extends React.Component {
                 </div>  
             </div>
 
-            <div className={"row form-group" }>
-                <div className="col-2"> 
+            <div className={"row form-group mb-3" }>
+                <div className="col-3"> 
                     <label>Penerbit</label> 
                 </div>
                 <div className="col-1 "> <b>:</b>  </div>
@@ -78,8 +78,8 @@ class DetailPage extends React.Component {
                 </div>  
             </div>
 
-            <div className={"row form-group"}>
-                <div className="col-2"> 
+            <div className={"row form-group mb-3"}>
+                <div className="col-3"> 
                     <label>Jenis Buku</label> 
                 </div>
                 <div className="col-1 "> <b>:</b>  </div>
@@ -88,8 +88,8 @@ class DetailPage extends React.Component {
                 </div>  
             </div>
 
-            <div className={"row form-group"}>
-                <div className="col-2"> 
+            <div className={"row form-group mb-3"}>
+                <div className="col-3"> 
                     <label>Tanggal Input Buku</label> 
                 </div>
                 <div className="col-1 "> <b>:</b>  </div>
@@ -98,8 +98,8 @@ class DetailPage extends React.Component {
                 </div>  
             </div>
 
-            <div className={"row form-group"}>
-                <div className="col-2"> 
+            <div className={"row form-group mb-3"}>
+                <div className="col-3"> 
                     <label>Sumber Buku</label> 
                 </div>
                 <div className="col-1 "> <b>:</b>  </div>
@@ -108,8 +108,8 @@ class DetailPage extends React.Component {
                 </div>  
             </div>
 
-            <div className={"row form-group" }>
-                <div className="col-2"> 
+            <div className={"row form-group mb-3" }>
+                <div className="col-3"> 
                     <label>Buku Lama</label> 
                 </div>
                 <div className="col-1 "> <b>:</b>  </div>
@@ -118,8 +118,8 @@ class DetailPage extends React.Component {
                 </div>  
             </div>
 
-            <div className={"row form-group"}>
-                <div className="col-2"> 
+            <div className={"row form-group mb-3"}>
+                <div className="col-3"> 
                     <label>Rak Buku</label> 
                 </div>
                 <div className="col-1 "> <b>:</b>  </div>
@@ -128,8 +128,8 @@ class DetailPage extends React.Component {
                 </div>  
             </div>
 
-            <div className={"row form-group"}>
-                <div className="col-2"> 
+            <div className={"row form-group mb-3"}>
+                <div className="col-3"> 
                     <label>Status</label> 
                 </div>
                 <div className="col-1 "> <b>:</b>  </div>

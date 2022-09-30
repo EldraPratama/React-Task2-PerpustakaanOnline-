@@ -32,6 +32,9 @@ class App extends React.Component {
     let path = history.location.pathname;
     let useNavbar = true;
 
+    setTimeout(() => this.props.clearAlerts(), 7000);
+
+
     if (path == '/login' || path == '/register') {
       useNavbar = false;
     }

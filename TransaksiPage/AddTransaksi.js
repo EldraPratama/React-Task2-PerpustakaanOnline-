@@ -47,7 +47,6 @@ class AddTransaksi extends React.Component {
 
         this.setState({ submitted: true });
         const { book } = this.state;
-        // console.log(book);
       
         // validate all input not empty 
         if (book.judulBuku !== '' && book.peminjam !== '' && book.umurPeminjam !== '' && book.tanggalPinjam !== ''  && book.estimasiPengembalian !== '' ) {
