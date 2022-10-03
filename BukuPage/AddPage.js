@@ -204,6 +204,7 @@ class AddPage extends React.Component {
                         <Link to="/buku" className="btn btn-link">Kembali</Link>
                     </div>
                 </form>
+                
             </div>
         );
     }
