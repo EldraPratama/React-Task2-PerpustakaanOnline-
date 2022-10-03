@@ -58,6 +58,30 @@ class TransaksiPage extends React.Component {
       }
     }
 
+    const formatTanggal = (tanggal) => {
+      let tanggal = tanggal.split('-');
+      let tahun = tanggal[0]
+      let bulan = tanggal[1]
+      let hari = tanggal[2]
+
+      switch(bulan) {
+          case '01': bulan = "Januari"; break;
+          case '02': bulan = "Februari"; break;
+          case '03': bulan = "Maret"; break;
+          case '04': bulan = "April"; break;
+          case '05': bulan = "Mei"; break;
+          case '06': bulan = "Juni"; break;
+          case '07': bulan = "Juli"; break;
+          case '08': bulan = "Agustus"; break;
+          case '09': bulan = "September"; break;
+          case '10': bulan = "Oktober"; break;
+          case '11': bulan = "November"; break;
+          case '12': bulan = "Desember"; break;
+      }
+      let result = hari +' '+ bulan +' '+ tahun;
+      return result
+    }
+
     //refresh data transaction and change state pengembalian when click pengembalian
     if(this.state.pengembalian == true){
       this.setState({ pengembalian: false });
@@ -102,7 +126,7 @@ class TransaksiPage extends React.Component {
                   <tr key={transaction.id}>
                     <td>{transaction.judulBuku}</td>
                     <td width="20%">{transaction.peminjam}</td>
-                    <td width="12%">{transaction.tanggalPinjam}</td>
+                    <td width="12%">{formatTanggal(transaction.tanggalPinjam)}</td>
                     <td width="12%">{transaction.estimasiPengembalian}</td>
                     <td width="12%"> {transaction.tanggalKembali ? transaction.tanggalKembali : "-"} </td>
                     <td width="12%">  

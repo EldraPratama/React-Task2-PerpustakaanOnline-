@@ -267,8 +267,12 @@ export function configureFakeBackend() {
                 if (url.endsWith('/transaksi') && opts.method === 'GET') {
                     //sort transaction based on id
                     transactions.sort((a,b)=>{
-                        return b.id - a.id
+                        // return new Date(b.tanggalPinjam) - new Date(a.tanggalPinjam) 
+                        return new Date(b.tanggalKembali) - new Date(a.tanggalKembali) 
+                        // return a.tanggalKembali - b.tanggalKembali 
                     });
+
+                    console.log(transactions);
 
                     // check for fake auth token in header and return users if valid, this security is implemented server side in a real application
                     if (opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
