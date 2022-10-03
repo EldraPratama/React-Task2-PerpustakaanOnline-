@@ -56,7 +56,6 @@ class AddPage extends React.Component {
     } 
 
     render() {
-        const { adding  } = this.props;
         const { book, submitted } = this.state;
         return (
             <div className="col-md-12">

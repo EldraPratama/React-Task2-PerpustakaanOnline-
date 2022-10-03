@@ -208,9 +208,7 @@ export function configureFakeBackend() {
                     if (opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
                         resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(books))});
                     } else {
-                        // return 401 not authorised if token is null or invalid
-                        console.log('disini aja');
-                        
+                        // return 401 not authorised if token is null or invalid                        
                         reject('Unauthorised');
                     }
 
@@ -227,9 +225,6 @@ export function configureFakeBackend() {
                         let matchedBooks = books.filter(book => { return book.id === id; });
                         let book = matchedBooks.length ? matchedBooks[0] : null;
 
-                        // if(book == null){
-                            
-                        // }
 
                         // respond 200 OK with book
                         resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(book))});
