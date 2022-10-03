@@ -62,10 +62,9 @@ class AddTransaksi extends React.Component {
         let selected ;
         let judulBuku = this.state.book.judulBuku ;
         
-        //get data book when user select judul buku
+        //get data detail book when user select judul buku
         if(books.items && judulBuku !=''){
           selected = books.items.filter(book => book.judulBuku.includes( judulBuku ));
-
           //automatic set state idbook when user select judul buku
             if(selected[0].id && !this.state.book.idBuku){
                 this.setState({
@@ -162,7 +161,7 @@ class AddTransaksi extends React.Component {
                             </div>
                             <div className="col-md-1 "> <b>:</b>  </div>
                             <div className="col-md-4">
-                                <input type="date" className={"form-control" + (submitted && !book.tanggalPinjam ? ' is-invalid' : '')} name="tanggalPinjam"  value={book.tanggalPinjam ? book.tanggalPinjam : '' } onChange={this.handleChange} max={new Date().toISOString().slice(0, -14)} />
+                                <input type="date" className={"form-control" + (submitted && !book.tanggalPinjam ? ' is-invalid' : '')} name="tanggalPinjam"  value={book.tanggalPinjam ? book.tanggalPinjam : '' } onChange={this.handleChange} min={new Date().toISOString().slice(0, -14)} max={new Date().toISOString().slice(0, -14)}/>
                                 {submitted && !book.tanggalPinjam &&
                                 <div className="text-danger">Tanggal Pinjam is required</div>
                                 }

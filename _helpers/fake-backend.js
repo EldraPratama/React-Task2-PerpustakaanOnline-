@@ -270,7 +270,7 @@ export function configureFakeBackend() {
                         if(a.tanggalKembali === "" ) return -1;
                         if(b.tanggalKembali === "" ) return 1;
                         if(a.tanggalKembali === b.tanggalKembali) return 0;
-                        return (a < b ? -1 : 1)  &&  (new Date(b.tanggalPinjam) - new Date(a.tanggalPinjam)) 
+                        return a.tanggalKembali < b.tanggalKembali ? -1 : 1  &&  new Date(b.tanggalPinjam) - new Date(a.tanggalPinjam)
                     });
 
                     console.log(transactions);
