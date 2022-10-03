@@ -2,6 +2,8 @@
 let users        = JSON.parse(localStorage.getItem('users')) || [];
 let books        = JSON.parse(localStorage.getItem('books')) || [];
 let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+
+
     
 export function configureFakeBackend() {
     let realFetch = window.fetch;
@@ -207,6 +209,8 @@ export function configureFakeBackend() {
                         resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(books))});
                     } else {
                         // return 401 not authorised if token is null or invalid
+                        console.log('disini aja');
+                        
                         reject('Unauthorised');
                     }
 
@@ -267,10 +271,11 @@ export function configureFakeBackend() {
                 if (url.endsWith('/transaksi') && opts.method === 'GET') {
                     //sort transaction berdasarkan belum mengembalikan dan tanggal pinjam
                     transactions.sort((a,b)=>{
-                        if(a.tanggalKembali === "" ) return -1;
-                        if(b.tanggalKembali === "" ) return 1;
-                        if(a.tanggalKembali === b.tanggalKembali) return 0;
-                        return a.tanggalKembali < b.tanggalKembali ? -1 : 1  &&  new Date(b.tanggalPinjam) - new Date(a.tanggalPinjam)
+                        if(a.tanggalKembali == "" ) return -1  &&  new Date(b.tanggalPinjam) - new Date(a.tanggalPinjam);
+                        if(b.tanggalKembali == "" ) return 1 ;
+                        return new Date(b.tanggalPinjam) - new Date(a.tanggalPinjam)
+                        // if(a.tanggalKembali == b.tanggalKembali) return 0; 
+                        // return  a < b ? -1 : 1  &&  new Date(b.tanggalPinjam) - new Date(a.tanggalPinjam)
                     });
 
                     console.log(transactions);

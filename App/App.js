@@ -32,7 +32,7 @@ class App extends React.Component {
     let path = history.location.pathname;
     let useNavbar = true;
 
-
+    console.log(this)
 
     if (path == '/login' || path == '/register') {
       useNavbar = false;
@@ -103,12 +103,12 @@ class App extends React.Component {
             <Router history={history}>
               <Switch>
                 <PrivateRoute exact path="/" component={HomePage} />
-                <Route exact path="/buku" component={BukuPage} />
-                <Route path="/buku/add" component={AddPage} />
-                <Route exact path="/buku/detail/:id" component={DetailPage} />
-                <Route exact path="/buku/edit/:id" component={EditPage} />
-                <Route exact path="/transaksi" component={TransaksiPage} />
-                <Route path="/transaksi/add" component={AddTransaksi} />
+                <PrivateRoute exact path="/buku" component={BukuPage} />
+                <PrivateRoute path="/buku/add" component={AddPage} />
+                <PrivateRoute exact path="/buku/detail/:id" component={DetailPage} />
+                <PrivateRoute exact path="/buku/edit/:id" component={EditPage} />
+                <PrivateRoute exact path="/transaksi" component={TransaksiPage} />
+                <PrivateRoute path="/transaksi/add" component={AddTransaksi} />
                 <Route path="/login" component={LoginPage} />
                 <Route path="/register" component={RegisterPage} />
                 <Redirect from="*" to="/" />
