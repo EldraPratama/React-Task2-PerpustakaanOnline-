@@ -58,8 +58,9 @@ class TransaksiPage extends React.Component {
       }
     }
 
-    const formatTanggal = (tanggal) => {
-      let tanggal = tanggal.split('-');
+    //mengubah format tampilan tanggal 
+    const formatTanggal = (data) => {
+      let tanggal = data.split('-');
       let tahun = tanggal[0]
       let bulan = tanggal[1]
       let hari = tanggal[2]
@@ -126,9 +127,9 @@ class TransaksiPage extends React.Component {
                   <tr key={transaction.id}>
                     <td>{transaction.judulBuku}</td>
                     <td width="20%">{transaction.peminjam}</td>
-                    <td width="12%">{formatTanggal(transaction.tanggalPinjam)}</td>
-                    <td width="12%">{transaction.estimasiPengembalian}</td>
-                    <td width="12%"> {transaction.tanggalKembali ? transaction.tanggalKembali : "-"} </td>
+                    <td width="15%">{formatTanggal(transaction.tanggalPinjam)}</td>
+                    <td width="15%">{formatTanggal(transaction.estimasiPengembalian)}</td>
+                    <td width="15%"> {transaction.tanggalKembali ? formatTanggal(transaction.tanggalKembali) : "-"} </td>
                     <td width="12%">  
                         { transaction.tanggalKembali == ''
                           ? <a onClick={()=>this.handlePengembalian(transaction.id)} className="btn btn-sm btn-link      mx-1">Pengembalian</a>

@@ -265,11 +265,12 @@ export function configureFakeBackend() {
 
                 // get Transactions
                 if (url.endsWith('/transaksi') && opts.method === 'GET') {
-                    //sort transaction based on id
+                    //sort transaction berdasarkan belum mengembalikan dan tanggal pinjam
                     transactions.sort((a,b)=>{
-                        // return new Date(b.tanggalPinjam) - new Date(a.tanggalPinjam) 
-                        return new Date(b.tanggalKembali) - new Date(a.tanggalKembali) 
-                        // return a.tanggalKembali - b.tanggalKembali 
+                        if(a.tanggalKembali === "" ) return -1;
+                        if(b.tanggalKembali === "" ) return 1;
+                        if(a.tanggalKembali === b.tanggalKembali) return 0;
+                        return (a < b ? -1 : 1)  &&  (new Date(b.tanggalPinjam) - new Date(a.tanggalPinjam)) 
                     });
 
                     console.log(transactions);
