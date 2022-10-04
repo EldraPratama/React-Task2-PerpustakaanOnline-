@@ -49,55 +49,55 @@ class HomePage extends React.Component {
                     <div className="row justify-content-center">
                         {/* <img src="https://images.app.goo.gl/yXnHGJgL9zSH3NnD8" alt="Perpustakaan"/> */}
                         <h1 className="text-center">Selamat Datang di Perpustakaan Online</h1>
-                        <div class="row mt-5">
-                            <div class="col-sm-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h3 class="card-title">Total data Buku</h3>
-                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <div className="row mt-5">
+                            <div className="col-sm-6">
+                                <div className="card ">
+                                    <div className="card-body text-center">
+                                        <h3 className="card-title">Total data Buku</h3>
+                                        <h4 className="card-title">{totalBooks}</h4>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Total data Transaksi</h4>
-                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <div className="col-sm-6">
+                                <div className="card">
+                                    <div className="card-body text-center">
+                                        <h3 className="card-title">Total data Transaksi</h3>
+                                        <h4 className="card-title">{totalTransactions}</h4>      
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row mt-1">
-                            <div class="col-sm-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Special title treatment</h4>
-                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <div className="row mt-1">
+                            <div className="col-sm-3">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h4 className="card-title">Status Buku Tersedia</h4>
+                                
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Special title treatment</h4>
-                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <div className="col-sm-3">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h4 className="card-title">Status Buku Dipinjam</h4>
+                                
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Special title treatment</h4>
-                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <div className="col-sm-3">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h4 className="card-title">Buku masih Dipinjam</h4>
+                                
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Special title treatment</h4>
-                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <div className="col-sm-3">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h4 className="card-title">Buku sudah Dikembalikan</h4>
+                                
                                     </div>
                                 </div>
                             </div>
@@ -106,12 +106,12 @@ class HomePage extends React.Component {
                 </div>
             :
                 //show spinner 
-                <div class="m-5">
-                    <div class="text-center">
-                    <div class="spinner-grow text-primary mx-4" role="status"></div>
-                    <div class="spinner-grow text-success mx-4" role="status"></div>
-                    <div class="spinner-grow text-danger mx-4" role="status"></div>
-                    <div class="spinner-grow text-warning mx-4" role="status"></div>
+                <div className="m-5">
+                    <div className="text-center">
+                    <div className="spinner-grow text-primary mx-4" role="status"></div>
+                    <div className="spinner-grow text-success mx-4" role="status"></div>
+                    <div className="spinner-grow text-danger mx-4" role="status"></div>
+                    <div className="spinner-grow text-warning mx-4" role="status"></div>
                     </div>
                 </div>
         );
