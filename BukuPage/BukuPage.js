@@ -86,8 +86,8 @@ class BukuPage extends React.Component {
               Buku dengan judul <b>{judul}</b> akan dihapus
             </div>
             <div className="modal-footer">
-              <button onClick={this.handleDeleteBook(id)} type="button" className="btn btn-danger" data-bs-dismiss="modal">Iya</button>
-              <button type="button" className="btn btn-warning" data-bs-dismiss="modal">Tidak</button>
+              <button onClick={this.handleDeleteBook(id)} type="button" className="btn btn-outline-danger" data-bs-dismiss="modal">Iya</button>
+              <button type="button" className="btn btn-outline-warning" data-bs-dismiss="modal">Tidak</button>
             </div>
           </div>
         </div>
@@ -102,12 +102,15 @@ class BukuPage extends React.Component {
           <div className="row mb-3">
             <div className="col-md-5">
               <form name="form">
-                <div className={'form-group'}>
+                <div className={'input-group mb-3'}>
+                  <button class="btn btn-outline-primary" type="button" id="button-addon1" disabled>
+                    <span class="bi bi-search"></span>
+                  </button>
                   <input
                     type="text"
                     className="form-control"
                     name="search"
-                    placeholder="Search"
+                    placeholder="Search" 
                     onChange={this.handleChange}
                   />
                 </div>
@@ -142,8 +145,8 @@ class BukuPage extends React.Component {
                       <td>{book.jenisBuku}</td>
                       <td width="10%">
                           {book.status === 'Tersedia' || book.status ==='tersedia'
-                            ? <p className="btn btn-sm btn-success">{book.status}</p>
-                            : <p className="btn btn-sm btn-danger">Dipinjam</p>
+                            ? <p className="btn btn-sm btn-outline-success">{book.status}</p>
+                            : <p className="btn btn-sm btn-outline-danger">Dipinjam</p>
                           }
                       </td>
                       <td width="20%">

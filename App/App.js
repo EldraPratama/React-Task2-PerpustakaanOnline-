@@ -46,7 +46,7 @@ class App extends React.Component {
             </a> */}
             <Router history={history}>
               <Link to="/" class="navbar-brand">
-                Perpustakaan Online
+                Perpustakaan Online  <i class="bi bi-book"></i>
               </Link>
             </Router>
             <button
