@@ -273,8 +273,6 @@ export function configureFakeBackend() {
                         // return  a < b ? -1 : 1  &&  new Date(b.tanggalPinjam) - new Date(a.tanggalPinjam)
                     });
 
-                    console.log(transactions);
-
                     // check for fake auth token in header and return users if valid, this security is implemented server side in a real application
                     if (opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
                         resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(transactions))});
