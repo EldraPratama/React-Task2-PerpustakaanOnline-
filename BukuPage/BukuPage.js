@@ -119,7 +119,7 @@ class BukuPage extends React.Component {
             <div className="col-md-5"></div>
             <div className="col-md-2">
               <Link to="/buku/add" className="btn btn-primary float-end">
-                Input Buku
+              <b><i class="bi bi-plus-lg"> </i></b>Input Buku
               </Link>
             </div>
           </div>

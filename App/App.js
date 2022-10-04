@@ -98,7 +98,11 @@ class App extends React.Component {
         <div className="container" height="1200px">
           <div className="col-12 col-offset-2">
             {alert.message && (
-              <div className={`alert ${alert.type}`}>{alert.message}</div>
+              // <div className={`alert ${alert.type}`}>{alert.message}</div>
+              <div class={`alert ${alert.type} alert-dismissible fade show`} role="alert">
+                {alert.message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
             )}
             <Router history={history}>
               <Switch>
