@@ -99,16 +99,18 @@ function _delete(id) {
     return dispatch => {
         dispatch(request(id));
 
-        bookService.delete(id)
-            .then(
-                book => { 
-                    dispatch(success(id));
-                    dispatch(alertActions.error('Delete book successful'));
-                },
-                error => {
-                    dispatch(failure(id, error));
-                }
-            );
+        console.log('action');
+        console.log(id);
+        // bookService.delete(id)
+        //     .then(
+        //         book => { 
+        //             dispatch(success(id));
+        //             dispatch(alertActions.error('Delete book successful'));
+        //         },
+        //         error => {
+        //             dispatch(failure(id, error));
+        //         }
+        //     );
     };
 
     function request(id) { return { type: bookConstants.DELETE_REQUEST, id } }

@@ -12,7 +12,7 @@ class BukuPage extends React.Component {
 
     this.state = {
         search:'',
-        judulBuku:'Php',
+        judulBuku:'',
         id:'',
     };
 
@@ -158,9 +158,8 @@ class BukuPage extends React.Component {
                           </Link>
                           { book.status == 'Tersedia' || book.status == 'tersedia'
                             // ? <a onClick={this.handleDeleteBook(book.id)} className="btn btn-sm btn-link mx-1">Delete</a>
-                            ? <button onClick={() => this.handleModal(book.id, book.judulBuku)} type="button" className="btn btn-sm btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                              Delete
-                            </button>
+                            ? 
+                              <button onClick={() => this.handleModal(book.id, book.judulBuku)} type="button" className="btn btn-sm btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Delete</button>
                             : ''
                           }       
                       </td>

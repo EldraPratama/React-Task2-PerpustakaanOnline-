@@ -26,6 +26,10 @@ class App extends React.Component {
     });
   }
 
+  handleClearAlert(){
+    this.props.clearAlerts();
+  }
+
   render() {
     const { alert } = this.props;
     // Decide to show the navbar
@@ -99,9 +103,9 @@ class App extends React.Component {
           <div className="col-12 col-offset-2">
             {alert.message && (
               // <div className={`alert ${alert.type}`}>{alert.message}</div>
-              <div class={`alert ${alert.type} alert-dismissible fade show`} role="alert">
+              <div className={`alert ${alert.type} alert-dismissible fade show`} role="alert">
                 {alert.message}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <button onClick={() => this.handleClearAlert()} type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
             )}
             <Router history={history}>
