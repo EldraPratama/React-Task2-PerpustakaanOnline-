@@ -36,8 +36,6 @@ class App extends React.Component {
     let path = history.location.pathname;
     let useNavbar = true;
 
-    console.log(this)
-
     if (path == '/login' || path == '/register') {
       useNavbar = false;
     }

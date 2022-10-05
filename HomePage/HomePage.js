@@ -24,9 +24,6 @@ class HomePage extends React.Component {
             totalBooks    = books.items.length
             booksDipinjam = books.items.filter(book => { return book.status == 'Dipinjam'; }).length
             booksTersedia = books.items.filter(book => { return book.status == 'Tersedia'; }).length
-            console.log(totalBooks)
-            console.log(booksDipinjam)
-            console.log(booksTersedia)
         }
 
         //make variable to store total transaction, total transaction dipinjam, total transaction tersedia
@@ -35,13 +32,7 @@ class HomePage extends React.Component {
             totalTransactions = transactions.items.length
             transactionsDipinjam = transactions.items.filter(data => { return data.tanggalKembali == ''; }).length;
             transactionsDikembalikan = transactions.items.filter(data => { return data.tanggalKembali != ''; }).length;
-            console.log(totalTransactions)
-            console.log(transactionsDipinjam)
-            console.log(transactionsDikembalikan)
         }
-        console.log(this.props);
-        // console.log(books);
-        // console.log(transactions);
         return (
             books.items && transactions.items
             ?
@@ -49,55 +40,58 @@ class HomePage extends React.Component {
                     <div className="row justify-content-center">
                         {/* <img src="https://images.app.goo.gl/yXnHGJgL9zSH3NnD8" alt="Perpustakaan"/> */}
                         <h1 className="text-center">Selamat Datang di Perpustakaan Online</h1>
-                        <div className="row mt-5">
-                            <div className="col-sm-6">
-                                <div className="card ">
-                                    <div className="card-body text-center">
+                        <div className="row mt-5 text-center">
+                            <div className="col-sm-6 ">
+                                <div className="card shadow rounded-pill bg-primary bg-gradient bg-opacity-80 text-white">
+                                    <div className="card-body">
                                         <h3 className="card-title">Total data Buku</h3>
-                                        <h4 className="card-title">{totalBooks}</h4>
+                                        <h2 className="card-title">{totalBooks}</h2>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-sm-6">
-                                <div className="card">
-                                    <div className="card-body text-center">
+                                <div className="card shadow rounded-pill bg-success bg-gradient bg-opacity-85 text-white">
+                                    <div className="card-body">
                                         <h3 className="card-title">Total data Transaksi</h3>
-                                        <h4 className="card-title">{totalTransactions}</h4>      
+                                        <h2 className="card-title">{totalTransactions}</h2>      
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="row mt-1">
+                        <div className="row mt-3 text-center">
                             <div className="col-sm-3">
-                                <div className="card">
+                                <div className="card shadow-lg border-success rounded-end rounded-5">
                                     <div className="card-body">
-                                        <h4 className="card-title">Status Buku Tersedia</h4>
+                                        <h5 className="card-title">Status Buku Tersedia</h5>
+                                        <h4 className="card-title">{booksTersedia}</h4>
                                 
                                     </div>
                                 </div>
                             </div>
                             <div className="col-sm-3">
-                                <div className="card">
+                                <div className="card shadow border-danger rounded-start rounded-5">
                                     <div className="card-body">
-                                        <h4 className="card-title">Status Buku Dipinjam</h4>
+                                        <h5 className="card-title">Status Buku Dipinjam</h5>
+                                        <h4 className="card-title">{booksDipinjam}</h4>
                                 
                                     </div>
                                 </div>
                             </div>
                             <div className="col-sm-3">
-                                <div className="card">
+                                <div className="card shadow border-warning rounded-end rounded-5">
                                     <div className="card-body">
-                                        <h4 className="card-title">Buku masih Dipinjam</h4>
+                                        <h5 className="card-title">Buku masih Dipinjam</h5>
+                                        <h4 className="card-title">{transactionsDipinjam}</h4>
                                 
                                     </div>
                                 </div>
                             </div>
                             <div className="col-sm-3">
-                                <div className="card">
+                                <div className="card shadow border-info rounded-start rounded-5">
                                     <div className="card-body">
-                                        <h4 className="card-title">Buku sudah Dikembalikan</h4>
-                                
+                                        <h5 className="card-title">Buku sudah Dikembalikan</h5>
+                                        <h4 className="card-title">{transactionsDikembalikan}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +113,6 @@ class HomePage extends React.Component {
 }
 
 function mapState(state) {
-    console.log(state);
     const { users, authentication, books, transactions } = state;
     const { user } = authentication;
     return { user, users, books, transactions };

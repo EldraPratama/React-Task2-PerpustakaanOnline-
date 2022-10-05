@@ -50,7 +50,7 @@ class RegisterPage extends React.Component {
             <div className="col-md-12 col-md-offset-3">
                 <div className="row justify-content-center">
                     <div className="col-md-7">
-                        <div className="card">
+                        <div className="card shadow">
                             <div className="card-header text-center">
                                 <h2>Register</h2>
                             </div>

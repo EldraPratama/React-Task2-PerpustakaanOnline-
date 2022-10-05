@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import { history } from '../_helpers';
 
 // import { userActions } from '../_actions';
 import { bookActions } from '../_actions';
@@ -19,18 +19,14 @@ class DetailPage extends React.Component {
 
   }
   componentDidMount() {
-    this.props.getBook();
+    this.props.getBooks();
   }
 
   handleDeleteBook(id) {
-    console.log('handle delete');
-    console.log(id);
     return (e) => this.props.deleteBook(id);
   }
 
   handleModal(id,judul) {
-    console.log(id);
-    console.log(judul);
     this.setState({
       judulBuku: judul,
       id: id,
@@ -38,12 +34,17 @@ class DetailPage extends React.Component {
   }
 
   render() {
-    const book = this.props.books.item ? this.props.books.item : '';
-    console.log(this.props);
-    //check if the data by id is found 
-    // console.log(this.props.books.item)
-    // console.log(book.judulBuku);
-    console.log(this.state);
+    //process get detail data book based on id  
+    let { books } = this.props;
+    let book
+    if(books.items){
+      //get id book
+      let path = history.location.pathname.split('/');
+      let id = parseInt(path[path.length-1]);
+      //filter data to get detail data based on id
+      book = books.items.filter(book => book.id == id)[0]
+    }
+
     //show modal confirm delete 
     const modal = () => {
       let judul = this.state.judulBuku ;
@@ -56,10 +57,10 @@ class DetailPage extends React.Component {
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
-              Jika ingin menghapus Buku dengan judul <b>{judul}</b> Silahkan pindah ke halaman Buku
+               Buku dengan judul <b>{judul}</b> akan dihapus, dan kamu akan dikembalikan ke halaman sebelumnya
             </div>
             <div className="modal-footer">
-              <button onClick={this.handleDeleteBook(id)} type="button" className="btn btn-outline-danger" data-bs-dismiss="modal" disabled>Iya</button>
+              <button onClick={this.handleDeleteBook(id)} type="button" className="btn btn-outline-danger" data-bs-dismiss="modal" >Iya</button>
               <button type="button" className="btn btn-outline-warning" data-bs-dismiss="modal">Tidak</button>
             </div>
           </div>
@@ -217,7 +218,7 @@ function mapState(state) {
 const actionCreators = {
   // getUsers: userActions.getAll,
   // getBooks: bookActions.getAll,
-  getBook: bookActions.getById,
+  getBooks: bookActions.getAll,
   deleteBook: bookActions.delete
 };
 
