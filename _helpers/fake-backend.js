@@ -201,7 +201,7 @@ export function configureFakeBackend() {
                 if (url.endsWith('/buku') && opts.method === 'GET') {
                     //sort book based on id
                     books.sort((a,b)=>{
-                        return b.id - a.id
+                        return b.tanggalInput - a.tanggalInput
                     });
 
                     // check for fake auth token in header and return users if valid, this security is implemented server side in a real application
