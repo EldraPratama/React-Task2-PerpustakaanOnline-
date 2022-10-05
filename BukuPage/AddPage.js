@@ -205,6 +205,7 @@ class AddPage extends React.Component {
                     </div>
                 </form>
 
+                <div style={{height: "80px"}}></div>
                 
             </div>
         );
