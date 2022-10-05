@@ -61,7 +61,7 @@ class HomePage extends React.Component {
 
                         <div className="row mt-3 text-center">
                             <div className="col-sm-3">
-                                <div className="card shadow-lg border-success rounded-end rounded-5">
+                                <div className="card shadow-lg border-success btn btn-outline-success rounded-pill">
                                     <div className="card-body">
                                         <h5 className="card-title">Status Buku Tersedia</h5>
                                         <h3 className="card-title">{booksTersedia}</h3>
@@ -70,7 +70,7 @@ class HomePage extends React.Component {
                                 </div>
                             </div>
                             <div className="col-sm-3">
-                                <div className="card shadow border-danger rounded-start rounded-5">
+                                <div className="card shadow border-danger btn btn-outline-danger rounded-pill">
                                     <div className="card-body">
                                         <h5 className="card-title">Status Buku Dipinjam</h5>
                                         <h3 className="card-title">{booksDipinjam}</h3>
@@ -79,7 +79,7 @@ class HomePage extends React.Component {
                                 </div>
                             </div>
                             <div className="col-sm-3">
-                                <div className="card shadow border-warning rounded-end rounded-5">
+                                <div className="card shadow border-warning btn btn-outline-warning rounded-pill">
                                     <div className="card-body">
                                         <h5 className="card-title">Buku masih Dipinjam</h5>
                                         <h3 className="card-title">{transactionsDipinjam}</h3>
@@ -88,7 +88,7 @@ class HomePage extends React.Component {
                                 </div>
                             </div>
                             <div className="col-sm-3">
-                                <div className="card shadow border-info rounded-start rounded-5">
+                                <div className="card shadow border-info btn btn-outline-info rounded-pill">
                                     <div className="card-body">
                                         <h5 className="card-title">Buku sudah Dikembalikan</h5>
                                         <h3 className="card-title">{transactionsDikembalikan}</h3>

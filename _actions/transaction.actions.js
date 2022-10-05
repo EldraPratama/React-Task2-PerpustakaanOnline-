@@ -44,7 +44,7 @@ function update(id) {
                 id => { 
                     dispatch(success(id));
                     history.push('/transaksi');
-                    dispatch(alertActions.success('update transaction successful'));
+                    dispatch(alertActions.success('Pengembalian transaction successful'));
                 },
                 error => {
                     dispatch(failure(error));
