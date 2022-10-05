@@ -103,12 +103,12 @@ class BukuPage extends React.Component {
             <div className="col-md-5">
               <form name="form">
                 <div className={'input-group mb-3'}>
-                  <button class="btn btn-outline-primary" type="button" id="button-addon1" disabled>
+                  <button class="btn btn-outline-primary rounded-end rounded-5" type="button" id="button-addon1" disabled>
                     <span class="bi bi-search"></span>
                   </button>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control rounded-start rounded-5"
                     name="search"
                     placeholder="Search" 
                     onChange={this.handleChange}
@@ -118,7 +118,7 @@ class BukuPage extends React.Component {
             </div>
             <div className="col-md-5"></div>
             <div className="col-md-2">
-              <Link to="/buku/add" className="btn btn-primary float-end">
+              <Link to="/buku/add" className="btn btn-primary float-end rounded-pill">
               <b><i class="bi bi-plus-lg"> </i></b>Input Buku
               </Link>
             </div>

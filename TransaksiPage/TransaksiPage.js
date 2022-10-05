@@ -98,17 +98,17 @@ class TransaksiPage extends React.Component {
             <div className="col-md-5">
               <form name="form">
                 <div className={'input-group mb-3'}>
-                  <button class="btn btn-outline-primary" type="button" id="button-addon1" disabled>
+                  <button class="btn btn-outline-primary rounded-end rounded-5" type="button" id="button-addon1" disabled>
                     <span class="bi bi-search"></span>
                   </button>
-                  <input type="text" className="form-control" name="search" placeholder="Search"
+                  <input type="text" className="form-control rounded-start rounded-5" name="search" placeholder="Search"
                   onChange={this.handleChange}/>
                 </div>
               </form>
             </div>
             <div className="col-md-5"></div>
             <div className="col-md-2">
-                <Link to="/transaksi/add" className="btn btn-primary float-end">
+                <Link to="/transaksi/add" className="btn btn-primary float-end rounded-pill">
                 <b><i class="bi bi-plus-lg"> </i></b>Pinjam Buku
                 </Link>
             </div>
