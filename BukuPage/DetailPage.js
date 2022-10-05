@@ -77,8 +77,7 @@ class DetailPage extends React.Component {
           { book.status == 'Tersedia' || book.status == 'tersedia'
             ? 
             <button onClick={() => this.handleModal(book.id, book.judulBuku)} type="button" className="btn btn-info mx-5 float-end" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                              Delete
-                            </button>
+              Delete</button>
             // <a onClick={this.handleDeleteBook(book.id)} className="btn btn-info mx-5 float-end" disabled>Delete aja</a>
             : ''
           }

@@ -44,7 +44,7 @@ class HomePage extends React.Component {
                             <div className="col-sm-6 ">
                                 <div className="card shadow rounded-pill bg-primary bg-gradient bg-opacity-80 text-white">
                                     <div className="card-body">
-                                        <h3 className="card-title">Total data Buku</h3>
+                                        <h3 className="card-title">Total data Buku <i class="bi bi-book-half"></i></h3>
                                         <h2 className="card-title">{totalBooks}</h2>
                                     </div>
                                 </div>
@@ -52,7 +52,7 @@ class HomePage extends React.Component {
                             <div className="col-sm-6">
                                 <div className="card shadow rounded-pill bg-success bg-gradient bg-opacity-85 text-white">
                                     <div className="card-body">
-                                        <h3 className="card-title">Total data Transaksi</h3>
+                                        <h3 className="card-title">Total data Transaksi <i class="bi bi-clipboard-data-fill"></i></h3>
                                         <h2 className="card-title">{totalTransactions}</h2>      
                                     </div>
                                 </div>
@@ -64,7 +64,7 @@ class HomePage extends React.Component {
                                 <div className="card shadow-lg border-success rounded-end rounded-5">
                                     <div className="card-body">
                                         <h5 className="card-title">Status Buku Tersedia</h5>
-                                        <h4 className="card-title">{booksTersedia}</h4>
+                                        <h3 className="card-title">{booksTersedia}</h3>
                                 
                                     </div>
                                 </div>
@@ -73,7 +73,7 @@ class HomePage extends React.Component {
                                 <div className="card shadow border-danger rounded-start rounded-5">
                                     <div className="card-body">
                                         <h5 className="card-title">Status Buku Dipinjam</h5>
-                                        <h4 className="card-title">{booksDipinjam}</h4>
+                                        <h3 className="card-title">{booksDipinjam}</h3>
                                 
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@ class HomePage extends React.Component {
                                 <div className="card shadow border-warning rounded-end rounded-5">
                                     <div className="card-body">
                                         <h5 className="card-title">Buku masih Dipinjam</h5>
-                                        <h4 className="card-title">{transactionsDipinjam}</h4>
+                                        <h3 className="card-title">{transactionsDipinjam}</h3>
                                 
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@ class HomePage extends React.Component {
                                 <div className="card shadow border-info rounded-start rounded-5">
                                     <div className="card-body">
                                         <h5 className="card-title">Buku sudah Dikembalikan</h5>
-                                        <h4 className="card-title">{transactionsDikembalikan}</h4>
+                                        <h3 className="card-title">{transactionsDikembalikan}</h3>
                                     </div>
                                 </div>
                             </div>
