@@ -156,15 +156,16 @@ export function configureFakeBackend() {
                     let id = parseInt(urlParts[urlParts.length - 1]);
 
                     // validation duplicate book
-                    let duplicateBook = books.filter(book => { 
-                        if(book.id != id){
-                            return book.judulBuku === newBook.judulBuku; 
-                        }
-                    }).length;
-                    if (duplicateBook) {
-                        reject('Judul Buku "' + newBook.judulBuku + '" is already taken');
-                        return;
-                    };
+                    // let duplicateBook = books.filter(book => { 
+                    //     if(book.id != id){
+                    //         return book.judulBuku === newBook.judulBuku; 
+                    //     }
+                    // }).length;
+
+                    // if (duplicateBook) {
+                    //     reject('Judul Buku "' + newBook.judulBuku + '" is already taken');
+                    //     return;
+                    // };
 
                     // update book
                     books.forEach((book,i) => {
@@ -190,6 +191,7 @@ export function configureFakeBackend() {
 
 
                     localStorage.setItem('books', JSON.stringify(books));
+                    localStorage.setItem('transactions', JSON.stringify(transactions));
 
                     // respond 200 OK
                     resolve({ ok: true, text: () => Promise.resolve() });

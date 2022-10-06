@@ -19,6 +19,7 @@ class HomePage extends React.Component {
         const { user, users, books, transactions } = this.props;
 
         //make variable to store total book, total book dipinjam, total book tersedia
+
         let totalBooks, booksTersedia, booksDipinjam;
         if(books.items){
             totalBooks    = books.items.length
