@@ -62,7 +62,7 @@ class HomePage extends React.Component {
 
                         <div className="row mt-3 text-center">
                             <div className="col-sm-3">
-                                <div className="card shadow-lg border-success btn btn-outline-success rounded-pill">
+                                <div className="card shadow border-success btn btn-outline-success rounded-pill">
                                     <div className="card-body">
                                         <h5 className="card-title">Status Buku Tersedia</h5>
                                         <h3 className="card-title">{booksTersedia}</h3>
